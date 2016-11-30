@@ -1,0 +1,27 @@
+require 'dotenv'
+
+Dotenv.load
+
+lane :certs do
+  ['development', 'appstore'].each do |env|
+    match(type: env)
+  end
+end
+
+#----- Certificates / Provisioning -----#
+lane :add_devices do |options|
+  raise "no device name specified" unless options[:names]
+  raise "no device udid specified" unless options[:udids]
+
+  system("./add_devices.rb #{options[:names]} #{options[:udids]}", out: $stdout, err: :out)
+
+  update_profiles
+end
+
+private_lane :update_profiles do |options|
+  system("./update_profiles.rb", out: $stdout, err: :out)
+end
+
+lane :profs do
+
+end

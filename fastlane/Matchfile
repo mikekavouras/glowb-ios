@@ -1,0 +1,10 @@
+require 'dotenv'
+
+Dotenv.load
+
+git_url ENV['CERTS_REPO_URL']
+app_identifier ENV['APP_IDENTIFIER']
+git_branch 'master'
+username ENV['APPLE_USERNAME']
+readonly true
+
