@@ -2,6 +2,29 @@ require 'dotenv'
 
 Dotenv.load
 
+lane :beta do |options|
+  build
+  pilot(
+    ipa:  "build/Glowb.ipa",
+    app_identifier: ENV['APP_IDENTIFIER'],
+    skip_waiting_for_build_processing: true,
+  )
+end
+
+private_lane :build do |options|
+  certs
+  ensure_correct_build_number(options)
+  gym(
+    verbose: true,
+    include_bitcode: true,
+    include_symbols: true,
+    output_directory: "build",
+    export_options: {
+      thinning: "<thin-for-all-variants>"
+    }
+  )
+end
+
 lane :certs do
   ['development', 'appstore'].each do |env|
     match(type: env)
@@ -22,6 +45,15 @@ private_lane :update_profiles do |options|
   system("./update_profiles.rb", out: $stdout, err: :out)
 end
 
-lane :profs do
+lane :ensure_correct_build_number do |options|
+  version = get_version_number(
+    xcodeproj: 'Glowb.xcodeproj'
+  )
 
+  build_number = options[:build_number] || latest_testflight_build_number(
+    app_identifier: ENV['APP_IDENTIFIER'],
+    initial_build_number: 0,
+    version: version
+  ) + 1
 end
+

@@ -5,6 +5,11 @@ fastlane documentation
 sudo gem install fastlane
 ```
 # Available Actions
+### beta
+```
+fastlane beta
+```
+
 ### certs
 ```
 fastlane certs
@@ -15,9 +20,9 @@ fastlane certs
 fastlane add_devices
 ```
 
-### profs
+### ensure_correct_build_number
 ```
-fastlane profs
+fastlane ensure_correct_build_number
 ```
 
 
