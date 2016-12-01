@@ -345,6 +345,7 @@
 			baseConfigurationReference = 81B97BEB0DC2885E869503AF /* Pods-Glowb.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = A56D86G827;
 				INFOPLIST_FILE = Glowb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -353,6 +354,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -361,6 +363,7 @@
 			baseConfigurationReference = 54E12DCAF388AD1CFD8675D0 /* Pods-Glowb.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = A56D86G827;
 				INFOPLIST_FILE = Glowb/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -369,6 +372,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};

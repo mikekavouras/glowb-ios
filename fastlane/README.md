@@ -20,11 +20,6 @@ fastlane certs
 fastlane add_devices
 ```
 
-### ensure_correct_build_number
-```
-fastlane ensure_correct_build_number
-```
-
 
 ----
 
