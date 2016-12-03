@@ -4,6 +4,10 @@ Dotenv.load
 
 lane :beta do |options|
   build
+  upload
+end
+
+private_lane :upload do |options|
   pilot(
     ipa:  "build/Glowb.ipa",
     app_identifier: ENV['APP_IDENTIFIER'],
