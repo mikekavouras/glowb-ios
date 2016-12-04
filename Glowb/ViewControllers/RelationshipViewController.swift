@@ -61,7 +61,6 @@ class RelationshipViewController: BaseTableViewController {
 
 // MARK: - Table view data source
 
-
 extension RelationshipViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -73,12 +72,13 @@ extension RelationshipViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusable(cellType: TextFieldTableViewCell.self, forIndexPath: indexPath)
             cell.textField.autocapitalizationType = .words
+            cell.textField.delegate = self
             cell.label.text = "Name"
+            cell.selectionStyle = .none
             return cell
         case 1:
             let cell = tableView.dequeueReusable(cellType: TextSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
@@ -94,5 +94,24 @@ extension RelationshipViewController {
         default: return UITableViewCell()
         }
     }
-    
+}
+
+
+// MARK: - Table view delegate
+
+extension RelationshipViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+
+// MARK: - Text field delegate
+
+extension RelationshipViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
 }
