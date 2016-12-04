@@ -36,7 +36,7 @@
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
-                                    <integer key="value" value="1"/>
+                                    <integer key="value" value="2"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
