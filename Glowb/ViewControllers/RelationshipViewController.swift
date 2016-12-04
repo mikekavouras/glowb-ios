@@ -33,7 +33,8 @@ class RelationshipViewController: BaseTableViewController {
     }
     
     private func setupTableView() {
-        tableView.register(cellType: TextViewTableViewCell.self)
+        tableView.register(cellType: TextFieldTableViewCell.self)
+        tableView.register(cellType: TextSelectionRepresentableTableViewCell.self)
     }
     
     
@@ -67,16 +68,25 @@ extension RelationshipViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusable(cellType: TextViewTableViewCell.self, forIndexPath: indexPath)
-        cell.textField.autocapitalizationType = .words
-        cell.label.text = "Name"
-        
-        return cell
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusable(cellType: TextFieldTableViewCell.self, forIndexPath: indexPath)
+            cell.textField.autocapitalizationType = .words
+            cell.label.text = "Name"
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusable(cellType: TextSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
+            cell.label.text = "Select device"
+            cell.selectionLabel.text = ""
+            cell.accessoryType = .disclosureIndicator
+            return cell
+        default: return UITableViewCell()
+        }
     }
     
 }
