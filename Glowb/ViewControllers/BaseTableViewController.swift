@@ -10,9 +10,10 @@ import UIKit
 
 class BaseTableViewController: UITableViewController {
     
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        view = BaseTableView(frame: CGRect.zero, style: .plain)
+        tableView.backgroundColor = .glowbBlack
+        tableView.separatorStyle = .none
     }
 }

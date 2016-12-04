@@ -4,5 +4,5 @@ use_frameworks!
 
 target 'Glowb' do
   pod 'Alamofire', '~> 4.0'
-  pod 'Spark-SDK'
+  pod 'SnapKit', '~> 3.0.2'
 end

@@ -16,9 +16,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="mon-EC-H6K" customClass="BaseView" customModule="Glowb" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyB-Mk-1Tk">
+                                    <rect key="frame" x="106" y="10" width="163" height="290"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="163" id="fAu-dQ-KaX"/>
+                                    </constraints>
+                                    <state key="normal" image="addImage"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="lyB-Mk-1Tk" secondAttribute="bottom" id="LxS-uv-hbT"/>
+                                <constraint firstItem="lyB-Mk-1Tk" firstAttribute="top" secondItem="mon-EC-H6K" secondAttribute="top" constant="10" id="RSe-GH-yP6"/>
+                                <constraint firstItem="lyB-Mk-1Tk" firstAttribute="centerX" secondItem="mon-EC-H6K" secondAttribute="centerX" id="Slo-pC-SXr"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8Rd-Py-svu">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="328" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Rd-Py-svu" id="baD-YM-IPc">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -34,7 +53,10 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6x-ra-adz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-380" y="57"/>
+            <point key="canvasLocation" x="-389.60000000000002" y="59.820089955022496"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="addImage" width="325" height="578"/>
+    </resources>
 </document>
