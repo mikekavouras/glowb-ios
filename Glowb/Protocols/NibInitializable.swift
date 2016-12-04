@@ -1,5 +1,5 @@
 //
-//  UIView+Xib.swift
+//  NibInitializable.swift
 //  Buyer
 //
 //  Created by Mike Kavouras on 8/23/16.

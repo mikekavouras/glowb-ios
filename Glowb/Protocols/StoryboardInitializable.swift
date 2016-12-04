@@ -1,5 +1,5 @@
 //
-//  UIViewController+EasyStoryboard.swift
+//  StoryboardInitializable.swift
 //
 //  Created by Bogdan Vitoc on 7/5/16.
 //  Copyright © 2016 Bogdan Vitoc. All rights reserved.
