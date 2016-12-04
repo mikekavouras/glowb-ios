@@ -35,6 +35,7 @@ class RelationshipViewController: BaseTableViewController {
     private func setupTableView() {
         tableView.register(cellType: TextFieldTableViewCell.self)
         tableView.register(cellType: TextSelectionRepresentableTableViewCell.self)
+        tableView.register(cellType: ColorSelectionRepresentableTableViewCell.self)
     }
     
     
@@ -68,7 +69,7 @@ extension RelationshipViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,6 +84,11 @@ extension RelationshipViewController {
             let cell = tableView.dequeueReusable(cellType: TextSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
             cell.label.text = "Select device"
             cell.selectionLabel.text = ""
+            cell.accessoryType = .disclosureIndicator
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusable(cellType: ColorSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
+            cell.label.text = "Select color"
             cell.accessoryType = .disclosureIndicator
             return cell
         default: return UITableViewCell()

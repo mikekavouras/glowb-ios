@@ -31,8 +31,9 @@
 		8D7291E91DF4B04A003F165F /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291E81DF4B04A003F165F /* Label.swift */; };
 		8D7291EB1DF4B07E003F165F /* PrimaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291EA1DF4B07E003F165F /* PrimaryTextLabel.swift */; };
 		8D7291ED1DF4B086003F165F /* SecondaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291EC1DF4B086003F165F /* SecondaryTextLabel.swift */; };
-		8D7291F01DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291EE1DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.swift */; };
-		8D7291F11DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D7291EF1DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.xib */; };
+		8D7291F01DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291EE1DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.swift */; };
+		8D7291F11DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D7291EF1DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.xib */; };
+		8D7291F31DF4B383003F165F /* ColorPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291F21DF4B383003F165F /* ColorPreviewView.swift */; };
 		8D921DEB1DF48B600056FAAC /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D921DEA1DF48B600056FAAC /* Styleable.swift */; };
 		8DA75EE41DF355EB00A35737 /* RelationshipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA75EE31DF355EB00A35737 /* RelationshipViewController.swift */; };
 		8DB1E0841DF365B3000648C3 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E0831DF365B3000648C3 /* BaseNavigationController.swift */; };
@@ -71,8 +72,9 @@
 		8D7291E81DF4B04A003F165F /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		8D7291EA1DF4B07E003F165F /* PrimaryTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryTextLabel.swift; sourceTree = "<group>"; };
 		8D7291EC1DF4B086003F165F /* SecondaryTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryTextLabel.swift; sourceTree = "<group>"; };
-		8D7291EE1DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSectionRepresentableTableViewCell.swift; sourceTree = "<group>"; };
-		8D7291EF1DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorSectionRepresentableTableViewCell.xib; sourceTree = "<group>"; };
+		8D7291EE1DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionRepresentableTableViewCell.swift; sourceTree = "<group>"; };
+		8D7291EF1DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorSelectionRepresentableTableViewCell.xib; sourceTree = "<group>"; };
+		8D7291F21DF4B383003F165F /* ColorPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPreviewView.swift; sourceTree = "<group>"; };
 		8D921DEA1DF48B600056FAAC /* Styleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
 		8DA75EE31DF355EB00A35737 /* RelationshipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelationshipViewController.swift; sourceTree = "<group>"; };
 		8DB1E0831DF365B3000648C3 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -246,8 +248,8 @@
 				8D208B6D1DF3D88F003209A5 /* TextFieldTableViewCell.xib */,
 				8D5AE83A1DF4AAE500A520D4 /* TextSelectionRepresentableTableViewCell.swift */,
 				8D5AE83B1DF4AAE500A520D4 /* TextSelectionRepresentableTableViewCell.xib */,
-				8D7291EE1DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.swift */,
-				8D7291EF1DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.xib */,
+				8D7291EE1DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.swift */,
+				8D7291EF1DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -285,6 +287,7 @@
 			children = (
 				8D5AE8231DF499B100A520D4 /* Base */,
 				8DB1E0921DF3CB3D000648C3 /* DashedView.swift */,
+				8D7291F21DF4B383003F165F /* ColorPreviewView.swift */,
 				8D7291E61DF4B04A003F165F /* Labels */,
 				8D5AE82D1DF499CB00A520D4 /* TextFields */,
 				8DAC60B51DF3D53200C408D4 /* Cells */,
@@ -360,7 +363,7 @@
 				8D669EF21DF358000029FDB0 /* Main.storyboard in Resources */,
 				8D5AE83D1DF4AAE500A520D4 /* TextSelectionRepresentableTableViewCell.xib in Resources */,
 				8D669EF11DF358000029FDB0 /* LaunchScreen.storyboard in Resources */,
-				8D7291F11DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.xib in Resources */,
+				8D7291F11DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.xib in Resources */,
 				8DB1E08A1DF366AE000648C3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +426,7 @@
 				8D208B6E1DF3D88F003209A5 /* TextFieldTableViewCell.swift in Sources */,
 				8D669EF61DF3586B0029FDB0 /* BaseTableViewController.swift in Sources */,
 				8D5AE8361DF499E600A520D4 /* BaseTextField.swift in Sources */,
+				8D7291F31DF4B383003F165F /* ColorPreviewView.swift in Sources */,
 				8D5AE83C1DF4AAE500A520D4 /* TextSelectionRepresentableTableViewCell.swift in Sources */,
 				8D5AE8371DF499E600A520D4 /* TextField.swift in Sources */,
 				8DA75EE41DF355EB00A35737 /* RelationshipViewController.swift in Sources */,
@@ -440,7 +444,7 @@
 				8DB1E0931DF3CB3D000648C3 /* DashedView.swift in Sources */,
 				8DB1E0841DF365B3000648C3 /* BaseNavigationController.swift in Sources */,
 				8D2220A41DEF3BB80082E315 /* AppDelegate.swift in Sources */,
-				8D7291F01DF4B25E003F165F /* ColorSectionRepresentableTableViewCell.swift in Sources */,
+				8D7291F01DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.swift in Sources */,
 				8D921DEB1DF48B600056FAAC /* Styleable.swift in Sources */,
 				8D2781E91DF491380050E4E8 /* Themeable.swift in Sources */,
 				8DC533B31DF3523D0040628C /* BaseViewController.swift in Sources */,
