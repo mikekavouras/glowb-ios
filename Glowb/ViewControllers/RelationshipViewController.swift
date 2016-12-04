@@ -24,11 +24,16 @@ class RelationshipViewController: BaseTableViewController {
     
     private func setup() {
         setupNavigationItem()
+        setupTableView()
     }
     
     private func setupNavigationItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
+    }
+    
+    private func setupTableView() {
+        tableView.register(cellType: TextViewTableViewCell.self)
     }
     
     
@@ -49,4 +54,29 @@ class RelationshipViewController: BaseTableViewController {
         return .lightContent
     }
 
+}
+
+
+// MARK: - Table view data source
+
+
+extension RelationshipViewController {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusable(cellType: TextViewTableViewCell.self, forIndexPath: indexPath)
+        cell.textField.autocapitalizationType = .words
+        cell.label.text = "Name"
+        
+        return cell
+    }
+    
 }

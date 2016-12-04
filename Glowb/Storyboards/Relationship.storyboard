@@ -34,17 +34,12 @@
                                 <constraint firstItem="lyB-Mk-1Tk" firstAttribute="top" secondItem="mon-EC-H6K" secondAttribute="top" constant="10" id="RSe-GH-yP6"/>
                                 <constraint firstItem="lyB-Mk-1Tk" firstAttribute="centerX" secondItem="mon-EC-H6K" secondAttribute="centerX" id="Slo-pC-SXr"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8Rd-Py-svu">
-                                <rect key="frame" x="0.0" y="328" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Rd-Py-svu" id="baD-YM-IPc">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="WrB-QU-VX8" id="yN7-fd-aha"/>
                             <outlet property="delegate" destination="WrB-QU-VX8" id="SBR-Sd-Wol"/>
