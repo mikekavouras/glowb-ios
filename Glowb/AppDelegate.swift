@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSForegroundColorAttributeName: UIColor.white
         ]
         
-        UIBarButtonItem.appearance().tintColor = .white
-        UIBarButtonItem.appearance().setTitleTextAttributes([
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).tintColor = .white
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).setTitleTextAttributes([
             NSForegroundColorAttributeName: UIColor.white
         ], for: .normal)
     }

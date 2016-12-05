@@ -10,6 +10,21 @@ import UIKit
 
 class RelationshipViewController: BaseTableViewController {
 
+    @IBOutlet weak var previewImageView: UIImageView!
+    
+    lazy var imagePickerController: UIImagePickerController = {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        
+        picker.view.backgroundColor = UIColor.white
+        picker.navigationBar.isTranslucent = false
+        picker.navigationBar.tintColor = UIColor.black
+        picker.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+        
+        return picker
+    }()
+    
     
     // MARK: Life cycle
     
@@ -25,6 +40,7 @@ class RelationshipViewController: BaseTableViewController {
     private func setup() {
         setupNavigationItem()
         setupTableView()
+        setupImageView()
     }
     
     private func setupNavigationItem() {
@@ -38,6 +54,10 @@ class RelationshipViewController: BaseTableViewController {
         tableView.register(cellType: ColorSelectionRepresentableTableViewCell.self)
     }
     
+    private func setupImageView() {
+        previewImageView.layer.cornerRadius = 13.0
+        _ = imagePickerController // eager load
+    }
     
     // MARK: Actions
     
@@ -47,6 +67,10 @@ class RelationshipViewController: BaseTableViewController {
     
     @objc private func saveButtonTapped() {
         print("SAVE RELATIONSHIP")
+    }
+    
+    @IBAction func addImageButtonTapped(_ sender: Any) {
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     
@@ -90,6 +114,7 @@ extension RelationshipViewController {
             let cell = tableView.dequeueReusable(cellType: ColorSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
             cell.label.text = "Select color"
             cell.accessoryType = .disclosureIndicator
+            cell.color = .clear
             return cell
         default: return UITableViewCell()
         }
@@ -117,5 +142,17 @@ extension RelationshipViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         
         return true
+    }
+}
+
+
+// MARK: - Image picker controller delegate
+
+extension RelationshipViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        previewImageView.image = image
+        self.dismiss(animated: true, completion: nil)
+        
+        
     }
 }

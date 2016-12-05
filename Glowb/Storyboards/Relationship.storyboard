@@ -20,19 +20,43 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="320"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyB-Mk-1Tk">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LtT-rC-whb" customClass="BaseView" customModule="Glowb" customModuleProvider="target">
                                     <rect key="frame" x="106" y="10" width="163" height="290"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addImage" translatesAutoresizingMaskIntoConstraints="NO" id="vlQ-bZ-tfE">
+                                            <rect key="frame" x="0.0" y="0.0" width="163" height="290"/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyB-Mk-1Tk">
+                                            <rect key="frame" x="0.0" y="0.0" width="163" height="290"/>
+                                            <connections>
+                                                <action selector="addImageButtonTapped:" destination="WrB-QU-VX8" eventType="touchUpInside" id="F3F-Hi-b3G"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="163" id="fAu-dQ-KaX"/>
+                                        <constraint firstAttribute="bottom" secondItem="lyB-Mk-1Tk" secondAttribute="bottom" id="2BN-OQ-M5x"/>
+                                        <constraint firstAttribute="width" constant="163" id="507-5s-Jo0"/>
+                                        <constraint firstItem="lyB-Mk-1Tk" firstAttribute="top" secondItem="LtT-rC-whb" secondAttribute="top" id="GIE-Ab-tPq"/>
+                                        <constraint firstItem="vlQ-bZ-tfE" firstAttribute="leading" secondItem="LtT-rC-whb" secondAttribute="leading" id="N1i-Sp-tgO"/>
+                                        <constraint firstItem="lyB-Mk-1Tk" firstAttribute="leading" secondItem="LtT-rC-whb" secondAttribute="leading" id="Sy2-Rn-AbW"/>
+                                        <constraint firstAttribute="bottom" secondItem="vlQ-bZ-tfE" secondAttribute="bottom" id="T3R-ip-oqL"/>
+                                        <constraint firstItem="vlQ-bZ-tfE" firstAttribute="top" secondItem="LtT-rC-whb" secondAttribute="top" id="aon-h3-4uQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="lyB-Mk-1Tk" secondAttribute="trailing" id="pNO-Hi-TNH"/>
+                                        <constraint firstAttribute="trailing" secondItem="vlQ-bZ-tfE" secondAttribute="trailing" id="uE7-cB-FbJ"/>
                                     </constraints>
-                                    <state key="normal" image="addImage"/>
-                                </button>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                            <integer key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="lyB-Mk-1Tk" secondAttribute="bottom" constant="20" id="LxS-uv-hbT"/>
-                                <constraint firstItem="lyB-Mk-1Tk" firstAttribute="top" secondItem="mon-EC-H6K" secondAttribute="top" constant="10" id="RSe-GH-yP6"/>
-                                <constraint firstItem="lyB-Mk-1Tk" firstAttribute="centerX" secondItem="mon-EC-H6K" secondAttribute="centerX" id="Slo-pC-SXr"/>
+                                <constraint firstAttribute="bottom" secondItem="LtT-rC-whb" secondAttribute="bottom" constant="20" id="17m-ak-6ol"/>
+                                <constraint firstItem="LtT-rC-whb" firstAttribute="top" secondItem="mon-EC-H6K" secondAttribute="top" constant="10" id="rfA-eU-6Fg"/>
+                                <constraint firstItem="LtT-rC-whb" firstAttribute="centerX" secondItem="mon-EC-H6K" secondAttribute="centerX" id="shd-84-b44"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
@@ -45,6 +69,9 @@
                             <outlet property="delegate" destination="WrB-QU-VX8" id="SBR-Sd-Wol"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="previewImageView" destination="vlQ-bZ-tfE" id="LUB-ub-7hJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6x-ra-adz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

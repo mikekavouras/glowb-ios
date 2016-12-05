@@ -59,7 +59,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="colorPreviewView" destination="H2p-sc-9uM" id="KQE-9q-8w5"/>
+                <outlet property="colorPreviewView" destination="k4u-p4-2Ag" id="ahH-wD-i52"/>
                 <outlet property="label" destination="xIE-de-1ye" id="wzY-71-415"/>
             </connections>
         </tableViewCell>
