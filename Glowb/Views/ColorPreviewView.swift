@@ -14,10 +14,16 @@ class ColorPreviewView: View {
         didSet { style() }
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        style()
+    }
+    
     override func style() {
         super.style()
         
-        layer.cornerRadius = frame.size.width / 2.0 // cornerRadius
+        layer.cornerRadius = frame.size.height / 2.0
         backgroundColor = color
     }
 }

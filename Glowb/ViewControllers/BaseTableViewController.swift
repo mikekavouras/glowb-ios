@@ -14,6 +14,7 @@ class BaseTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.backgroundColor = .glowbBlack
+        tableView.separatorColor = .glowbDarkGray
         tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 }

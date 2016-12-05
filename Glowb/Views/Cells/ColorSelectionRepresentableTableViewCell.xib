@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIE-de-1ye" customClass="PrimaryTextLabel" customModule="Glowb" customModuleProvider="target">
@@ -30,7 +30,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4u-p4-2Ag" customClass="ColorPreviewView" customModule="Glowb" customModuleProvider="target">
-                        <rect key="frame" x="277" y="8" width="28" height="28"/>
+                        <rect key="frame" x="292.5" y="12" width="19.5" height="19.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="k4u-p4-2Ag" secondAttribute="height" multiplier="1:1" id="Ldl-Ur-xof"/>
@@ -46,11 +46,11 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="k4u-p4-2Ag" secondAttribute="bottom" constant="8" id="D36-uR-XIX"/>
+                    <constraint firstAttribute="bottom" secondItem="k4u-p4-2Ag" secondAttribute="bottom" constant="12" id="D36-uR-XIX"/>
                     <constraint firstItem="xIE-de-1ye" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ilw-1n-O1n"/>
                     <constraint firstItem="xIE-de-1ye" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="NkN-1e-4Vm"/>
-                    <constraint firstItem="k4u-p4-2Ag" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="iC1-EL-Gay"/>
-                    <constraint firstAttribute="trailing" secondItem="k4u-p4-2Ag" secondAttribute="trailing" constant="15" id="r50-Wo-J4d"/>
+                    <constraint firstItem="k4u-p4-2Ag" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="iC1-EL-Gay"/>
+                    <constraint firstAttribute="trailing" secondItem="k4u-p4-2Ag" secondAttribute="trailing" constant="8" id="r50-Wo-J4d"/>
                 </constraints>
             </tableViewCellContentView>
             <userDefinedRuntimeAttributes>

@@ -14,5 +14,5 @@ class ColorSelectionRepresentableTableViewCell: BaseTableViewCell, ReusableView 
     static var nibName: String = "ColorSelectionRepresentableTableViewCell"
     
     @IBOutlet weak var label: PrimaryTextLabel!
-    @IBOutlet weak var colorPreviewView: UIView!
+    @IBOutlet weak var colorPreviewView: ColorPreviewView!
 }

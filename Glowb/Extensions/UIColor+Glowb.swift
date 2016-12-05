@@ -14,8 +14,12 @@ extension UIColor {
         return .black
     }
     
-    class var glowbDarkGray: UIColor {
+    class var glowbGray: UIColor {
         return UIColor(red: 108/255.0, green: 108/255.0, blue: 108/255.0, alpha: 1.0)
+    }
+    
+    class var glowbDarkGray: UIColor {
+        return UIColor(red: 40/255.0, green: 40/255.0, blue: 40/255.0, alpha: 1.0)
     }
     
 }

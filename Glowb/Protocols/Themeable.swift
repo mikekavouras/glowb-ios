@@ -40,7 +40,7 @@ enum Theme: Int {
         case .light:
             return .lightGray
         case .dark:
-            return .glowbDarkGray
+            return .glowbGray
         }
     }
     
