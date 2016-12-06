@@ -13,6 +13,9 @@ class WizardIntroViewController: BaseViewController, StoryboardInitializable {
     static var storyboardName: StaticString = "WizardIntro"
     
     @IBAction func getStartedButtonTapped(_ sender: UIButton) {
+        
+        AppDelegate.registerNotifications()
+        
         let connectController = ConnectViewController()
         let navController = UINavigationController(rootViewController: connectController)
         present(navController, animated: true, completion: nil)

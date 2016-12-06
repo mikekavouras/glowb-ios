@@ -9,16 +9,11 @@
 import UIKit
 import SnapKit
 
-enum SelectionCellState {
-    case selected
-    case deselected
-}
-
-class ColorSelectionTableViewCell: BaseTableViewCell, ReusableView  {
+class ColorSelectionTableViewCell: BaseTableViewCell, ReusableView, Selectable  {
     static var identifier: String = "ColorSelectionCellIdentifier"
     static var nibName: String = "ColorSelectionTableViewCell"
     
-    var state: SelectionCellState = .deselected {
+    var selectedState: SelectedState = .deselected {
         didSet { updateStateUI() }
     }
     
@@ -31,6 +26,6 @@ class ColorSelectionTableViewCell: BaseTableViewCell, ReusableView  {
     @IBOutlet private weak var colorPreviewView: ColorPreviewView!
     
     private func updateStateUI() {
-        selectedIndicator.isHidden = state == .deselected
+        selectedIndicator.isHidden = selectedState == .deselected
     }
 }

@@ -33,12 +33,12 @@ class ConnectingProgressViewController: BaseViewController {
     var isHostReachable = false
     var hostReachability = Reachability(hostName: "https://api.particle.io")
     
+    
     // MARK: Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
         state = .configureCredentials
         
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(notification:)), name: Notification.Name.ReachabilityChanged, object: nil)

@@ -71,6 +71,9 @@
 		8DB1E08F1DF36E60000648C3 /* NibInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E08E1DF36E60000648C3 /* NibInitializable.swift */; };
 		8DB1E0911DF36E6F000648C3 /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E0901DF36E6F000648C3 /* StoryboardInitializable.swift */; };
 		8DB1E0931DF3CB3D000648C3 /* DashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E0921DF3CB3D000648C3 /* DashedView.swift */; };
+		8DC174B81DF667DB00FB7A13 /* DeviceSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC174B61DF667DB00FB7A13 /* DeviceSelectionTableViewCell.swift */; };
+		8DC174B91DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174B71DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib */; };
+		8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */; };
 		8DC533B31DF3523D0040628C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC533B21DF3523D0040628C /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +148,9 @@
 		8DB1E08E1DF36E60000648C3 /* NibInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibInitializable.swift; sourceTree = "<group>"; };
 		8DB1E0901DF36E6F000648C3 /* StoryboardInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
 		8DB1E0921DF3CB3D000648C3 /* DashedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashedView.swift; sourceTree = "<group>"; };
+		8DC174B61DF667DB00FB7A13 /* DeviceSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		8DC174B71DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Connect.storyboard; sourceTree = "<group>"; };
 		8DC533B21DF3523D0040628C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -303,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				8D38C7161DF64F3E0011AF52 /* WizardIntro.storyboard */,
+				8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -421,6 +428,8 @@
 				8D7291EF1DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.xib */,
 				8D38C6DD1DF62D290011AF52 /* ColorSelectionTableViewCell.swift */,
 				8D38C6DE1DF62D290011AF52 /* ColorSelectionTableViewCell.xib */,
+				8DC174B61DF667DB00FB7A13 /* DeviceSelectionTableViewCell.swift */,
+				8DC174B71DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -458,10 +467,10 @@
 		8DC533B61DF3553A0040628C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8D38C71A1DF6522A0011AF52 /* Buttons */,
 				8D5AE8231DF499B100A520D4 /* Base */,
 				8DB1E0921DF3CB3D000648C3 /* DashedView.swift */,
 				8D7291F21DF4B383003F165F /* ColorPreviewView.swift */,
+				8D38C71A1DF6522A0011AF52 /* Buttons */,
 				8D7291E61DF4B04A003F165F /* Labels */,
 				8D5AE82D1DF499CB00A520D4 /* TextFields */,
 				8DAC60B51DF3D53200C408D4 /* Cells */,
@@ -532,11 +541,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC174B91DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib in Resources */,
 				8D38C6E01DF62D290011AF52 /* ColorSelectionTableViewCell.xib in Resources */,
 				8D38C7171DF64F3E0011AF52 /* WizardIntro.storyboard in Resources */,
 				8D669EF41DF358370029FDB0 /* Relationship.storyboard in Resources */,
 				8D208B6F1DF3D88F003209A5 /* TextFieldTableViewCell.xib in Resources */,
 				8D669EF21DF358000029FDB0 /* Main.storyboard in Resources */,
+				8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */,
 				8D5AE83D1DF4AAE500A520D4 /* TextSelectionRepresentableTableViewCell.xib in Resources */,
 				8D669EF11DF358000029FDB0 /* LaunchScreen.storyboard in Resources */,
 				8D7291F11DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.xib in Resources */,
@@ -621,6 +632,7 @@
 				8D38C7021DF64C840011AF52 /* Command+ScanAP.swift in Sources */,
 				8D5AE82B1DF499BB00A520D4 /* BaseTableViewCell.swift in Sources */,
 				8D5AE8271DF499B100A520D4 /* View.swift in Sources */,
+				8DC174B81DF667DB00FB7A13 /* DeviceSelectionTableViewCell.swift in Sources */,
 				8D7291EB1DF4B07E003F165F /* PrimaryTextLabel.swift in Sources */,
 				8D38C7031DF64C840011AF52 /* Command.swift in Sources */,
 				8D208B6B1DF3D707003209A5 /* ReusableView.swift in Sources */,

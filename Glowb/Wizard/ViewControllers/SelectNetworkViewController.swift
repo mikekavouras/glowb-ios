@@ -33,8 +33,6 @@ class SelectNetworkViewController: BaseTableViewController {
     // MARK: Setup
     
     private func setup() {
-        view.backgroundColor = .white
-        
         setupTableView()
         setupNavigationItem()
         

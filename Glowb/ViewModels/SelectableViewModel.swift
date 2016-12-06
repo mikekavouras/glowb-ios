@@ -8,10 +8,10 @@
 
 struct SelectableViewModel<T>: Selectable {
     let model: T
-    var selected: Bool
+    var selectedState: SelectedState
     
-    init(model: T, selected: Bool) {
+    init(model: T, selectedState: SelectedState) {
         self.model = model
-        self.selected = selected
+        self.selectedState = selectedState
     }
 }

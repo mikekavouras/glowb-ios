@@ -9,7 +9,9 @@
 import UIKit
 import UserNotifications
 
-class ConnectViewController: BaseViewController {
+class ConnectViewController: BaseViewController, StoryboardInitializable {
+    
+    static var storyboardName: StaticString = "Connect"
     
     lazy var wifi: Wifi = {
         return Wifi { [weak self] state in
@@ -45,10 +47,7 @@ class ConnectViewController: BaseViewController {
     // MARK: Setup
     
     func setup() {
-        view.backgroundColor = .white
-        navigationItem.title = "Connect Device"
-        
-        AppDelegate.registerNotifications()
+        title = "Connect Device"
     }
     
     

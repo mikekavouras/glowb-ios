@@ -6,6 +6,11 @@
 //  Copyright © 2016 Michael Kavouras. All rights reserved.
 //
 
+enum SelectedState {
+    case selected
+    case deselected
+}
+
 protocol Selectable {
-    var selected: Bool { get set }
+    var selectedState: SelectedState { get set }
 }

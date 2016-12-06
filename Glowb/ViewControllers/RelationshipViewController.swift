@@ -78,7 +78,7 @@ class RelationshipViewController: BaseTableViewController {
     
     fileprivate func showDevicesViewController() {
         let devices: [Device] = [Device(name: "Ducky")]
-        let selectableDevices = devices.map { SelectableViewModel(model: $0, selected: false) }
+        let selectableDevices = devices.map { SelectableViewModel(model: $0, selectedState: .deselected) }
         let viewController = DeviceSelectionTableViewController(items: selectableDevices, configure: { (cell: TextSelectionRepresentableTableViewCell, item) in
             cell.label.text = item.model.name
         })
@@ -88,11 +88,12 @@ class RelationshipViewController: BaseTableViewController {
     
     fileprivate func showColorsViewController() {
         let colors = [Color(.red), Color(.green), Color(.blue)]
-        let selectableColors = colors.map { SelectableViewModel(model: $0, selected: false) }
+        let selectableColors = colors.map { SelectableViewModel(model: $0, selectedState: .deselected) }
         let viewController = SelectableTableViewController(items: selectableColors, configure: { (cell: ColorSelectionTableViewCell, item) in
             cell.color = item.model.color
-            cell.state = item.selected ? .selected : .deselected
+            cell.selectedState = item.selectedState
         })
+        viewController.selectionStyle = .single
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
     }

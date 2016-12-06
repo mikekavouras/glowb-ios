@@ -24,7 +24,7 @@ class SelectableTableViewController<Item: Selectable, Cell: ReusableView>: BaseT
     weak var delegate: SelectableTableViewControllerDelegate?
     
     private var items: [Item]
-    private var configure: (Cell, Item) -> ()
+    private let configure: (Cell, Item) -> ()
     
     
     // MARK: - Life cycle
@@ -71,20 +71,21 @@ class SelectableTableViewController<Item: Selectable, Cell: ReusableView>: BaseT
     // MARK: - Table view delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = items[indexPath.row]
+        
         if selectionStyle == .single {
-            for var item in items {
-                item.selected = false
+            for (idx, _) in items.enumerated() {
+                items[idx].selectedState = .deselected
             }
         }
         
-        var selectedItem = items[indexPath.row]
-        selectedItem.selected = !selectedItem.selected
+        let idx = indexPath.row
+        items[idx].selectedState = selectedItem.selectedState == .selected ? .deselected : .selected
         
-        delegate?.selectableTableViewController(viewController: self, didSelectSelection: selectedItem)
+        delegate?.selectableTableViewController(viewController: self, didSelectSelection: items[idx])
         
-        items[indexPath.row] = selectedItem
         tableView.deselectRow(at: indexPath, animated: true)
-        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
