@@ -74,12 +74,35 @@ class RelationshipViewController: BaseTableViewController {
     }
     
     
+    // MARK: Navigation
+    
+    fileprivate func showDevicesViewController() {
+        let devices: [Device] = [Device(name: "Ducky")]
+        let selectableDevices = devices.map { SelectableViewModel(model: $0, selected: false) }
+        let viewController = DeviceSelectionTableViewController(items: selectableDevices, configure: { (cell: TextSelectionRepresentableTableViewCell, item) in
+            cell.label.text = item.model.name
+        })
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    fileprivate func showColorsViewController() {
+        let colors = [Color(.red), Color(.green), Color(.blue)]
+        let selectableColors = colors.map { SelectableViewModel(model: $0, selected: false) }
+        let viewController = SelectableTableViewController(items: selectableColors, configure: { (cell: ColorSelectionTableViewCell, item) in
+            cell.color = item.model.color
+            cell.state = item.selected ? .selected : .deselected
+        })
+        viewController.delegate = self
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
+    
     // MARK: Utility
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-
 }
 
 
@@ -126,6 +149,14 @@ extension RelationshipViewController {
 
 extension RelationshipViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 1:
+            showDevicesViewController()
+        case 2:
+            showColorsViewController()
+        default: break
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -154,5 +185,18 @@ extension RelationshipViewController: UIImagePickerControllerDelegate, UINavigat
         self.dismiss(animated: true, completion: nil)
         
         
+    }
+}
+
+
+// MARK: - Selectable table view controller delegate
+
+extension RelationshipViewController: SelectableTableViewControllerDelegate {
+    func selectableTableViewController(viewController: UITableViewController, didSelectSelection selection: Selectable) {
+        print(selection)
+    }
+    
+    func selectableTableViewController(viewController: UITableViewController, didSaveSelections selections: [Selectable]) {
+        print(selections)
     }
 }

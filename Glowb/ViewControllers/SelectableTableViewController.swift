@@ -13,13 +13,18 @@ enum SelectionStyle {
     case multiple
 }
 
-class SelectableTableViewController<Item: Selectable, Cell: UITableViewCell>: UITableViewController {
+protocol SelectableTableViewControllerDelegate: class {
+    func selectableTableViewController(viewController: UITableViewController, didSelectSelection selection: Selectable)
+    func selectableTableViewController(viewController: UITableViewController, didSaveSelections selections: [Selectable])
+}
+
+class SelectableTableViewController<Item: Selectable, Cell: ReusableView>: BaseTableViewController {
     
     var selectionStyle: SelectionStyle = .single
+    weak var delegate: SelectableTableViewControllerDelegate?
     
-    private let cellIdentifier = "Cell"
     private var items: [Item]
-    private let configure: (Cell, Item) -> ()
+    private var configure: (Cell, Item) -> ()
     
     
     // MARK: - Life cycle
@@ -38,7 +43,7 @@ class SelectableTableViewController<Item: Selectable, Cell: UITableViewCell>: UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(Cell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(cellType: Cell.self)
     }
     
     
@@ -53,13 +58,13 @@ class SelectableTableViewController<Item: Selectable, Cell: UITableViewCell>: UI
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! Cell
+        let cell = tableView.dequeueReusable(cellType: Cell.self, forIndexPath: indexPath) as! UITableViewCell
         let item = items[indexPath.row]
         cell.selectionStyle = .none
         
-        configure(cell, item)
+        configure(cell as! Cell, item)
         
-        return cell
+        return cell 
     }
     
     
@@ -73,10 +78,23 @@ class SelectableTableViewController<Item: Selectable, Cell: UITableViewCell>: UI
         }
         
         var selectedItem = items[indexPath.row]
-        items[indexPath.row].selected = !selectedItem.selected
+        selectedItem.selected = !selectedItem.selected
         
+        delegate?.selectableTableViewController(viewController: self, didSelectSelection: selectedItem)
+        
+        items[indexPath.row] = selectedItem
         tableView.deselectRow(at: indexPath, animated: true)
-        
         tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 54.0
+    }
+    
+    
+    // MARK: - Utility
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }

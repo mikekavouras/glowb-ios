@@ -17,6 +17,11 @@
 		8D38C6D01DF6228F0011AF52 /* SelectableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6CF1DF6228F0011AF52 /* SelectableTableViewController.swift */; };
 		8D38C6D21DF6232E0011AF52 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6D11DF6232E0011AF52 /* Selectable.swift */; };
 		8D38C6D81DF6247F0011AF52 /* SelectableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6D71DF6247F0011AF52 /* SelectableViewModel.swift */; };
+		8D38C6DA1DF625310011AF52 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6D91DF625310011AF52 /* Device.swift */; };
+		8D38C6DC1DF6253A0011AF52 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6DB1DF6253A0011AF52 /* Color.swift */; };
+		8D38C6DF1DF62D290011AF52 /* ColorSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6DD1DF62D290011AF52 /* ColorSelectionTableViewCell.swift */; };
+		8D38C6E01DF62D290011AF52 /* ColorSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D38C6DE1DF62D290011AF52 /* ColorSelectionTableViewCell.xib */; };
+		8D38C6E41DF6480C0011AF52 /* DeviceSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6E31DF6480C0011AF52 /* DeviceSelectionTableViewController.swift */; };
 		8D5AD44D1DF49352001082B0 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD44C1DF49352001082B0 /* Target.swift */; };
 		8D5AE8261DF499B100A520D4 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AE8241DF499B100A520D4 /* BaseView.swift */; };
 		8D5AE8271DF499B100A520D4 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AE8251DF499B100A520D4 /* View.swift */; };
@@ -61,6 +66,11 @@
 		8D38C6CF1DF6228F0011AF52 /* SelectableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableTableViewController.swift; sourceTree = "<group>"; };
 		8D38C6D11DF6232E0011AF52 /* Selectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		8D38C6D71DF6247F0011AF52 /* SelectableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableViewModel.swift; sourceTree = "<group>"; };
+		8D38C6D91DF625310011AF52 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		8D38C6DB1DF6253A0011AF52 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		8D38C6DD1DF62D290011AF52 /* ColorSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		8D38C6DE1DF62D290011AF52 /* ColorSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		8D38C6E31DF6480C0011AF52 /* DeviceSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSelectionTableViewController.swift; sourceTree = "<group>"; };
 		8D5AD44C1DF49352001082B0 /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		8D5AE8241DF499B100A520D4 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		8D5AE8251DF499B100A520D4 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -168,6 +178,8 @@
 		8D38C6D31DF623C90011AF52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8D38C6D91DF625310011AF52 /* Device.swift */,
+				8D38C6DB1DF6253A0011AF52 /* Color.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +200,7 @@
 				8DB1E0831DF365B3000648C3 /* BaseNavigationController.swift */,
 				8DA75EE31DF355EB00A35737 /* RelationshipViewController.swift */,
 				8D38C6CF1DF6228F0011AF52 /* SelectableTableViewController.swift */,
+				8D38C6E31DF6480C0011AF52 /* DeviceSelectionTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -274,6 +287,8 @@
 				8D5AE83B1DF4AAE500A520D4 /* TextSelectionRepresentableTableViewCell.xib */,
 				8D7291EE1DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.swift */,
 				8D7291EF1DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.xib */,
+				8D38C6DD1DF62D290011AF52 /* ColorSelectionTableViewCell.swift */,
+				8D38C6DE1DF62D290011AF52 /* ColorSelectionTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -383,6 +398,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D38C6E01DF62D290011AF52 /* ColorSelectionTableViewCell.xib in Resources */,
 				8D669EF41DF358370029FDB0 /* Relationship.storyboard in Resources */,
 				8D208B6F1DF3D88F003209A5 /* TextFieldTableViewCell.xib in Resources */,
 				8D669EF21DF358000029FDB0 /* Main.storyboard in Resources */,
@@ -453,6 +469,7 @@
 				8D669EF61DF3586B0029FDB0 /* BaseTableViewController.swift in Sources */,
 				8D5AE8361DF499E600A520D4 /* BaseTextField.swift in Sources */,
 				8D7291F31DF4B383003F165F /* ColorPreviewView.swift in Sources */,
+				8D38C6DC1DF6253A0011AF52 /* Color.swift in Sources */,
 				8D5AE83C1DF4AAE500A520D4 /* TextSelectionRepresentableTableViewCell.swift in Sources */,
 				8D5AE8371DF499E600A520D4 /* TextField.swift in Sources */,
 				8DA75EE41DF355EB00A35737 /* RelationshipViewController.swift in Sources */,
@@ -465,6 +482,8 @@
 				8D208B6B1DF3D707003209A5 /* ReusableView.swift in Sources */,
 				8DB1E0911DF36E6F000648C3 /* StoryboardInitializable.swift in Sources */,
 				8D5AD44D1DF49352001082B0 /* Target.swift in Sources */,
+				8D38C6DF1DF62D290011AF52 /* ColorSelectionTableViewCell.swift in Sources */,
+				8D38C6DA1DF625310011AF52 /* Device.swift in Sources */,
 				8D7291E91DF4B04A003F165F /* Label.swift in Sources */,
 				8D7291ED1DF4B086003F165F /* SecondaryTextLabel.swift in Sources */,
 				8DB1E08F1DF36E60000648C3 /* NibInitializable.swift in Sources */,
@@ -477,6 +496,7 @@
 				8D2781E91DF491380050E4E8 /* Themeable.swift in Sources */,
 				8DC533B31DF3523D0040628C /* BaseViewController.swift in Sources */,
 				8D208B691DF3D6BE003209A5 /* UITableView+ReusableView.swift in Sources */,
+				8D38C6E41DF6480C0011AF52 /* DeviceSelectionTableViewController.swift in Sources */,
 				8D5AE8261DF499B100A520D4 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
