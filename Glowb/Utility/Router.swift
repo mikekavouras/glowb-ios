@@ -11,20 +11,31 @@ import Alamofire
 
 
 enum Router {
-    
+    case createOAuthToken
+    case refreshOAuthToken
 }
 
 extension Router {
     
-    static let apiRoot: String = "" // Teespring.Config.mobileServiceAPI!
-    fileprivate static let appId: String = "" // Teespring.Config.mobileServiceAppID!
+    static let apiRoot: String = "" // Config.APIRoot
+    fileprivate static let appId: String = "" // Config.AppID
     
     fileprivate var method: Alamofire.HTTPMethod {
-        return .post
+        switch self {
+        case .createOAuthToken:
+            return .post
+        case .refreshOAuthToken:
+            return .post
+        }
     }
     
     fileprivate var path: String {
-        return ""
+        switch self {
+        case .createOAuthToken:
+            return "/oauth"
+        case .refreshOAuthToken:
+            return "/oauth/refresh"
+        }
     }
     
     func asURLRequest() throws -> URLRequest {
@@ -32,18 +43,14 @@ extension Router {
         var request = URLRequest(url: url.appendingPathComponent(path))
         request.httpMethod = method.rawValue
         
-//        switch self {
-//        case .info:
-//            let parameters = [ "app_id" : MobileService.Router.appId ]
-//            request = try JSONEncoding.default.encode(request, with: parameters)
-//        case .activateNotifications(let userId, let token):
-//            var parameters: JSON = [ "apns_token" : token, "app_id" : MobileService.Router.appId ]
-//            if let id = userId { parameters["user_id"] = id }
-//            request = try JSONEncoding.default.encode(request, with: parameters)
-//        case .deactivateNotifications(let token):
-//            let parameters = [ "apns_token" : token, "app_id" : MobileService.Router.appId ]
-//            request = try JSONEncoding.default.encode(request, with: parameters)
-//        }
+        switch self {
+        case .createOAuthToken:
+            let parameters = [ "app_id" : Router.appId ]
+            request = try JSONEncoding.default.encode(request, with: parameters)
+        case .refreshOAuthToken:
+            let parameters = [ "app_id" : Router.appId, "access_token" : "" ]
+            request = try JSONEncoding.default.encode(request, with: parameters)
+        }
         
         return request
     }
