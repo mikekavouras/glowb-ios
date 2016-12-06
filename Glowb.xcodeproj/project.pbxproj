@@ -74,6 +74,9 @@
 		8DC174B81DF667DB00FB7A13 /* DeviceSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC174B61DF667DB00FB7A13 /* DeviceSelectionTableViewCell.swift */; };
 		8DC174B91DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174B71DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib */; };
 		8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */; };
+		8DC174BE1DF6873300FB7A13 /* WiFiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC174BC1DF6873300FB7A13 /* WiFiTableViewCell.swift */; };
+		8DC174BF1DF6873300FB7A13 /* WiFiTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174BD1DF6873300FB7A13 /* WiFiTableViewCell.xib */; };
+		8DC174C11DF68A4400FB7A13 /* NetworkCredentials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174C01DF68A4400FB7A13 /* NetworkCredentials.storyboard */; };
 		8DC533B31DF3523D0040628C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC533B21DF3523D0040628C /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +154,9 @@
 		8DC174B61DF667DB00FB7A13 /* DeviceSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		8DC174B71DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Connect.storyboard; sourceTree = "<group>"; };
+		8DC174BC1DF6873300FB7A13 /* WiFiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiTableViewCell.swift; sourceTree = "<group>"; };
+		8DC174BD1DF6873300FB7A13 /* WiFiTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WiFiTableViewCell.xib; sourceTree = "<group>"; };
+		8DC174C01DF68A4400FB7A13 /* NetworkCredentials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NetworkCredentials.storyboard; sourceTree = "<group>"; };
 		8DC533B21DF3523D0040628C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,10 +255,10 @@
 			isa = PBXGroup;
 			children = (
 				8D38C7151DF64F340011AF52 /* Storyboards */,
+				8D38C6F91DF64C840011AF52 /* ViewControllers */,
 				8D38C6E61DF64C840011AF52 /* Commands */,
 				8D38C6EE1DF64C840011AF52 /* Models */,
 				8D38C6F41DF64C840011AF52 /* Utility */,
-				8D38C6F91DF64C840011AF52 /* ViewControllers */,
 			);
 			path = Wizard;
 			sourceTree = "<group>";
@@ -296,11 +302,11 @@
 		8D38C6F91DF64C840011AF52 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8D38C6FA1DF64C840011AF52 /* ConnectingProgressViewController.swift */,
-				8D38C6FB1DF64C840011AF52 /* ConnectViewController.swift */,
-				8D38C6FC1DF64C840011AF52 /* NetworkCredentialsViewController.swift */,
-				8D38C6FD1DF64C840011AF52 /* SelectNetworkViewController.swift */,
 				8D38C7131DF64E660011AF52 /* WizardIntroViewController.swift */,
+				8D38C6FB1DF64C840011AF52 /* ConnectViewController.swift */,
+				8D38C6FD1DF64C840011AF52 /* SelectNetworkViewController.swift */,
+				8D38C6FC1DF64C840011AF52 /* NetworkCredentialsViewController.swift */,
+				8D38C6FA1DF64C840011AF52 /* ConnectingProgressViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -310,6 +316,7 @@
 			children = (
 				8D38C7161DF64F3E0011AF52 /* WizardIntro.storyboard */,
 				8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */,
+				8DC174C01DF68A4400FB7A13 /* NetworkCredentials.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -430,6 +437,8 @@
 				8D38C6DE1DF62D290011AF52 /* ColorSelectionTableViewCell.xib */,
 				8DC174B61DF667DB00FB7A13 /* DeviceSelectionTableViewCell.swift */,
 				8DC174B71DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib */,
+				8DC174BC1DF6873300FB7A13 /* WiFiTableViewCell.swift */,
+				8DC174BD1DF6873300FB7A13 /* WiFiTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -545,9 +554,11 @@
 				8D38C6E01DF62D290011AF52 /* ColorSelectionTableViewCell.xib in Resources */,
 				8D38C7171DF64F3E0011AF52 /* WizardIntro.storyboard in Resources */,
 				8D669EF41DF358370029FDB0 /* Relationship.storyboard in Resources */,
+				8DC174BF1DF6873300FB7A13 /* WiFiTableViewCell.xib in Resources */,
 				8D208B6F1DF3D88F003209A5 /* TextFieldTableViewCell.xib in Resources */,
 				8D669EF21DF358000029FDB0 /* Main.storyboard in Resources */,
 				8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */,
+				8DC174C11DF68A4400FB7A13 /* NetworkCredentials.storyboard in Resources */,
 				8D5AE83D1DF4AAE500A520D4 /* TextSelectionRepresentableTableViewCell.xib in Resources */,
 				8D669EF11DF358000029FDB0 /* LaunchScreen.storyboard in Resources */,
 				8D7291F11DF4B25E003F165F /* ColorSelectionRepresentableTableViewCell.xib in Resources */,
@@ -658,6 +669,7 @@
 				8D38C71D1DF652470011AF52 /* Button.swift in Sources */,
 				8D38C7001DF64C840011AF52 /* Command+Device.swift in Sources */,
 				8D921DEB1DF48B600056FAAC /* Styleable.swift in Sources */,
+				8DC174BE1DF6873300FB7A13 /* WiFiTableViewCell.swift in Sources */,
 				8D38C7071DF64C840011AF52 /* DeviceConnection.swift in Sources */,
 				8D38C7081DF64C840011AF52 /* Network.swift in Sources */,
 				8D2781E91DF491380050E4E8 /* Themeable.swift in Sources */,

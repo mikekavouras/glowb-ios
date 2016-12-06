@@ -16,8 +16,8 @@ class WizardIntroViewController: BaseViewController, StoryboardInitializable {
         
         AppDelegate.registerNotifications()
         
-        let connectController = ConnectViewController()
-        let navController = UINavigationController(rootViewController: connectController)
+        let connectController = ConnectViewController.initFromStoryboard()
+        let navController = BaseNavigationController(rootViewController: connectController)
         present(navController, animated: true, completion: nil)
     }
 }

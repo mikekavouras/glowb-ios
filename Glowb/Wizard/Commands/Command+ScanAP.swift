@@ -15,7 +15,7 @@ extension Command {
                 return nil
             }
             let networks = scans.map { Network(json: $0) }
-            return networks.sorted(by: { $0.ssid < $1.ssid })
+            return networks.sorted(by: { $0.rssi > $1.rssi })
         }
     }
 }

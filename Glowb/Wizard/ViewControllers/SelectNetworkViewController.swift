@@ -20,12 +20,15 @@ class SelectNetworkViewController: BaseTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         navigationController?.viewControllers = [self]
     }
     
@@ -42,7 +45,7 @@ class SelectNetworkViewController: BaseTableViewController {
     }
     
     private func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellIdentifier")
+        tableView.register(cellType: WiFiTableViewCell.self)
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
@@ -51,7 +54,7 @@ class SelectNetworkViewController: BaseTableViewController {
     
     private func setupNavigationItem() {
         navigationItem.hidesBackButton = true
-        navigationItem.title = "Network"
+        navigationItem.title = "Select a Network"
     }
 
     
@@ -67,6 +70,7 @@ class SelectNetworkViewController: BaseTableViewController {
     // MARK: Scan
     
     private func scanForNetworks(completion: @escaping () -> Void) {
+        // TODO: Retry logic
         communicationManager = DeviceCommunicationManager()
         communicationManager?.sendCommand(Command.ScanAP.self) { result in
             switch result {
@@ -82,7 +86,7 @@ class SelectNetworkViewController: BaseTableViewController {
 }
 
 
-// MARK: Table view data source
+// MARK: - Table view data source
 
 extension SelectNetworkViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -94,34 +98,27 @@ extension SelectNetworkViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath)
-        cell.textLabel?.text = networks[indexPath.row].ssid
+        let cell = tableView.dequeueReusable(cellType: WiFiTableViewCell.self, forIndexPath: indexPath)
+        cell.networkNameLabel.text = networks[indexPath.row].ssid
         return cell
     }
 }
 
 
-
-// MARK: Table view delegate
+// MARK: - Table view delegate
 
 extension SelectNetworkViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let network = networks[indexPath.row]
-        let viewController = NetworkCredentialsViewController()
+        let viewController = NetworkCredentialsViewController.initFromStoryboard()
+        
         viewController.network = network
         
-        // Handle passwordless network
+        // TODO: Handle passwordless network
         navigationController?.pushViewController(viewController, animated: true)
     }
-}
-
-
-// MARK: Text field delegate
-
-extension SelectNetworkViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let password = textField.text
-        return true
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 54.0
     }
 }
-

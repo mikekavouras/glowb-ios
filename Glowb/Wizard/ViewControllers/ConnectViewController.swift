@@ -24,11 +24,6 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
     
     // MARK: Life cycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setup()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         wifi.startMonitoringConnection()
@@ -44,13 +39,6 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
     }
     
     
-    // MARK: Setup
-    
-    func setup() {
-        title = "Connect Device"
-    }
-    
-    
     // MARK: Notification
     
     private func displayLocalNotification() {
@@ -63,7 +51,14 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
         let request = UNNotificationRequest(identifier: "ConnectedIdentifier", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-     }
+    }
+    
+    
+    // MARK: - Utility
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     
     // MARK: Navigation

@@ -26,6 +26,15 @@ enum Theme: Int {
         }
     }
     
+    var secondaryBackgroundColor: UIColor {
+        switch self {
+        case .light:
+            return .lightGray
+        case .dark:
+            return .glowbDarkGray
+        }
+    }
+    
     var primaryTextColor: UIColor {
         switch self {
         case .light:

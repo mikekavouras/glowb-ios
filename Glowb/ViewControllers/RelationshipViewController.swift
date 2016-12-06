@@ -77,7 +77,7 @@ class RelationshipViewController: BaseTableViewController {
     // MARK: Navigation
     
     fileprivate func showDevicesViewController() {
-        let devices: [Device] = [Device(name: "Ducky")]
+        let devices: [Device] = []
         let selectableDevices = devices.map { SelectableViewModel(model: $0, selectedState: .deselected) }
         let viewController = DeviceSelectionTableViewController(items: selectableDevices, configure: { (cell: TextSelectionRepresentableTableViewCell, item) in
             cell.label.text = item.model.name

@@ -37,5 +37,10 @@ class BaseTextField: TextField, Themeable {
         attributedPlaceholder = str
         
         tintColor = theme.tintColor
+//        backgroundColor = theme.secondaryBackgroundColor
+        
+        if borderStyle == .none {
+            leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 1))
+        }
     }
 }

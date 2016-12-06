@@ -8,55 +8,32 @@
 
 import UIKit
 
-class NetworkCredentialsViewController: BaseViewController {
+class NetworkCredentialsViewController: BaseViewController, StoryboardInitializable {
     
     var network: Network!
-    var textField: UITextField!
-
+    
+    static var storyboardName: StaticString = "NetworkCredentials"
+    
+    
+    @IBOutlet private weak var networkNameLabel: PrimaryTextLabel!
+    @IBOutlet private weak var passwordTextField: BaseTextField!
+    
+    
+    // MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(network)
-        setup()
-    }
-
-    private func setup() {
-        setupUI()
+        
+        passwordTextField.delegate = self
+        networkNameLabel.text = network.ssid
     }
     
-    private func setupUI() {
-        view.backgroundColor = .white
-
-        textField = UITextField()
-        textField.frame = CGRect(x: 0, y: 0, width: 200, height: 30)
-        textField.center = view.center
-        textField.borderStyle = UITextBorderStyle.roundedRect
-        textField.placeholder = "enter password"
-        textField.autocapitalizationType = .none
-        textField.isSecureTextEntry = true
-        textField.returnKeyType = .join
-        textField.delegate = self
-        view.addSubview(textField)
-        
-        let label = UILabel()
-        label.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30)
-        label.center = view.center
-        label.frame.origin.y -= 40
-        label.text = network.ssid
-        label.textAlignment = .center
-        view.addSubview(label)
-        
-        let secureToggle = UISwitch()
-        secureToggle.isOn = true
-        secureToggle.frame.origin.y = textField.frame.origin.y + textField.frame.size.height + 10
-        secureToggle.frame.origin.x = textField.frame.origin.x
-        secureToggle.addTarget(self, action: #selector(toggleSecureToggle(toggle:)), for: .valueChanged)
-        view.addSubview(secureToggle)
-    }
     
-    @objc private func toggleSecureToggle(toggle: UISwitch) {
-        textField.isSecureTextEntry = toggle.isOn
+    // MARK: - Actions
+    
+    @IBAction func toggleSecurePassword(_ sender: UISwitch) {
+        passwordTextField.isSecureTextEntry = sender.isOn
     }
-
 }
 
 extension NetworkCredentialsViewController: UITextFieldDelegate {
