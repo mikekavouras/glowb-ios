@@ -15,7 +15,6 @@ enum SelectionStyle {
 
 protocol SelectableTableViewControllerDelegate: class {
     func selectableTableViewController(viewController: UITableViewController, didSelectSelection selection: Selectable)
-    func selectableTableViewController(viewController: UITableViewController, didSaveSelections selections: [Selectable])
 }
 
 class SelectableTableViewController<Item: Selectable, Cell: ReusableView>: BaseTableViewController {
@@ -76,6 +75,7 @@ class SelectableTableViewController<Item: Selectable, Cell: ReusableView>: BaseT
         let idx = indexPath.row
         
         if selectionStyle == .single {
+            // force at least 1 item to be selected at all times
             for (idx, _) in items.enumerated() {
                 items[idx].selectedState = .deselected
             }

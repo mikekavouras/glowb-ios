@@ -200,13 +200,13 @@ extension RelationshipViewController: UIImagePickerControllerDelegate, UINavigat
 extension RelationshipViewController: SelectableTableViewControllerDelegate {
     func selectableTableViewController(viewController: UITableViewController, didSelectSelection selection: Selectable) {
         if let selection = selection as? SelectableViewModel<Color> {
-          relationship.color = selection.model
+            relationship.color = selection.model
+        }
+        
+        if let selection = selection as? SelectableViewModel<Device> {
+            relationship.device = selection.model
         }
         
         tableView.reloadData()
-    }
-    
-    func selectableTableViewController(viewController: UITableViewController, didSaveSelections selections: [Selectable]) {
-        print(selections)
     }
 }

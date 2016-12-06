@@ -15,6 +15,7 @@
 		8D2220A41DEF3BB80082E315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2220A31DEF3BB80082E315 /* AppDelegate.swift */; };
 		8D2781E91DF491380050E4E8 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2781E81DF491380050E4E8 /* Themeable.swift */; };
 		8D2DC9891DF71AF10074F194 /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2DC9881DF71AF10074F194 /* Relationship.swift */; };
+		8D369A871DF78717002C8D72 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369A861DF78717002C8D72 /* Router.swift */; };
 		8D38C6D01DF6228F0011AF52 /* SelectableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6CF1DF6228F0011AF52 /* SelectableTableViewController.swift */; };
 		8D38C6D21DF6232E0011AF52 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6D11DF6232E0011AF52 /* Selectable.swift */; };
 		8D38C6D81DF6247F0011AF52 /* SelectableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C6D71DF6247F0011AF52 /* SelectableViewModel.swift */; };
@@ -93,6 +94,7 @@
 		8D2220A31DEF3BB80082E315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D2781E81DF491380050E4E8 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
 		8D2DC9881DF71AF10074F194 /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
+		8D369A861DF78717002C8D72 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8D38C6CF1DF6228F0011AF52 /* SelectableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableTableViewController.swift; sourceTree = "<group>"; };
 		8D38C6D11DF6232E0011AF52 /* Selectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		8D38C6D71DF6247F0011AF52 /* SelectableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableViewModel.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				8D5AD44C1DF49352001082B0 /* Target.swift */,
+				8D369A861DF78717002C8D72 /* Router.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				8D5AE8371DF499E600A520D4 /* TextField.swift in Sources */,
 				8DA75EE41DF355EB00A35737 /* RelationshipViewController.swift in Sources */,
 				8D38C6D21DF6232E0011AF52 /* Selectable.swift in Sources */,
+				8D369A871DF78717002C8D72 /* Router.swift in Sources */,
 				8D669EFB1DF358B60029FDB0 /* UIColor+Glowb.swift in Sources */,
 				8D5AE82C1DF499BB00A520D4 /* TableViewCell.swift in Sources */,
 				8D38C7021DF64C840011AF52 /* Command+ScanAP.swift in Sources */,
