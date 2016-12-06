@@ -16,7 +16,7 @@ class ColorSelectionRepresentableTableViewCell: BaseTableViewCell, ReusableView 
     @IBOutlet weak var label: PrimaryTextLabel!
     @IBOutlet weak var colorPreviewView: ColorPreviewView!
     
-    var color: UIColor {
+    var color: UIColor? {
         get { return colorPreviewView.color }
         set { colorPreviewView.color = newValue }
     }

@@ -73,16 +73,18 @@ class SelectableTableViewController<Item: Selectable, Cell: ReusableView>: BaseT
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = items[indexPath.row]
         
+        let idx = indexPath.row
+        
         if selectionStyle == .single {
             for (idx, _) in items.enumerated() {
                 items[idx].selectedState = .deselected
             }
+            items[idx].selectedState = .selected
+        } else {
+            items[idx].selectedState = selectedItem.selectedState == .selected ? .deselected : .selected
         }
         
-        let idx = indexPath.row
-        items[idx].selectedState = selectedItem.selectedState == .selected ? .deselected : .selected
-        
-        delegate?.selectableTableViewController(viewController: self, didSelectSelection: items[idx])
+       delegate?.selectableTableViewController(viewController: self, didSelectSelection: items[idx])
         
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadData()

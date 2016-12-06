@@ -17,7 +17,7 @@ class ColorSelectionTableViewCell: BaseTableViewCell, ReusableView, Selectable  
         didSet { updateStateUI() }
     }
     
-    var color: UIColor {
+    var color: UIColor? {
         get { return colorPreviewView.color }
         set { colorPreviewView.color = newValue }
     }

@@ -8,10 +8,14 @@
 
 import UIKit
 
-struct Color {
+struct Color: Equatable {
     let color: UIColor
     
     init(_ color: UIColor) {
         self.color = color
     }
+}
+
+func ==(lhs: Color, rhs: Color) -> Bool {
+    return lhs.color.isEqual(rhs.color)
 }

@@ -11,6 +11,7 @@ import UIKit
 class RelationshipViewController: BaseTableViewController {
 
     @IBOutlet weak var previewImageView: UIImageView!
+    var relationship = Relationship()
     
     lazy var imagePickerController: UIImagePickerController = {
         let picker = UIImagePickerController()
@@ -88,7 +89,13 @@ class RelationshipViewController: BaseTableViewController {
     
     fileprivate func showColorsViewController() {
         let colors = [Color(.red), Color(.green), Color(.blue)]
-        let selectableColors = colors.map { SelectableViewModel(model: $0, selectedState: .deselected) }
+        let selectableColors = colors.map { color -> SelectableViewModel<Color> in
+            var state: SelectedState = .deselected
+            if let rColor = relationship.color {
+                state = color == rColor ? .selected : .deselected
+            }
+            return SelectableViewModel(model: color, selectedState: state)
+        }
         let viewController = SelectableTableViewController(items: selectableColors, configure: { (cell: ColorSelectionTableViewCell, item) in
             cell.color = item.model.color
             cell.selectedState = item.selectedState
@@ -138,7 +145,7 @@ extension RelationshipViewController {
             let cell = tableView.dequeueReusable(cellType: ColorSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
             cell.label.text = "Select color"
             cell.accessoryType = .disclosureIndicator
-            cell.color = .clear
+            cell.color = relationship.color?.color
             return cell
         default: return UITableViewCell()
         }
@@ -184,8 +191,6 @@ extension RelationshipViewController: UIImagePickerControllerDelegate, UINavigat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         previewImageView.image = image
         self.dismiss(animated: true, completion: nil)
-        
-        
     }
 }
 
@@ -194,7 +199,11 @@ extension RelationshipViewController: UIImagePickerControllerDelegate, UINavigat
 
 extension RelationshipViewController: SelectableTableViewControllerDelegate {
     func selectableTableViewController(viewController: UITableViewController, didSelectSelection selection: Selectable) {
-        print(selection)
+        if let selection = selection as? SelectableViewModel<Color> {
+          relationship.color = selection.model
+        }
+        
+        tableView.reloadData()
     }
     
     func selectableTableViewController(viewController: UITableViewController, didSaveSelections selections: [Selectable]) {

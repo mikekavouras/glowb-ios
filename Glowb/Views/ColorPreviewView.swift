@@ -10,7 +10,7 @@ import UIKit
 
 class ColorPreviewView: View {
     
-    @IBInspectable var color: UIColor = .white {
+    @IBInspectable var color: UIColor? = .clear {
         didSet { style() }
     }
     
