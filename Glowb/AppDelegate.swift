@@ -7,27 +7,57 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var backgroundTask: UIBackgroundTaskIdentifier? = nil
+    
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setup()
-        
         return true
+    }
+    
+    
+    // MARK: - Backgrounding
+    
+    func createBackgroundTask(withExpirationHandler handler: () -> Void) {
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [unowned self] handler in
+            handler
+            UIApplication.shared.endBackgroundTask(self.backgroundTask!)
+            self.backgroundTask = UIBackgroundTaskInvalid
+        }
+    }
+    
+    
+    // MARK: - Notifications
+    
+    static func registerNotifications() {
+        registerUINotifications()
+        registerAllRemoteNotifications()
+    }
+    
+    private static func registerUINotifications () {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { allowed, error in
+        }
+    }
+    
+    private static func registerAllRemoteNotifications () {
+        UIApplication.shared.registerForRemoteNotifications()
     }
     
     
     // MARK: - Setup
     
     private func setup() {
-       setupStyles()
+        setupStyles()
     }
     
     private func setupStyles() {
-       setupNavigationBar()
+        setupNavigationBar()
     }
     
     private func setupNavigationBar() {

@@ -1,14 +1,14 @@
 //
-//  PrimaryTextLabel.swift
+//  PrimaryButton.swift
 //  Glowb
 //
-//  Created by Michael Kavouras on 12/4/16.
+//  Created by Michael Kavouras on 12/5/16.
 //  Copyright © 2016 Michael Kavouras. All rights reserved.
 //
 
 import UIKit
 
-class PrimaryTextLabel: Label, Themeable {
+class PrimaryButton: Button, Themeable {
 
     var theme: Theme = .light {
         didSet { style() }
@@ -26,6 +26,9 @@ class PrimaryTextLabel: Label, Themeable {
     override func style() {
         super.style()
         
-        textColor = theme.primaryTextColor
+        layer.borderColor = theme.primaryTextColor.cgColor
+        layer.borderWidth = 1.0
+        
+        setTitleColor(theme.primaryTextColor, for: .normal)
     }
 }

@@ -26,6 +26,7 @@ class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: 
     }
     
     @objc private func addDeviceButtonTapped() {
-       print("add device")
+        let viewController = WizardIntroViewController.initFromStoryboard()
+        present(viewController, animated: true, completion: nil)
     }
 }
