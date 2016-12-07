@@ -37,8 +37,7 @@ struct User {
         }
         
         return Promise { fulfill, reject in
-            let deviceID = UIDevice.current.identifierForVendor!.uuidString
-            Alamofire.request(Router.createOAuthToken(deviceID: deviceID)).validate().responseJSON { response in
+            Alamofire.request(Router.createOAuthToken).validate().responseJSON { response in
                 // TODO: Parse and store 🔑
                 
                 fulfill(User.current) 

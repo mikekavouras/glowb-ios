@@ -6,6 +6,9 @@
 //  Copyright © 2016 Michael Kavouras. All rights reserved.
 //
 
+import Alamofire
+import PromiseKit
+
 struct Relationship {
     var color: Color?
     var device: Device?
@@ -17,14 +20,24 @@ struct Relationship {
     
     init() {}
     
-    func build() -> Relationship? {
-        guard let color = color,
-            let device = device else
-        {
-            print("invalid relationship")
-            return nil
-        }
-        
-        return Relationship(color: color, device: device)
+    var asJSON: JSON {
+        return [:]
     }
+    
+    static func create(relationship: Relationship) -> Promise<Relationship> {
+        return Promise { fulfill, reject in
+            return Alamofire.request(Router.createRelationship(relationship)).validate().responseJSON { response in
+                fulfill(Relationship())
+            }
+        }
+    }
+    
+    static func fetch() -> Promise<[Relationship]> {
+        return Promise { fulfill, reject in
+            return Alamofire.request(Router.getRelationships).validate().responseJSON { response in
+                fulfill([Relationship()])
+            }
+        }
+    }
+    
 }

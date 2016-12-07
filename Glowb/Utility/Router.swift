@@ -9,21 +9,65 @@
 import Foundation
 import Alamofire
 
+typealias JSON = [AnyHashable: Any]
 
 enum Router: URLRequestConvertible {
-    case createOAuthToken(deviceID: String)
+    case createOAuthToken
     case refreshOAuthToken
-    case claimDevice(deviceCode: String)
-    case getDevice(deviceID: String)
+    case claimDevice(String)
+    case getDevice(String)
     case getDevices
+    case createRelationship(Relationship)
+    case getRelationships
+    case createInvite
+    case claimInvite(Invite)
+    
+    fileprivate static let apiRoot: String = "https://lamp.engineering" // Config.APIRoot
+    fileprivate static let appID: String = "abc123" // Config.AppID
+    
 }
 
 extension Router {
     
-    static let apiRoot: String = "https://lamp.engineering" // Config.APIRoot
-    fileprivate static let appID: String = "abc123" // Config.AppID
+    func asURLRequest() throws -> URLRequest {
+        
+        switch self {
+        case .createOAuthToken:
+            return try JSONEncoding.default.encode(request, with: [:])
+            
+        case .refreshOAuthToken:
+            return try JSONEncoding.default.encode(request, with: [:])
+            
+        case .claimDevice(let code):
+            let params = [ "code" : code ]
+            return try JSONEncoding.default.encode(request, with: params)
+            
+        case .getDevice(let deviceID):
+            let params = [ "device_id" : deviceID ]
+            return try JSONEncoding.default.encode(request, with: params)
+            
+        case .getDevices:
+            return try JSONEncoding.default.encode(request, with: [:])
+            
+        case .createRelationship(let relationship):
+            let params = [ "relationship" : relationship.asJSON ]
+            try JSONEncoding.default.encode(request, with: params)
+            
+        case .getRelationships:
+            return try JSONEncoding.default.encode(request, with: [:])
+            
+        case .createInvite:
+            return try JSONEncoding.default.encode(request, with: [:])
+            
+        case .claimInvite(let invite):
+            let params = [ "token" : invite.token ]
+            return try JSONEncoding.default.encode(request, with: params)
+        }
+        
+        return request
+    }
     
-    fileprivate var method: Alamofire.HTTPMethod {
+    private var method: Alamofire.HTTPMethod {
         switch self {
         case .createOAuthToken:
             return .post
@@ -35,10 +79,18 @@ extension Router {
             return .get
         case .getDevices:
             return .get
+        case .createRelationship:
+            return .post
+        case .getRelationships:
+            return .get
+        case .createInvite:
+            return .post
+        case .claimInvite:
+            return .post
         }
     }
     
-    fileprivate var path: String {
+    private var path: String {
         switch self {
         case .createOAuthToken:
             return "/oauth"
@@ -50,10 +102,19 @@ extension Router {
             return "/device"
         case .getDevices:
             return "devices"
+        case .createRelationship:
+            return "/relationship"
+        case .getRelationships:
+            return "/relationships"
+        case .createInvite:
+            return "/invite"
+        case .claimInvite:
+            return "/invite/accept"
         }
     }
     
-    func asURLRequest() throws -> URLRequest {
+    
+    private var request: URLRequest {
         let url = URL(string: "\(Router.apiRoot)")!
         var request = URLRequest(url: url.appendingPathComponent(path))
         request.httpMethod = method.rawValue
@@ -61,21 +122,6 @@ extension Router {
         request.setValue(Router.appID, forHTTPHeaderField: "X-Application-Id")
         if let token =  User.current.accessToken {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        }
-        
-        switch self {
-        case .createOAuthToken:
-            request = try JSONEncoding.default.encode(request, with: [:])
-        case .refreshOAuthToken:
-            request = try JSONEncoding.default.encode(request, with: [:])
-        case .claimDevice(let code):
-            let params = [ "code" : code ]
-            request = try JSONEncoding.default.encode(request, with: params)
-        case .getDevice(let deviceID):
-            let params = [ "device_id" : deviceID ]
-            request = try JSONEncoding.default.encode(request, with: params)
-        case .getDevices:
-            request = try JSONEncoding.default.encode(request, with: [:])
         }
         
         return request
