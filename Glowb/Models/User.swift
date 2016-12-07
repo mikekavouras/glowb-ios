@@ -8,12 +8,34 @@
 
 import Alamofire
 import PromiseKit
+import Locksmith
 
 struct User {
     static let current = User()
-    private var isRegistered: Boool {
-        return
+    private var accessToken: String? {
+        if let data = Locksmith.loadDataForUserAccount(userAccount: "GlowbAccount"),
+           let token = data["access_token"] as? String
+        { return token }
+        
+        return nil
     }
     
-    func register() 
+    private var isRegistered: Bool {
+        return accessToken != nil
+    }
+    
+    func register() -> Promise<User> {
+        if isRegistered {
+            return Promise(value: User.current)
+        }
+        
+        return Promise { fulfill, reject in
+            let deviceID = UIDevice.current.identifierForVendor!.uuidString
+            Alamofire.request(Router.createOAuthToken(deviceID: deviceID)).validate().responseJSON { response in
+                // TODO: Parse and store 🔑
+                
+                fulfill(User.current) 
+            }
+        }
+    }
 }

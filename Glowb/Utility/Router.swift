@@ -10,8 +10,8 @@ import Foundation
 import Alamofire
 
 
-enum Router {
-    case createOAuthToken
+enum Router: URLRequestConvertible {
+    case createOAuthToken(deviceID: String)
     case refreshOAuthToken
 }
 
@@ -44,8 +44,8 @@ extension Router {
         request.httpMethod = method.rawValue
         
         switch self {
-        case .createOAuthToken:
-            let parameters = [ "app_id" : Router.appId ]
+        case .createOAuthToken(let deviceID):
+            let parameters = [ "app_id" : Router.appId, "device_id" : deviceID ]
             request = try JSONEncoding.default.encode(request, with: parameters)
         case .refreshOAuthToken:
             let parameters = [ "app_id" : Router.appId, "access_token" : "" ]
