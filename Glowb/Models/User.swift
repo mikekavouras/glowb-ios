@@ -12,12 +12,19 @@ import Locksmith
 
 struct User {
     static let current = User()
-    private var accessToken: String? {
-        if let data = Locksmith.loadDataForUserAccount(userAccount: "GlowbAccount"),
-           let token = data["access_token"] as? String
-        { return token }
-        
-        return nil
+    var accessToken: String? {
+        get {
+            if let data = Locksmith.loadDataForUserAccount(userAccount: "GlowbAccount"),
+               let token = data["access_token"] as? String
+            { return token }
+            
+            return nil
+        }
+        set {
+            if let token = newValue {
+                try? Locksmith.saveData(data: ["access_token" : token], forUserAccount: "GlowbAccount")
+            }
+        }
     }
     
     private var isRegistered: Bool {

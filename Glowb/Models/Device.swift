@@ -6,6 +6,9 @@
 //  Copyright © 2016 Michael Kavouras. All rights reserved.
 //
 
+import Alamofire
+import PromiseKit
+
 enum DeviceConnectionStatus {
     case connected
     case disconnected
@@ -17,5 +20,11 @@ struct Device {
     
     init(name: String) {
         self.name = name
+    }
+    
+    static func create(deviceID: String) -> Promise<Device> {
+        return Promise { fulfill, reject in
+            
+        }
     }
 }
