@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - User
     
     private func registerUser() {
-        
+        _ = User.current.register()
     }
     
     
