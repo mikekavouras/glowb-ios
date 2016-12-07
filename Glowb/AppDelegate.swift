@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setup()
+        registerUser()
         return true
     }
     
@@ -47,6 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private static func registerAllRemoteNotifications () {
         UIApplication.shared.registerForRemoteNotifications()
+    }
+    
+    
+    // MARK: - User
+    
+    private func registerUser() {
+        
     }
     
     
