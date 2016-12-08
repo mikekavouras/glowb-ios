@@ -27,6 +27,10 @@ class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: 
     
     @objc private func addDeviceButtonTapped() {
         let viewController = WizardIntroViewController.initFromStoryboard()
-        present(viewController, animated: true, completion: nil)
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.transitioningDelegate = CardTransitioningDelegate.shared
+        navigationController.modalPresentationStyle = .custom
+        
+        present(navigationController, animated: true, completion: nil)
     }
 }

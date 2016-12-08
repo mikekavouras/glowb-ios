@@ -8,8 +8,6 @@
 
 import Foundation
  
-typealias JSON = [String:Any]
- 
 enum ResultType<Value, Err: Error> {
     case success(Value)
     case failure(Err)
