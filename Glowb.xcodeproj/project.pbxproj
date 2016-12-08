@@ -49,6 +49,9 @@
 		8D38C7171DF64F3E0011AF52 /* WizardIntro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D38C7161DF64F3E0011AF52 /* WizardIntro.storyboard */; };
 		8D38C71D1DF652470011AF52 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C71C1DF652470011AF52 /* Button.swift */; };
 		8D38C71F1DF652600011AF52 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D38C71E1DF652600011AF52 /* PrimaryButton.swift */; };
+		8D4D79F61DF9E809002C09D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D4D79F41DF9E809002C09D2 /* Assets.xcassets */; };
+		8D4D79F71DF9E809002C09D2 /* Glow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8D4D79F51DF9E809002C09D2 /* Glow.sks */; };
+		8D4D79FA1DF9E820002C09D2 /* GlowScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4D79F91DF9E820002C09D2 /* GlowScene.swift */; };
 		8D5AD44D1DF49352001082B0 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AD44C1DF49352001082B0 /* Target.swift */; };
 		8D5AE8261DF499B100A520D4 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AE8241DF499B100A520D4 /* BaseView.swift */; };
 		8D5AE8271DF499B100A520D4 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AE8251DF499B100A520D4 /* View.swift */; };
@@ -135,6 +138,9 @@
 		8D38C7161DF64F3E0011AF52 /* WizardIntro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WizardIntro.storyboard; sourceTree = "<group>"; };
 		8D38C71C1DF652470011AF52 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		8D38C71E1DF652600011AF52 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		8D4D79F41DF9E809002C09D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D4D79F51DF9E809002C09D2 /* Glow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Glow.sks; sourceTree = "<group>"; };
+		8D4D79F91DF9E820002C09D2 /* GlowScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlowScene.swift; sourceTree = "<group>"; };
 		8D5AD44C1DF49352001082B0 /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 		8D5AE8241DF499B100A520D4 /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		8D5AE8251DF499B100A520D4 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -225,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				8D2220A31DEF3BB80082E315 /* AppDelegate.swift */,
+				8D4D79EB1DF9E761002C09D2 /* SpriteKit */,
 				8D669EEE1DF358000029FDB0 /* Storyboards */,
 				8D424FAB1DEF4A7F00766BE2 /* ViewControllers */,
 				8DC533B61DF3553A0040628C /* Views */,
@@ -378,6 +385,32 @@
 				8D38C6E31DF6480C0011AF52 /* DeviceSelectionTableViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8D4D79EB1DF9E761002C09D2 /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				8D4D79F81DF9E80D002C09D2 /* Scene */,
+				8D4D79F31DF9E809002C09D2 /* Particles */,
+			);
+			path = SpriteKit;
+			sourceTree = "<group>";
+		};
+		8D4D79F31DF9E809002C09D2 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				8D4D79F41DF9E809002C09D2 /* Assets.xcassets */,
+				8D4D79F51DF9E809002C09D2 /* Glow.sks */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
+		8D4D79F81DF9E80D002C09D2 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				8D4D79F91DF9E820002C09D2 /* GlowScene.swift */,
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		8D5AE8231DF499B100A520D4 /* Base */ = {
@@ -582,7 +615,9 @@
 				8DC174B91DF667DB00FB7A13 /* DeviceSelectionTableViewCell.xib in Resources */,
 				8D38C6E01DF62D290011AF52 /* ColorSelectionTableViewCell.xib in Resources */,
 				8D38C7171DF64F3E0011AF52 /* WizardIntro.storyboard in Resources */,
+				8D4D79F71DF9E809002C09D2 /* Glow.sks in Resources */,
 				8D669EF41DF358370029FDB0 /* Relationship.storyboard in Resources */,
+				8D4D79F61DF9E809002C09D2 /* Assets.xcassets in Resources */,
 				8DC174BF1DF6873300FB7A13 /* WiFiTableViewCell.xib in Resources */,
 				8D208B6F1DF3D88F003209A5 /* TextFieldTableViewCell.xib in Resources */,
 				8D669EF21DF358000029FDB0 /* Main.storyboard in Resources */,
@@ -656,6 +691,7 @@
 				8D5AE8361DF499E600A520D4 /* BaseTextField.swift in Sources */,
 				8D38C6FF1DF64C840011AF52 /* Command+ConfigureAP.swift in Sources */,
 				8D38C70E1DF64C840011AF52 /* ConnectViewController.swift in Sources */,
+				8D4D79FA1DF9E820002C09D2 /* GlowScene.swift in Sources */,
 				8D38C7041DF64C840011AF52 /* ConnectAP.swift in Sources */,
 				8D38C70F1DF64C840011AF52 /* NetworkCredentialsViewController.swift in Sources */,
 				8DA2DFA21DF79EB800B85B05 /* User.swift in Sources */,

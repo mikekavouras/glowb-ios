@@ -19,5 +19,7 @@ class WizardIntroViewController: BaseViewController, StoryboardInitializable {
         let connectController = ConnectViewController.initFromStoryboard()
         navigationController?.pushViewController(connectController, animated: true)
     }
+    
+    override var prefersStatusBarHidden: Bool { return true }
 }
 

@@ -18,7 +18,7 @@ class CardAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.6
+        return dismissing ? 0.5 : 1.0
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -40,15 +40,17 @@ class CardAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
         
         toViewController.view.layer.shadowColor = UIColor.black.cgColor
         toViewController.view.layer.shadowOffset = CGSize(width: 0, height: 0)
-        toViewController.view.layer.shadowOpacity = 0.24
-        toViewController.view.layer.shadowRadius = 8.0
+        toViewController.view.layer.shadowOpacity = 0.84
+        toViewController.view.layer.shadowRadius = 10.0
         toViewController.view.layer.cornerRadius = 12.0
         toViewController.view.layer.masksToBounds = true
         
-        toViewController.view.frame.origin.y = containerView.bounds.size.height
+        toViewController.view.frame.origin.y += 20
+        toViewController.view.alpha = 0.0
         
         let duration = transitionDuration(using: transitionContext)
         UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.8, options: .curveEaseOut, animations: {
+            toViewController.view.alpha = 0.7
             toViewController.view.frame.origin.y = 0
         }) { done in
             transitionContext.completeTransition(true)

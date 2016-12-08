@@ -51,7 +51,7 @@ extension Router {
             
         case .createRelationship(let relationship):
             let params = [ "relationship" : relationship.asJSON ]
-            try JSONEncoding.default.encode(request, with: params)
+            return try JSONEncoding.default.encode(request, with: params)
             
         case .getRelationships:
             return try JSONEncoding.default.encode(request, with: [:])

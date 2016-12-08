@@ -14,4 +14,8 @@ class BaseNavigationController: UINavigationController {
         return topViewController?.preferredStatusBarStyle ?? .lightContent
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return topViewController?.prefersStatusBarHidden ?? false
+    }
+    
 }
