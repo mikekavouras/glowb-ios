@@ -29,5 +29,4 @@ class BaseTableViewCell: TableViewCell, Themeable {
         
         backgroundColor = theme.backgroundColor
     }
-
 }

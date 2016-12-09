@@ -48,6 +48,7 @@ class GlowScene: SKScene {
         let brightness = UIScreen.main.brightness
         
         // 0.4 <= alpha <= 0.5 depending on screen brightness
+        
         var alpha = min(brightness, 0.5)
         alpha = max(alpha, 0.4)
     
