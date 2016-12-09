@@ -12,7 +12,7 @@ import Foundation
 import Alamofire
 
 enum ServerError: Error {
-    case unableToParseResponse
+    case invalidJSONFormat
     case invalidStatus
 }
 
@@ -30,7 +30,7 @@ extension ServerResponseParser {
         }
         
         guard let result = response.result.value as? JSON else {
-            return .failure(ServerError.unableToParseResponse)
+            return .failure(ServerError.invalidJSONFormat)
         }
         
         return Self.parseJSON(result)
