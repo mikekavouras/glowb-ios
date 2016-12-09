@@ -37,6 +37,12 @@ class RelationshipViewController: BaseTableViewController, StoryboardInitializab
         setup()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.endEditing(true)
+    }
+    
     
     // MARK: Setup
     
@@ -105,17 +111,6 @@ class RelationshipViewController: BaseTableViewController, StoryboardInitializab
         viewController.selectionStyle = .single
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
-    }
-
-    
-    // MARK: Utility
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
 }
 

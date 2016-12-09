@@ -47,12 +47,6 @@ class RelationshipsViewController: BaseViewController {
     }
     
     
-    // MARK: Utility
-    
-    override var prefersStatusBarHidden : Bool {
-        return true
-    }
-    
     // MARK: Navigation
     
     fileprivate func displayRelationshipViewController() {

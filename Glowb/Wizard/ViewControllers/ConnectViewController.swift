@@ -54,13 +54,6 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
     }
     
     
-    // MARK: - Utility
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    
     // MARK: Navigation
     
     func onConnectionHandler(state: UIApplicationState) {

@@ -10,12 +10,8 @@ import UIKit
 
 class BaseNavigationController: UINavigationController {
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return topViewController?.preferredStatusBarStyle ?? .lightContent
-    }
-    
     override var prefersStatusBarHidden: Bool {
-        return topViewController?.prefersStatusBarHidden ?? false
+        return true
     }
     
 }

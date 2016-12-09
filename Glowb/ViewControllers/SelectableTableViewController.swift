@@ -93,11 +93,4 @@ class SelectableTableViewController<Item: Selectable, Cell: ReusableView>: BaseT
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 54.0
     }
-    
-    
-    // MARK: - Utility
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
 }

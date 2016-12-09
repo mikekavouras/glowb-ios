@@ -78,7 +78,7 @@ class CardPresentationController: UIPresentationController {
         
         dimmingView.addSubview(button)
         
-        UIView.animate(withDuration: 1.0, delay: 1.0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.6, delay: 1.0, options: .curveLinear, animations: {
             button.alpha = 0.4
         }, completion: nil)
     }
