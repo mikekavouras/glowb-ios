@@ -31,6 +31,8 @@ struct User {
         set {
             if let token = newValue {
                 try? Locksmith.saveData(data: ["access_token" : token], forUserAccount: "com.mikekavouras.Glowb")
+            } else {
+                try? Locksmith.deleteDataForUserAccount(userAccount: "com.mikekavouras.Glowb")
             }
         }
     }
