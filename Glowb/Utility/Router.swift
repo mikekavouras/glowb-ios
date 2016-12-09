@@ -20,9 +20,11 @@ enum Router: URLRequestConvertible {
     case refreshOAuthToken
     case revokeOAuthToken
     
-    case claimDevice(String)
-    case getDevice(String)
     case getDevices
+    case getDevice
+    case createDevice
+    case deleteDevice(String)
+    case resetDevice(String)
     
     case createRelationship(Relationship)
     case getRelationships
@@ -48,15 +50,20 @@ extension Router {
         case .revokeOAuthToken:
             return try JSONEncoding.default.encode(request, with: [:])
             
-        case .claimDevice(let code):
-            let params = [ "code" : code ]
-            return try JSONEncoding.default.encode(request, with: params)
+        case .getDevices:
+            return try JSONEncoding.default.encode(request, with: [:])
             
         case .getDevice(let deviceID):
             let params = [ "device_id" : deviceID ]
             return try JSONEncoding.default.encode(request, with: params)
             
-        case .getDevices:
+        case .createDevice:
+            return try JSONEncoding.default.encode(request, with: [:])
+            
+        case .deleteDevice:
+            return try JSONEncoding.default.encode(request, with: [:])
+            
+        case .resetDevice:
             return try JSONEncoding.default.encode(request, with: [:])
             
         case .createRelationship(let relationship):
@@ -83,16 +90,23 @@ extension Router {
             return .post
         case .revokeOAuthToken:
             return .post
-        case .claimDevice:
-            return .post
-        case .getDevice:
-            return .get
+            
         case .getDevices:
             return .get
+        case .getDevice:
+            return .get
+        case .createDevice:
+            return .post
+        case .deleteDevice:
+            return .delete
+        case .resetDevice:
+            return .post
+            
         case .createRelationship:
             return .post
         case .getRelationships:
             return .get
+            
         case .createInvite:
             return .post
         case .claimInvite:
@@ -110,16 +124,22 @@ extension Router {
         case .revokeOAuthToken:
             return "/api/v1/oauth/revoke"
             
-        case .claimDevice:
-            return "/device/claim"
-        case .getDevice:
-            return "/device"
         case .getDevices:
-            return "devices"
+            return "/api/v1/devices"
+        case .getDevice(let deviceID):
+            return "/api/v1/devices/\(deviceID)"
+        case .createDevice:
+            return "/api/v1/devices"
+        case .deleteDevice(let deviceID):
+            return "/api/v1/devices/\(deviceID)"
+        case .resetDevice(let deviceID):
+            return "/api/v1/devices/reset/\(deviceID)"
+            
         case .createRelationship:
             return "/relationship"
         case .getRelationships:
             return "/relationships"
+            
         case .createInvite:
             return "/invite"
         case .claimInvite:

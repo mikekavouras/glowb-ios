@@ -11,8 +11,6 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var backgroundTask: UIBackgroundTaskIdentifier? = nil
     
     var window: UIWindow?
 
@@ -26,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // MARK: - Backgrounding
+    
+    var backgroundTask: UIBackgroundTaskIdentifier? = nil
     
     func createBackgroundTask(withExpirationHandler handler: () -> Void) {
         backgroundTask = UIApplication.shared.beginBackgroundTask { [unowned self] handler in
