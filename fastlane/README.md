@@ -10,6 +10,11 @@ sudo gem install fastlane
 fastlane beta
 ```
 
+### configure
+```
+fastlane configure
+```
+
 ### certs
 ```
 fastlane certs

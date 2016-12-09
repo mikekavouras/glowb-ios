@@ -92,12 +92,14 @@
 		8DB1E08F1DF36E60000648C3 /* NibInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E08E1DF36E60000648C3 /* NibInitializable.swift */; };
 		8DB1E0911DF36E6F000648C3 /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E0901DF36E6F000648C3 /* StoryboardInitializable.swift */; };
 		8DB1E0931DF3CB3D000648C3 /* DashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E0921DF3CB3D000648C3 /* DashedView.swift */; };
+		8DC057491DFB328800B26BB4 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DC057481DFB328800B26BB4 /* Configuration.plist */; };
 		8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */; };
 		8DC174C11DF68A4400FB7A13 /* NetworkCredentials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174C01DF68A4400FB7A13 /* NetworkCredentials.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		28EB6C2F626DEB611EBB91E0 /* Pods_Glowb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Glowb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35C3DF68DDB96707364A4512 /* Pods-Glowb.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.distribution.xcconfig"; sourceTree = "<group>"; };
 		54E12DCAF388AD1CFD8675D0 /* Pods-Glowb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.release.xcconfig"; sourceTree = "<group>"; };
 		81B97BEB0DC2885E869503AF /* Pods-Glowb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.debug.xcconfig"; sourceTree = "<group>"; };
 		8D1537D11DFA58A0008E199F /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -188,8 +190,10 @@
 		8DB1E08E1DF36E60000648C3 /* NibInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibInitializable.swift; sourceTree = "<group>"; };
 		8DB1E0901DF36E6F000648C3 /* StoryboardInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
 		8DB1E0921DF3CB3D000648C3 /* DashedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashedView.swift; sourceTree = "<group>"; };
+		8DC057481DFB328800B26BB4 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Connect.storyboard; sourceTree = "<group>"; };
 		8DC174C01DF68A4400FB7A13 /* NetworkCredentials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NetworkCredentials.storyboard; sourceTree = "<group>"; };
+		A10438662ADFB9A7338445F0 /* Pods-Glowb.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.development.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.development.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +213,8 @@
 			children = (
 				81B97BEB0DC2885E869503AF /* Pods-Glowb.debug.xcconfig */,
 				54E12DCAF388AD1CFD8675D0 /* Pods-Glowb.release.xcconfig */,
+				A10438662ADFB9A7338445F0 /* Pods-Glowb.development.xcconfig */,
+				35C3DF68DDB96707364A4512 /* Pods-Glowb.distribution.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -560,6 +566,7 @@
 			children = (
 				8D38C7121DF64CC80011AF52 /* Glowb-Bridging-Header.h */,
 				8DB1E0861DF36670000648C3 /* Info.plist */,
+				8DC057481DFB328800B26BB4 /* Configuration.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -606,6 +613,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D2220B21DEF3BB80082E315 /* Build configuration list for PBXNativeTarget "Glowb" */;
 			buildPhases = (
+				8DD0DA491DFB3749000CB745 /* Copy Configuration */,
 				635FEAA879A0238E43EA3121 /* [CP] Check Pods Manifest.lock */,
 				8D22209C1DEF3BB80082E315 /* Sources */,
 				8D22209D1DEF3BB80082E315 /* Frameworks */,
@@ -668,6 +676,7 @@
 				8D669EF41DF358370029FDB0 /* Relationship.storyboard in Resources */,
 				8D1538021DFA6479008E199F /* DeviceSelectionTableViewCell.xib in Resources */,
 				8D4D79F61DF9E809002C09D2 /* Assets.xcassets in Resources */,
+				8DC057491DFB328800B26BB4 /* Configuration.plist in Resources */,
 				8D1538001DFA6479008E199F /* ColorSelectionTableViewCell.xib in Resources */,
 				8D1538061DFA6479008E199F /* TextSelectionRepresentableTableViewCell.xib in Resources */,
 				8D1538081DFA6479008E199F /* WiFiTableViewCell.xib in Resources */,
@@ -713,6 +722,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		8DD0DA491DFB3749000CB745 /* Copy Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Configuration";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "ROOT=$SRCROOT/Glowb/SupportingFiles;\ncp $ROOT/Configuration.$CONFIGURATION.plist $ROOT/Configuration.plist";
 		};
 		9BE5544F96A9310773E32617 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -812,7 +835,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		8D2220B01DEF3BB80082E315 /* Debug */ = {
+		8DD0DA451DFB36D3000CB745 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -861,9 +884,31 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Development;
 		};
-		8D2220B11DEF3BB80082E315 /* Release */ = {
+		8DD0DA461DFB36D3000CB745 /* Development */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A10438662ADFB9A7338445F0 /* Pods-Glowb.development.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = A56D86G827;
+				INFOPLIST_FILE = Glowb/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikekavouras.Glowb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c6de2a71-2181-4112-9298-2abeb93494be";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.mikekavouras.Glowb";
+				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Development;
+		};
+		8DD0DA471DFB36D9000CB745 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -905,33 +950,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Distribution;
 		};
-		8D2220B31DEF3BB80082E315 /* Debug */ = {
+		8DD0DA481DFB36D9000CB745 /* Distribution */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81B97BEB0DC2885E869503AF /* Pods-Glowb.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 10;
-				DEVELOPMENT_TEAM = A56D86G827;
-				INFOPLIST_FILE = Glowb/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mikekavouras.Glowb;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c6de2a71-2181-4112-9298-2abeb93494be";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.mikekavouras.Glowb";
-				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Debug;
-		};
-		8D2220B41DEF3BB80082E315 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54E12DCAF388AD1CFD8675D0 /* Pods-Glowb.release.xcconfig */;
+			baseConfigurationReference = 35C3DF68DDB96707364A4512 /* Pods-Glowb.distribution.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -950,7 +973,7 @@
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = Release;
+			name = Distribution;
 		};
 /* End XCBuildConfiguration section */
 
@@ -958,20 +981,20 @@
 		8D22209B1DEF3BB80082E315 /* Build configuration list for PBXProject "Glowb" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D2220B01DEF3BB80082E315 /* Debug */,
-				8D2220B11DEF3BB80082E315 /* Release */,
+				8DD0DA451DFB36D3000CB745 /* Development */,
+				8DD0DA471DFB36D9000CB745 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Development;
 		};
 		8D2220B21DEF3BB80082E315 /* Build configuration list for PBXNativeTarget "Glowb" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D2220B31DEF3BB80082E315 /* Debug */,
-				8D2220B41DEF3BB80082E315 /* Release */,
+				8DD0DA461DFB36D3000CB745 /* Development */,
+				8DD0DA481DFB36D9000CB745 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Development;
 		};
 /* End XCConfigurationList section */
 	};

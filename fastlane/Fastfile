@@ -1,10 +1,35 @@
 require 'dotenv'
+require 'yaml'
 
 Dotenv.load
 
 lane :beta do |options|
   build
   upload
+end
+
+lane :configure do |options|
+  data = ::YAML.load_file(File.new("configuration/configuration.yml"))
+  envs = data.keys
+  keys = data[envs.first].keys
+
+  envs.each do |env|
+    File.open("../Glowb/SupportingFiles/Configuration.#{env}.plist", 'w') do |file|
+      file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
+      file.write("<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n")
+      file.write("<plist version=\"1.0\">\n<dict>\n></dict>\n</plist>")
+    end
+
+    update_info_plist(
+      plist_path: "Glowb/SupportingFiles/Configuration.#{env}.plist",
+      block: lambda { |plist|
+        keys.each do |key|
+          plist[key] = data[env][key]
+        end
+      }
+    )
+
+  end
 end
 
 private_lane :upload do |options|

@@ -39,6 +39,7 @@ struct User {
         return Promise { fulfill, reject in
             Alamofire.request(Router.createOAuthToken).validate().responseJSON { response in
                 // TODO: Parse and store 🔑
+                print(response)
                 
                 fulfill(User.current) 
             }
