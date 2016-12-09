@@ -9,9 +9,27 @@
 import UIKit
 import SpriteKit
 
+class TimerProxy {
+    weak var target: GlowScene?
+    var selector: Selector
+    
+    init(target: GlowScene, selector: Selector) {
+        self.selector = selector
+        self.target = target
+    }
+    
+    @objc func timerDidFire(timer: Timer) {
+        if let target = target {
+            target.perform(selector)
+        } else {
+            timer.invalidate()
+        }
+    }
+}
+
 class GlowScene: SKScene {
     private var colorIdx = 0
-    var timer: Timer?
+    weak var timer: Timer?
     
     override init(size: CGSize) {
         super.init(size: size)
@@ -20,20 +38,19 @@ class GlowScene: SKScene {
         addChild(emitterNode)
         emitterNode.particleColorSequence = nil
         
-        timer = Timer(timeInterval: 10.0, target: self, selector: #selector(changeColor), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer!, forMode: .commonModes)
+        let timerProxy = TimerProxy(target: self, selector: #selector(self.changeColor))
+        self.timer = Timer.scheduledTimer(timeInterval: 10.0, target: timerProxy, selector: #selector(TimerProxy.timerDidFire(timer:)), userInfo: nil, repeats: true)
         
         changeColor()
     }
     
-    deinit {
-        timer?.invalidate()
-        timer = nil
-    }
-    
     @objc private func changeColor() {
-//        let brightness = UIScreen.main.brightness
-        let alpha: CGFloat = 0.7
+        let brightness = UIScreen.main.brightness
+        
+        // 0.4 <= alpha <= 0.5 depending on screen brightness
+        var alpha = min(brightness, 0.5)
+        alpha = max(alpha, 0.4)
+    
         let purple = UIColor(red: 62/255.0, green: 32/255.0, blue: 89/255.0, alpha: alpha)
         let blue = UIColor(red: 25/255.0, green: 67/255.0, blue: 128/255.0, alpha: alpha)
         

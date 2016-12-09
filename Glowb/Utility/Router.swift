@@ -63,8 +63,6 @@ extension Router {
             let params = [ "token" : invite.token ]
             return try JSONEncoding.default.encode(request, with: params)
         }
-        
-        return request
     }
     
     private var method: Alamofire.HTTPMethod {

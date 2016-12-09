@@ -92,7 +92,6 @@ class CardPresentationController: UIPresentationController {
         
         dimmingView.insertSubview(skView, at: 0)
         skView.snp.makeConstraints { $0.edges.equalToSuperview() }
-        
     }
     
     @objc private func dismiss() {
