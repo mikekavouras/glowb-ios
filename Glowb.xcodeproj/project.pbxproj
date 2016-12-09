@@ -99,6 +99,7 @@
 		8DD0DA4D1DFB3C6B000CB745 /* DescriptiveForceUnwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0DA4C1DFB3C6B000CB745 /* DescriptiveForceUnwrap.swift */; };
 		8DD0DA4F1DFB3D6D000CB745 /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0DA4E1DFB3D6D000CB745 /* Plist.swift */; };
 		8DD0DA511DFB44D6000CB745 /* ServerResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0DA501DFB44D6000CB745 /* ServerResponseParser.swift */; };
+		8DD0DA571DFB5C72000CB745 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0DA561DFB5C72000CB745 /* AccessToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -202,6 +203,7 @@
 		8DD0DA4E1DFB3D6D000CB745 /* Plist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plist.swift; sourceTree = "<group>"; };
 		8DD0DA501DFB44D6000CB745 /* ServerResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponseParser.swift; sourceTree = "<group>"; };
 		8DD0DA531DFB4B74000CB745 /* Glowb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Glowb.entitlements; sourceTree = "<group>"; };
+		8DD0DA561DFB5C72000CB745 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		A10438662ADFB9A7338445F0 /* Pods-Glowb.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.development.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.development.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -362,6 +364,7 @@
 				8D38C6DB1DF6253A0011AF52 /* Color.swift */,
 				8D2DC9881DF71AF10074F194 /* Relationship.swift */,
 				8DA2DFA11DF79EB800B85B05 /* User.swift */,
+				8DD0DA561DFB5C72000CB745 /* AccessToken.swift */,
 				8D81296E1DF881FE00C50DEB /* Invite.swift */,
 			);
 			path = Models;
@@ -792,6 +795,7 @@
 				8D1538031DFA6479008E199F /* TextFieldTableViewCell.swift in Sources */,
 				8D38C70D1DF64C840011AF52 /* ConnectingProgressViewController.swift in Sources */,
 				8D38C6DC1DF6253A0011AF52 /* Color.swift in Sources */,
+				8DD0DA571DFB5C72000CB745 /* AccessToken.swift in Sources */,
 				8D1537FC1DFA6479008E199F /* TableViewCell.swift in Sources */,
 				8D37CE4D1DF91B510068B09E /* CardPresentationController.swift in Sources */,
 				8D38C71F1DF652600011AF52 /* PrimaryButton.swift in Sources */,

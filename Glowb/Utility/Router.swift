@@ -10,6 +10,10 @@ import Alamofire
 
 typealias JSON = [AnyHashable: Any]
 
+enum APIError: Error {
+    case keyNotFound
+}
+
 enum Router: URLRequestConvertible {
     
     case createOAuthToken
