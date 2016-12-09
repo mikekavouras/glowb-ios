@@ -47,13 +47,12 @@ class GlowScene: SKScene {
     @objc private func changeColor() {
         let brightness = UIScreen.main.brightness
         
-        // 0.4 <= alpha <= 0.5 depending on screen brightness
-        
-        var alpha = min(brightness, 0.5)
-        alpha = max(alpha, 0.4)
+        // 0.5 <= alpha <= 0.6 depending on screen brightness
+        var alpha = min(brightness, 0.6)
+        alpha = max(alpha, 0.5)
     
-        let purple = UIColor(red: 62/255.0, green: 32/255.0, blue: 89/255.0, alpha: alpha)
-        let blue = UIColor(red: 25/255.0, green: 67/255.0, blue: 128/255.0, alpha: alpha)
+        let purple = UIColor.glowbGlowPurple.withAlphaComponent(alpha)
+        let blue = UIColor.glowbGlowBlue.withAlphaComponent(alpha)
         
         let colors = [purple, blue]
         let idx = colorIdx % colors.count

@@ -33,6 +33,9 @@ class RelationshipsViewController: BaseViewController {
     private func setup() {
         setupCollectionView()
         registerForPreviewing(with: self, sourceView: collectionView)
+        
+        // eager load
+        let _ = RelationshipViewController.initFromStoryboard()
     }
     
     private func setupCollectionView() {
@@ -141,8 +144,8 @@ extension RelationshipsViewController {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView == collectionView && scrollView.contentOffset.x < -70 {
-            performSegue(withIdentifier: "SettingsSegueIdentifier", sender: self)
-        }
+//        if scrollView == collectionView && scrollView.contentOffset.x < -70 {
+//            performSegue(withIdentifier: "SettingsSegueIdentifier", sender: self)
+//        }
     }
 }

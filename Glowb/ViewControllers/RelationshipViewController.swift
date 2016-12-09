@@ -113,6 +113,10 @@ class RelationshipViewController: BaseTableViewController, StoryboardInitializab
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }
 
 

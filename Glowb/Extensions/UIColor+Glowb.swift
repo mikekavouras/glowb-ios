@@ -22,4 +22,12 @@ extension UIColor {
         return UIColor(red: 40/255.0, green: 40/255.0, blue: 40/255.0, alpha: 1.0)
     }
     
+    class var glowbGlowPurple: UIColor {
+        return UIColor(red: 62/255.0, green: 32/255.0, blue: 89/255.0, alpha: 1.0)
+    }
+    
+    class var glowbGlowBlue: UIColor {
+        return UIColor(red: 25/255.0, green: 67/255.0, blue: 128/255.0, alpha: 1.0)
+    }
+    
 }
