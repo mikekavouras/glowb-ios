@@ -52,4 +52,8 @@ class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: 
     override var prefersStatusBarHidden: Bool {
         return hideStatusBar
     }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .fade
+    }
 }

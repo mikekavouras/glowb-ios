@@ -11,13 +11,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AddRelationshipCollectionViewCell" customModule="Glowb" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="202" height="309"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddRelationshipCellIdentifier" id="gTV-IL-0wX" customClass="AddRelationshipCollectionViewCell" customModule="Glowb" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="202" height="309"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="bb2-TC-uZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    </imageView>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="bb2-TC-uZJ" secondAttribute="trailing" id="LaM-3e-uMP"/>
+                <constraint firstItem="bb2-TC-uZJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="or6-js-l5i"/>
+                <constraint firstItem="bb2-TC-uZJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uGz-f8-AXa"/>
+                <constraint firstAttribute="bottom" secondItem="bb2-TC-uZJ" secondAttribute="bottom" id="xzj-NN-dkK"/>
+            </constraints>
             <size key="customSize" width="202" height="309"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
@@ -27,4 +38,7 @@
             <point key="canvasLocation" x="-164" y="28.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="add" width="79" height="79"/>
+    </resources>
 </document>

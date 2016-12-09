@@ -8,6 +8,8 @@
 
 import UIKit
 
-class AddRelationshipCollectionViewCell: BaseCollectionViewCell {
+class AddRelationshipCollectionViewCell: BaseCollectionViewCell, ReusableView {
+    static var identifier: String = "AddRelationshipCellIdentifier"
+    static var nibName: String = "AddRelationshipCollectionViewCell"
 
 }

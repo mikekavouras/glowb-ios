@@ -8,8 +8,7 @@
 
 import UIKit
 
-class RelationshipsViewController: BaseViewController,
-    UICollectionViewDelegate {
+class RelationshipsViewController: BaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -39,9 +38,13 @@ class RelationshipsViewController: BaseViewController,
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.register(NewRelationshipCollectionViewCell.Nib, forCellWithReuseIdentifier: NewRelationshipCollectionViewCell.CellIdentifier)
+    
+        collectionView.register(cellType: AddRelationshipCollectionViewCell.self)
 //        collectionView.register(RelationshipCollectionViewCell.Nib, forCellWithReuseIdentifier: RelationshipCollectionViewCell.CellIdentifier)
     }
+    
+    
+    // MARK: Utility
     
     override var prefersStatusBarHidden : Bool {
         return true
@@ -49,16 +52,15 @@ class RelationshipsViewController: BaseViewController,
     
     // MARK: Navigation
     
-    fileprivate func displayNewRelationshipViewController() {
-//        if let viewController = storyboard?.instantiateViewController(withIdentifier: RelationshipTableViewController.StoryboardIdentifier) as? RelationshipTableViewController
-//        {
-//            viewController.presentedModally = true
-//            let navigationController = UINavigationController(rootViewController: viewController)
-//            present(navigationController, animated: true, completion: nil)
-//        }
+    fileprivate func displayRelationshipViewController() {
+        let viewController = RelationshipViewController.initFromStoryboard()
+        let navigationController = BaseNavigationController(rootViewController: viewController)
+        present(navigationController, animated: true, completion: nil)
     }
 }
 
+
+// MARK: - Collection view data source
 
 extension RelationshipsViewController: UICollectionViewDataSource {
     
@@ -74,28 +76,17 @@ extension RelationshipsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if indexPath.row == User.currentUser.relationships.count {
-//            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewRelationshipCollectionViewCell.CellIdentifier, for: indexPath) as? NewRelationshipCollectionViewCell {
-//                
-//                cell.newItemButtonTappedHandler = { [unowned self] in
-//                    self.displayNewRelationshipViewController()
-//                }
-//                
-//                return cell
-//            }
-//        } else {
-//            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RelationshipCollectionViewCell.CellIdentifier, for: indexPath) as? RelationshipCollectionViewCell {
-//                
-//                let relationship = User.currentUser.relationships[indexPath.row]
-//                cell.relationship = relationship
-//                return cell
-//            }
-//        }
-//        
-        return UICollectionViewCell()
+        return collectionView.dequeueReusable(cellType: AddRelationshipCollectionViewCell.self, forIndexPath: indexPath)
     }
-    
-    
+}
+
+
+// MARK: - Collection view delegate
+
+extension RelationshipsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        displayRelationshipViewController()
+    }
 }
 
 

@@ -8,7 +8,9 @@
 
 import UIKit
 
-class RelationshipViewController: BaseTableViewController {
+class RelationshipViewController: BaseTableViewController, StoryboardInitializable {
+    
+    static var storyboardName: StaticString = "Relationship"
 
     @IBOutlet weak var previewImageView: UIImageView!
     var relationship = Relationship()

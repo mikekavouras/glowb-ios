@@ -30,6 +30,8 @@
 		8D1538061DFA6479008E199F /* TextSelectionRepresentableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1537F41DFA6479008E199F /* TextSelectionRepresentableTableViewCell.xib */; };
 		8D1538071DFA6479008E199F /* WiFiTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1537F51DFA6479008E199F /* WiFiTableViewCell.swift */; };
 		8D1538081DFA6479008E199F /* WiFiTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1537F61DFA6479008E199F /* WiFiTableViewCell.xib */; };
+		8D15380A1DFA6781008E199F /* UICollectionView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1538091DFA6781008E199F /* UICollectionView+ReusableView.swift */; };
+		8D15380C1DFA6994008E199F /* Relationships.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D15380B1DFA6994008E199F /* Relationships.storyboard */; };
 		8D208B691DF3D6BE003209A5 /* UITableView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D208B681DF3D6BE003209A5 /* UITableView+ReusableView.swift */; };
 		8D208B6B1DF3D707003209A5 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D208B6A1DF3D707003209A5 /* ReusableView.swift */; };
 		8D2220A41DEF3BB80082E315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2220A31DEF3BB80082E315 /* AppDelegate.swift */; };
@@ -76,7 +78,6 @@
 		8D5AE8361DF499E600A520D4 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AE8341DF499E600A520D4 /* BaseTextField.swift */; };
 		8D5AE8371DF499E600A520D4 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5AE8351DF499E600A520D4 /* TextField.swift */; };
 		8D669EF11DF358000029FDB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D669EEF1DF358000029FDB0 /* LaunchScreen.storyboard */; };
-		8D669EF21DF358000029FDB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D669EF01DF358000029FDB0 /* Main.storyboard */; };
 		8D669EF41DF358370029FDB0 /* Relationship.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D669EF31DF358370029FDB0 /* Relationship.storyboard */; };
 		8D669EFB1DF358B60029FDB0 /* UIColor+Glowb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D669EFA1DF358B60029FDB0 /* UIColor+Glowb.swift */; };
 		8D7291E91DF4B04A003F165F /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291E81DF4B04A003F165F /* Label.swift */; };
@@ -121,6 +122,8 @@
 		8D1537F41DFA6479008E199F /* TextSelectionRepresentableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextSelectionRepresentableTableViewCell.xib; sourceTree = "<group>"; };
 		8D1537F51DFA6479008E199F /* WiFiTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiTableViewCell.swift; sourceTree = "<group>"; };
 		8D1537F61DFA6479008E199F /* WiFiTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WiFiTableViewCell.xib; sourceTree = "<group>"; };
+		8D1538091DFA6781008E199F /* UICollectionView+ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ReusableView.swift"; sourceTree = "<group>"; };
+		8D15380B1DFA6994008E199F /* Relationships.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Relationships.storyboard; sourceTree = "<group>"; };
 		8D208B681DF3D6BE003209A5 /* UITableView+ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableView.swift"; sourceTree = "<group>"; };
 		8D208B6A1DF3D707003209A5 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		8D2220A01DEF3BB80082E315 /* Glowb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glowb.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,7 +173,6 @@
 		8D5AE8341DF499E600A520D4 /* BaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		8D5AE8351DF499E600A520D4 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		8D669EEF1DF358000029FDB0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8D669EF01DF358000029FDB0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8D669EF31DF358370029FDB0 /* Relationship.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Relationship.storyboard; sourceTree = "<group>"; };
 		8D669EFA1DF358B60029FDB0 /* UIColor+Glowb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Glowb.swift"; sourceTree = "<group>"; };
 		8D7291E81DF4B04A003F165F /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -510,7 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				8D669EEF1DF358000029FDB0 /* LaunchScreen.storyboard */,
-				8D669EF01DF358000029FDB0 /* Main.storyboard */,
+				8D15380B1DFA6994008E199F /* Relationships.storyboard */,
 				8D669EF31DF358370029FDB0 /* Relationship.storyboard */,
 			);
 			path = Storyboards;
@@ -521,6 +523,7 @@
 			children = (
 				8D669EFA1DF358B60029FDB0 /* UIColor+Glowb.swift */,
 				8D208B681DF3D6BE003209A5 /* UITableView+ReusableView.swift */,
+				8D1538091DFA6781008E199F /* UICollectionView+ReusableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D15380C1DFA6994008E199F /* Relationships.storyboard in Resources */,
 				8D38C7171DF64F3E0011AF52 /* WizardIntro.storyboard in Resources */,
 				8D4D79F71DF9E809002C09D2 /* Glow.sks in Resources */,
 				8D669EF41DF358370029FDB0 /* Relationship.storyboard in Resources */,
@@ -666,7 +670,6 @@
 				8D4D79F61DF9E809002C09D2 /* Assets.xcassets in Resources */,
 				8D1538001DFA6479008E199F /* ColorSelectionTableViewCell.xib in Resources */,
 				8D1538061DFA6479008E199F /* TextSelectionRepresentableTableViewCell.xib in Resources */,
-				8D669EF21DF358000029FDB0 /* Main.storyboard in Resources */,
 				8D1538081DFA6479008E199F /* WiFiTableViewCell.xib in Resources */,
 				8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */,
 				8D1537F81DFA6479008E199F /* AddRelationshipCollectionViewCell.xib in Resources */,
@@ -739,6 +742,7 @@
 				8D38C70E1DF64C840011AF52 /* ConnectViewController.swift in Sources */,
 				8D4D79FA1DF9E820002C09D2 /* GlowScene.swift in Sources */,
 				8D1537F91DFA6479008E199F /* BaseCollectionViewCell.swift in Sources */,
+				8D15380A1DFA6781008E199F /* UICollectionView+ReusableView.swift in Sources */,
 				8D38C7041DF64C840011AF52 /* ConnectAP.swift in Sources */,
 				8D38C70F1DF64C840011AF52 /* NetworkCredentialsViewController.swift in Sources */,
 				8DA2DFA21DF79EB800B85B05 /* User.swift in Sources */,
@@ -849,7 +853,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -894,7 +898,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
