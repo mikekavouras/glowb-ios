@@ -10,11 +10,19 @@ import Alamofire
 import PromiseKit
 import Locksmith
 
+enum UserError: Error {
+    case failedToParseAccessToken
+}
+
+enum APIError: Error {
+    case keyNotFound
+}
+
 struct User {
-    static let current = User()
+    static var current = User()
     var accessToken: String? {
         get {
-            if let data = Locksmith.loadDataForUserAccount(userAccount: "GlowbAccount"),
+            if let data = Locksmith.loadDataForUserAccount(userAccount: "com.mikekavouras.Glowb"),
                let token = data["access_token"] as? String
             { return token }
             
@@ -22,7 +30,7 @@ struct User {
         }
         set {
             if let token = newValue {
-                try? Locksmith.saveData(data: ["access_token" : token], forUserAccount: "GlowbAccount")
+                try? Locksmith.saveData(data: ["access_token" : token], forUserAccount: "com.mikekavouras.Glowb")
             }
         }
     }
@@ -31,18 +39,34 @@ struct User {
         return accessToken != nil
     }
     
-    func register() -> Promise<User> {
+    @discardableResult
+    func register() -> Promise<String> {
+        
         if isRegistered {
-            return Promise(value: User.current)
+            return Promise(value: User.current.accessToken!)
         }
         
         return Promise { fulfill, reject in
             Alamofire.request(Router.createOAuthToken).validate().responseJSON { response in
-                // TODO: Parse and store 🔑
-                print(response)
+                let result = AccessTokenParser.parseResponse(response)
                 
-                fulfill(User.current) 
+                switch result {
+                case .success(let token):
+                    fulfill(token)
+                case .failure(let error):
+                    reject(error)
+                }
             }
+        }
+    }
+}
+
+struct AccessTokenParser: ServerResponseParser {
+    static func parseJSON(_ json: JSON) -> Alamofire.Result<String> {
+        if let token = json["access_token"] as? String {
+            return .success(token)
+        } else {
+            return .failure(UserError.failedToParseAccessToken)
         }
     }
 }

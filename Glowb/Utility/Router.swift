@@ -1,8 +1,7 @@
 //
 //  Router.swift
 //  Glowb
-//
-//  Created by Michael Kavouras on 12/6/16.
+// //  Created by Michael Kavouras on 12/6/16.
 //  Copyright © 2016 Michael Kavouras. All rights reserved.
 //
 
@@ -12,19 +11,23 @@ import Alamofire
 typealias JSON = [AnyHashable: Any]
 
 enum Router: URLRequestConvertible {
+    
     case createOAuthToken
     case refreshOAuthToken
+    case revokeOAuthToken
+    
     case claimDevice(String)
     case getDevice(String)
     case getDevices
+    
     case createRelationship(Relationship)
     case getRelationships
+    
     case createInvite
     case claimInvite(Invite)
     
-    fileprivate static let apiRoot: String = "https://lamp.engineering" // Config.APIRoot
-    fileprivate static let appID: String = "abc123" // Config.AppID
-    
+    fileprivate static let apiRoot: String = Plist.Config.APIRoot
+    fileprivate static let appID: String = Plist.Config.appID
 }
 
 extension Router {
@@ -36,6 +39,9 @@ extension Router {
             return try JSONEncoding.default.encode(request, with: [:])
             
         case .refreshOAuthToken:
+            return try JSONEncoding.default.encode(request, with: [:])
+            
+        case .revokeOAuthToken:
             return try JSONEncoding.default.encode(request, with: [:])
             
         case .claimDevice(let code):
@@ -71,6 +77,8 @@ extension Router {
             return .post
         case .refreshOAuthToken:
             return .post
+        case .revokeOAuthToken:
+            return .post
         case .claimDevice:
             return .post
         case .getDevice:
@@ -90,10 +98,14 @@ extension Router {
     
     private var path: String {
         switch self {
+            
         case .createOAuthToken:
-            return "/oauth"
+            return "/api/v1/oauth"
         case .refreshOAuthToken:
-            return "/oauth/token"
+            return "/api/v1/oauth/token"
+        case .revokeOAuthToken:
+            return "/api/v1/oauth/revoke"
+            
         case .claimDevice:
             return "/device/claim"
         case .getDevice:

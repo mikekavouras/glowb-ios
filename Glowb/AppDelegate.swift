@@ -17,9 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        application.isStatusBarHidden = true
-        setup()
+        
+        setup(application)
         registerUser()
+        
         return true
     }
     
@@ -55,18 +56,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - User
     
     private func registerUser() {
-        _ = User.current.register()
+        User.current.register().then { token in
+            User.current.accessToken = token
+        }.catch { error in
+            print(error)
+        }
     }
     
     
     // MARK: - Setup
     
-    private func setup() {
-        setupStyles()
+    private func setup(_ application: UIApplication) {
+        setupStyles(application)
     }
     
-    private func setupStyles() {
+    private func setupStyles(_ application: UIApplication) {
         setupNavigationBar()
+        application.isStatusBarHidden = true
     }
     
     private func setupNavigationBar() {
