@@ -1,5 +1,5 @@
 //
-//  RelationshipViewController.swift
+//  InteractionViewController.swift
 //  Glowb
 //
 //  Created by Michael Kavouras on 12/3/16.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class RelationshipViewController: BaseTableViewController, StoryboardInitializable {
+class InteractionViewController: BaseTableViewController, StoryboardInitializable {
     
-    static var storyboardName: StaticString = "Relationship"
+    static var storyboardName: StaticString = "Interaction"
 
     @IBOutlet weak var previewImageView: UIImageView!
-    var relationship = Relationship()
+    var interaction = Interaction()
     
     lazy var imagePickerController: UIImagePickerController = {
         let picker = UIImagePickerController()
@@ -99,7 +99,7 @@ class RelationshipViewController: BaseTableViewController, StoryboardInitializab
         let colors = [Color(.red), Color(.green), Color(.blue)]
         let selectableColors = colors.map { color -> SelectableViewModel<Color> in
             var state: SelectedState = .deselected
-            if let rColor = relationship.color {
+            if let rColor = interaction.color {
                 state = color == rColor ? .selected : .deselected
             }
             return SelectableViewModel(model: color, selectedState: state)
@@ -117,7 +117,7 @@ class RelationshipViewController: BaseTableViewController, StoryboardInitializab
 
 // MARK: - Table view data source
 
-extension RelationshipViewController {
+extension InteractionViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -146,7 +146,7 @@ extension RelationshipViewController {
             let cell = tableView.dequeueReusable(cellType: ColorSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
             cell.label.text = "Select color"
             cell.accessoryType = .disclosureIndicator
-            cell.color = relationship.color?.color
+            cell.color = interaction.color?.color
             return cell
         default: return UITableViewCell()
         }
@@ -156,7 +156,7 @@ extension RelationshipViewController {
 
 // MARK: - Table view delegate
 
-extension RelationshipViewController {
+extension InteractionViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 1:
@@ -177,7 +177,7 @@ extension RelationshipViewController {
 
 // MARK: - Text field delegate
 
-extension RelationshipViewController: UITextFieldDelegate {
+extension InteractionViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
@@ -188,7 +188,7 @@ extension RelationshipViewController: UITextFieldDelegate {
 
 // MARK: - Image picker controller delegate
 
-extension RelationshipViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension InteractionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         previewImageView.image = image
         self.dismiss(animated: true, completion: nil)
@@ -198,14 +198,14 @@ extension RelationshipViewController: UIImagePickerControllerDelegate, UINavigat
 
 // MARK: - Selectable table view controller delegate
 
-extension RelationshipViewController: SelectableTableViewControllerDelegate {
+extension InteractionViewController: SelectableTableViewControllerDelegate {
     func selectableTableViewController(viewController: UITableViewController, didSelectSelection selection: Selectable) {
         if let selection = selection as? SelectableViewModel<Color> {
-            relationship.color = selection.model
+            interaction.color = selection.model
         }
         
         if let selection = selection as? SelectableViewModel<Device> {
-            relationship.device = selection.model
+            interaction.device = selection.model
         }
         
         tableView.reloadData()

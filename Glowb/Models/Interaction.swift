@@ -1,5 +1,5 @@
 //
-//  Relationship.swift
+//  Interaction.swift
 //  Glowb
 //
 //  Created by Michael Kavouras on 12/6/16.
@@ -9,7 +9,7 @@
 import Alamofire
 import PromiseKit
 
-struct Relationship {
+struct Interaction {
     var color: Color?
     var device: Device?
     
@@ -24,18 +24,18 @@ struct Relationship {
         return [:]
     }
     
-    static func create(relationship: Relationship) -> Promise<Relationship> {
+    static func create(interaction: Interaction) -> Promise<Interaction> {
         return Promise { fulfill, reject in
-            return Alamofire.request(Router.createRelationship(relationship)).validate().responseJSON { response in
-                fulfill(Relationship())
+            return Alamofire.request(Router.createInteraction(interaction)).validate().responseJSON { response in
+                fulfill(Interaction())
             }
         }
     }
     
-    static func fetch() -> Promise<[Relationship]> {
+    static func fetch() -> Promise<[Interaction]> {
         return Promise { fulfill, reject in
-            return Alamofire.request(Router.getRelationships).validate().responseJSON { response in
-                fulfill([Relationship()])
+            return Alamofire.request(Router.getInteractions).validate().responseJSON { response in
+                fulfill([Interaction()])
             }
         }
     }

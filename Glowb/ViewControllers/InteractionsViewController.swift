@@ -1,5 +1,5 @@
 //
-//  RelationshipsViewController.swift
+//  InteractionsViewController.swift
 //  Glowb
 //
 //  Created by Michael Kavouras on 12/8/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RelationshipsViewController: BaseViewController {
+class InteractionsViewController: BaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -35,22 +35,22 @@ class RelationshipsViewController: BaseViewController {
         registerForPreviewing(with: self, sourceView: collectionView)
         
         // eager load
-        let _ = RelationshipViewController.initFromStoryboard()
+        let _ = InteractionViewController.initFromStoryboard()
     }
     
     private func setupCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
     
-        collectionView.register(cellType: AddRelationshipCollectionViewCell.self)
-//        collectionView.register(RelationshipCollectionViewCell.Nib, forCellWithReuseIdentifier: RelationshipCollectionViewCell.CellIdentifier)
+        collectionView.register(cellType: AddInteractionCollectionViewCell.self)
+//        collectionView.register(InteractionCollectionViewCell.Nib, forCellWithReuseIdentifier: InteractionCollectionViewCell.CellIdentifier)
     }
     
     
     // MARK: Navigation
     
-    fileprivate func displayRelationshipViewController() {
-        let viewController = RelationshipViewController.initFromStoryboard()
+    fileprivate func displayInteractionViewController() {
+        let viewController = InteractionViewController.initFromStoryboard()
         let navigationController = BaseNavigationController(rootViewController: viewController)
         present(navigationController, animated: true, completion: nil)
     }
@@ -59,7 +59,7 @@ class RelationshipsViewController: BaseViewController {
 
 // MARK: - Collection view data source
 
-extension RelationshipsViewController: UICollectionViewDataSource {
+extension InteractionsViewController: UICollectionViewDataSource {
     
     
     // MARK: - Collection view data source
@@ -73,23 +73,23 @@ extension RelationshipsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusable(cellType: AddRelationshipCollectionViewCell.self, forIndexPath: indexPath)
+        return collectionView.dequeueReusable(cellType: AddInteractionCollectionViewCell.self, forIndexPath: indexPath)
     }
 }
 
 
 // MARK: - Collection view delegate
 
-extension RelationshipsViewController: UICollectionViewDelegate {
+extension InteractionsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        displayRelationshipViewController()
+        displayInteractionViewController()
     }
 }
 
 
 // MARK: - Collection view flow layout
 
-extension RelationshipsViewController: UICollectionViewDelegateFlowLayout {
+extension InteractionsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.size.width, height: view.frame.size.height)
     }
@@ -99,7 +99,7 @@ extension RelationshipsViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Previewing context delegate
 
-extension RelationshipsViewController: UIViewControllerPreviewingDelegate {
+extension InteractionsViewController: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         guard let _ = collectionView.indexPathsForSelectedItems,
@@ -109,13 +109,13 @@ extension RelationshipsViewController: UIViewControllerPreviewingDelegate {
         }
         
         return nil
-//        guard indexPath.row != User.currentUser.relationships.count else { return nil }
+//        guard indexPath.row != User.currentUser.interactions.count else { return nil }
 //        
 //        previewingContext.sourceRect = cell.frame
 //        let viewController = HeartViewController(nibName: HeartViewController.nibName(), bundle: nil)
 //        viewController.preferredContentSize = CGSize(width: view.frame.size.width - 30, height: view.frame.size.width - 30)
 //        
-//        User.currentUser.relationships[indexPath.row].activate()
+//        User.currentUser.interactions[indexPath.row].activate()
 //        
 //        return viewController
     }
@@ -128,9 +128,9 @@ extension RelationshipsViewController: UIViewControllerPreviewingDelegate {
 
 // MARK: - Scroll view delegate
 
-extension RelationshipsViewController {
+extension InteractionsViewController {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        if let cells = collectionView.visibleCells as? [RelationshipCollectionViewCell] {
+//        if let cells = collectionView.visibleCells as? [InteractionCollectionViewCell] {
 //            for cell in cells {
 //                cell.resetScroll()
 //            }

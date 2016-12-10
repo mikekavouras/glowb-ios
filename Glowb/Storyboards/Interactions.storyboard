@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Relationships View Controller-->
+        <!--Interactions View Controller-->
         <scene sceneID="hkC-6p-tOx">
             <objects>
-                <viewController id="Y6q-kl-lQB" customClass="RelationshipsViewController" customModule="Glowb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6q-kl-lQB" customClass="InteractionsViewController" customModule="Glowb" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gWT-eD-WQs"/>
                         <viewControllerLayoutGuide type="bottom" id="q0o-rX-sbm"/>

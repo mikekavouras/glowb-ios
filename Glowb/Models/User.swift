@@ -29,13 +29,15 @@ struct User {
         return accessToken != nil
     }
     
-    @discardableResult
-    func register() -> Promise<String> {
+    func register() {
         
-        if isRegistered {
-            return Promise(value: User.current.accessToken!)
+        if isRegistered { return }
+        
+        AccessToken.create().then { token -> Void in
+            AccessToken.current = token
+        }.catch { error in
+            print(error)
         }
         
-        return AccessToken.create()
     }
 }

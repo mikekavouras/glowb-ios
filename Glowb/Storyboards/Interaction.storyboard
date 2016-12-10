@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Relationship View Controller-->
+        <!--Interaction View Controller-->
         <scene sceneID="Wg8-3g-O0J">
             <objects>
-                <tableViewController id="WrB-QU-VX8" customClass="RelationshipViewController" customModule="Glowb" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="WrB-QU-VX8" customClass="InteractionViewController" customModule="Glowb" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="im6-Dj-g1K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        AccessToken.current = nil
+        
         setup(application)
         registerUser()
         
@@ -56,11 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - User
     
     private func registerUser() {
-        User.current.register().then { token in
-            User.current.accessToken = token
-        }.catch { error in
-            print(error)
-        }
+        User.current.register()
     }
     
     
