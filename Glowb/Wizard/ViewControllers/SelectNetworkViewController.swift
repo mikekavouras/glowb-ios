@@ -10,8 +10,10 @@ import UIKit
 
 class SelectNetworkViewController: BaseTableViewController {
     
-    var communicationManager: DeviceCommunicationManager? = DeviceCommunicationManager()
-    var networks: [Network] = []
+    var deviceId: String!
+    
+    fileprivate var communicationManager: DeviceCommunicationManager? = DeviceCommunicationManager()
+    fileprivate var networks: [Network] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +115,7 @@ extension SelectNetworkViewController {
         let viewController = NetworkCredentialsViewController.initFromStoryboard()
         
         viewController.network = network
+        viewController.deviceId = deviceId
         
         // TODO: Handle passwordless network
         navigationController?.pushViewController(viewController, animated: true)

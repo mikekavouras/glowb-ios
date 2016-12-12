@@ -19,7 +19,8 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
         }
     }()
     
-    var communicationManager: DeviceCommunicationManager?
+    fileprivate var communicationManager: DeviceCommunicationManager?
+    fileprivate var deviceId: String = ""
     
     
     // MARK: Life cycle
@@ -63,11 +64,12 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
         if state == .active {
             wifi.stopMonitoringConnection()
             
-            getDeviceID { _ in
+            getDeviceId { id in
                 self.getPublicKey { _ in
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         let networkViewController = SelectNetworkViewController()
+                        networkViewController.deviceId = id
                         self.navigationController?.pushViewController(networkViewController, animated: true)
                     }
                 }
@@ -78,14 +80,13 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
     
     // MARK: -
 
-    private func getDeviceID(completion: @escaping () -> Void) {
+    private func getDeviceId(completion: @escaping (String) -> Void) {
         print("GETTING DEVICE INFO...")
         communicationManager = DeviceCommunicationManager()
         communicationManager?.sendCommand(Command.Device.self) { [unowned self] result in
             switch result {
             case .success(let value):
-                print(value)
-                completion()
+                completion(value.deviceId)
             case .failure(let error):
                 self.wifi.startMonitoringConnectionInForeground()
                 print(error)

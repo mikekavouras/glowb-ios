@@ -50,6 +50,10 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
         setupNavigationItem()
         setupTableView()
         setupImageView()
+    
+        User.current.fetchDevices().catch { error in
+            print(error)
+        }
     }
     
     private func setupNavigationItem() {
@@ -86,13 +90,13 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     // MARK: Navigation
     
     fileprivate func showDevicesViewController() {
-        let devices: [Device] = []
+        let devices = User.current.devices
         let selectableDevices = devices.map { SelectableViewModel(model: $0, selectedState: .deselected) }
         let viewController = DeviceSelectionTableViewController(items: selectableDevices, configure: { (cell: TextSelectionRepresentableTableViewCell, item) in
             cell.label.text = item.model.name
         })
         viewController.delegate = self
-        navigationController?.pushViewController(viewController, animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     fileprivate func showColorsViewController() {
@@ -138,13 +142,13 @@ extension InteractionViewController {
             return cell
         case 1:
             let cell = tableView.dequeueReusable(cellType: TextSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
-            cell.label.text = "Select device"
-            cell.selectionLabel.text = ""
+            cell.label.text = interaction.device == nil ? "Select device" : "Device"
+            cell.selectionLabel.text = interaction.device?.name
             cell.accessoryType = .disclosureIndicator
             return cell
         case 2:
             let cell = tableView.dequeueReusable(cellType: ColorSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
-            cell.label.text = "Select color"
+            cell.label.text = interaction.color == nil ? "Select color" : "Color"
             cell.accessoryType = .disclosureIndicator
             cell.color = interaction.color?.color
             return cell

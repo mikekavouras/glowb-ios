@@ -10,6 +10,10 @@ import PromiseKit
 import Alamofire
 import Locksmith
 
+enum AccessTokenError: Error {
+    case failedToParseAccessToken
+}
+
 struct AccessToken {
     
     static var current: String? {
@@ -80,7 +84,7 @@ private struct AccessTokenParser: ServerResponseParser {
         {
             return .success(token)
         } else {
-            return .failure(UserError.failedToParseAccessToken)
+            return .failure(AccessTokenError.failedToParseAccessToken)
         }
     }
 }

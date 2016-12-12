@@ -22,8 +22,12 @@ class SelectableTableViewController<Item: Selectable, Cell: ReusableView>: BaseT
     var selectionStyle: SelectionStyle = .single
     weak var delegate: SelectableTableViewControllerDelegate?
     
-    private var items: [Item]
+    var items: [Item] = []
     private let configure: (Cell, Item) -> ()
+    
+    func updateItems(newItems: [Item]) {
+        items = newItems
+    }
     
     
     // MARK: - Life cycle

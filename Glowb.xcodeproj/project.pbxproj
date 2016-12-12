@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2466D85396CA6A7CB0B2396E /* Pods_Glowb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EB6C2F626DEB611EBB91E0 /* Pods_Glowb.framework */; };
+		8D03A4271DFD04A500B73BD9 /* NotificationName+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D03A4261DFD04A500B73BD9 /* NotificationName+Custom.swift */; };
 		8D1537D41DFA58A0008E199F /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1537D11DFA58A0008E199F /* BaseNavigationController.swift */; };
 		8D1537D51DFA58A0008E199F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1537D21DFA58A0008E199F /* BaseTableViewController.swift */; };
 		8D1537D61DFA58A0008E199F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1537D31DFA58A0008E199F /* BaseViewController.swift */; };
@@ -107,6 +108,7 @@
 		35C3DF68DDB96707364A4512 /* Pods-Glowb.distribution.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.distribution.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.distribution.xcconfig"; sourceTree = "<group>"; };
 		54E12DCAF388AD1CFD8675D0 /* Pods-Glowb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.release.xcconfig"; sourceTree = "<group>"; };
 		81B97BEB0DC2885E869503AF /* Pods-Glowb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.debug.xcconfig"; sourceTree = "<group>"; };
+		8D03A4261DFD04A500B73BD9 /* NotificationName+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Custom.swift"; sourceTree = "<group>"; };
 		8D1537D11DFA58A0008E199F /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		8D1537D21DFA58A0008E199F /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		8D1537D31DFA58A0008E199F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 				8D669EFA1DF358B60029FDB0 /* UIColor+Glowb.swift */,
 				8D208B681DF3D6BE003209A5 /* UITableView+ReusableView.swift */,
 				8D1538091DFA6781008E199F /* UICollectionView+ReusableView.swift */,
+				8D03A4261DFD04A500B73BD9 /* NotificationName+Custom.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -630,8 +633,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D2220B21DEF3BB80082E315 /* Build configuration list for PBXNativeTarget "Glowb" */;
 			buildPhases = (
-				8DD0DA491DFB3749000CB745 /* Copy Configuration */,
 				635FEAA879A0238E43EA3121 /* [CP] Check Pods Manifest.lock */,
+				8DD0DA491DFB3749000CB745 /* Copy Configuration */,
 				8D22209C1DEF3BB80082E315 /* Sources */,
 				8D22209D1DEF3BB80082E315 /* Frameworks */,
 				8D22209E1DEF3BB80082E315 /* Resources */,
@@ -787,6 +790,7 @@
 				8D38C70E1DF64C840011AF52 /* ConnectViewController.swift in Sources */,
 				8D4D79FA1DF9E820002C09D2 /* GlowScene.swift in Sources */,
 				8D1537F91DFA6479008E199F /* BaseCollectionViewCell.swift in Sources */,
+				8D03A4271DFD04A500B73BD9 /* NotificationName+Custom.swift in Sources */,
 				8D15380A1DFA6781008E199F /* UICollectionView+ReusableView.swift in Sources */,
 				8D38C7041DF64C840011AF52 /* ConnectAP.swift in Sources */,
 				8D38C70F1DF64C840011AF52 /* NetworkCredentialsViewController.swift in Sources */,

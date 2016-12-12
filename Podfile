@@ -15,4 +15,7 @@ target 'Glowb' do
 
   # https://github.com/matthewpalmer/Locksmith
   pod 'Locksmith'
+
+  # https://github.com/Hearst-DD/ObjectMapper
+  pod 'ObjectMapper', '~> 2.2'
 end

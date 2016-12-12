@@ -25,16 +25,18 @@ enum ProgressState {
 class ConnectingProgressViewController: BaseViewController {
 
     var network: Network!
-    var state: ProgressState = .configureCredentials
-    var communicationManager: DeviceCommunicationManager? = DeviceCommunicationManager()
+    var deviceId: String!
+    
+    fileprivate var state: ProgressState = .configureCredentials
+    fileprivate var communicationManager: DeviceCommunicationManager? = DeviceCommunicationManager()
 
-    var needsToClaimDevice = false
-    var isAPIReachable = false
-    var isHostReachable = false
-    var hostReachability = Reachability(hostName: "https://api.particle.io")
+    fileprivate var needsToClaimDevice = false
+    fileprivate var isAPIReachable = false
+    fileprivate var isHostReachable = false
+    fileprivate var hostReachability = Reachability(hostName: "https://api.particle.io")
     
     
-    // MARK: Life cycle
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,17 @@ class ConnectingProgressViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(notification:)), name: Notification.Name.ReachabilityChanged, object: nil)
        
         hostReachability?.startNotifier()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationItem.hidesBackButton = true
+        
+        
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        activityIndicator.snp.makeConstraints { $0.center.equalToSuperview() }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -100,9 +113,10 @@ class ConnectingProgressViewController: BaseViewController {
         }
         
         if isHostReachable {
-            // done
+            print("IT'S ALL DONE WE DID IT!")
+            NotificationCenter.default.post(name: .particleDeviceConnected, object: nil, userInfo: ["device_id" : deviceId ])
         } else {
-            // didn't work
+            print("this shit failed")
         }
     }
     

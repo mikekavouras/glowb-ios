@@ -11,6 +11,7 @@ import UIKit
 class NetworkCredentialsViewController: BaseViewController, StoryboardInitializable {
     
     var network: Network!
+    var deviceId: String!
     
     static var storyboardName: StaticString = "NetworkCredentials"
     
@@ -43,6 +44,7 @@ extension NetworkCredentialsViewController: UITextFieldDelegate {
         }
         let viewController = ConnectingProgressViewController()
         viewController.network = network
+        viewController.deviceId = deviceId
         navigationController?.pushViewController(viewController, animated: true)
         return true
     }

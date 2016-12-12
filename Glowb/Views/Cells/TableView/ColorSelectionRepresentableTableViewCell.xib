@@ -31,7 +31,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4u-p4-2Ag" customClass="ColorPreviewView" customModule="Glowb" customModuleProvider="target">
-                        <rect key="frame" x="292.5" y="12" width="19.5" height="19.5"/>
+                        <rect key="frame" x="285.5" y="12" width="19.5" height="19.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="k4u-p4-2Ag" secondAttribute="height" multiplier="1:1" id="Ldl-Ur-xof"/>
@@ -51,7 +51,7 @@
                     <constraint firstItem="xIE-de-1ye" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Ilw-1n-O1n"/>
                     <constraint firstItem="xIE-de-1ye" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="NkN-1e-4Vm"/>
                     <constraint firstItem="k4u-p4-2Ag" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="iC1-EL-Gay"/>
-                    <constraint firstAttribute="trailing" secondItem="k4u-p4-2Ag" secondAttribute="trailing" constant="8" id="r50-Wo-J4d"/>
+                    <constraint firstAttribute="trailing" secondItem="k4u-p4-2Ag" secondAttribute="trailing" constant="15" id="r50-Wo-J4d"/>
                 </constraints>
             </tableViewCellContentView>
             <userDefinedRuntimeAttributes>

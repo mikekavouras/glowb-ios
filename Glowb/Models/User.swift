@@ -9,10 +9,6 @@
 import Alamofire
 import PromiseKit
 
-enum UserError: Error {
-    case failedToParseAccessToken
-}
-
 struct User {
     static var current = User()
     
@@ -39,5 +35,22 @@ struct User {
             print(error)
         }
         
+    }
+    
+    
+    // MARK: Devices
+    
+    var devices: [Device] = []
+    
+    @discardableResult
+    func fetchDevices() -> Promise<[Device]> {
+        return Promise { fulfill, reject in
+            Device.fetchAll().then { devices -> Void in
+                User.current.devices = devices
+                fulfill(devices)
+            }.catch { error in
+                reject(error)
+            }
+        }
     }
 }

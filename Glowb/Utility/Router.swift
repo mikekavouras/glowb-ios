@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-typealias JSON = [AnyHashable: Any]
+typealias JSON = [String: Any]
 
 enum APIError: Error {
     case keyNotFound
@@ -22,7 +22,7 @@ enum Router: URLRequestConvertible {
     
     case getDevices
     case getDevice
-    case createDevice
+    case createDevice(String, String)
     case deleteDevice(String)
     case resetDevice(String)
     
@@ -33,7 +33,7 @@ enum Router: URLRequestConvertible {
     case claimInvite(Invite)
     
     fileprivate static let apiRoot: String = Plist.Config.APIRoot
-    fileprivate static let appID: String = Plist.Config.appID
+    fileprivate static let appID: String = Plist.Config.appId
 }
 
 extension Router {
@@ -51,14 +51,15 @@ extension Router {
             return try JSONEncoding.default.encode(request, with: [:])
             
         case .getDevices:
-            return try JSONEncoding.default.encode(request, with: [:])
+            return try URLEncoding.default.encode(request, with: [:])
             
-        case .getDevice(let deviceID):
-            let params = [ "device_id" : deviceID ]
+        case .getDevice(let deviceId):
+            let params = [ "device_id" : deviceId ]
+            return try URLEncoding.default.encode(request, with: params)
+            
+        case .createDevice(let deviceId, let name):
+            let params = [ "particle_id" : deviceId, "name" : name ]
             return try JSONEncoding.default.encode(request, with: params)
-            
-        case .createDevice:
-            return try JSONEncoding.default.encode(request, with: [:])
             
         case .deleteDevice:
             return try JSONEncoding.default.encode(request, with: [:])
@@ -71,7 +72,7 @@ extension Router {
             return try JSONEncoding.default.encode(request, with: params)
             
         case .getInteractions:
-            return try JSONEncoding.default.encode(request, with: [:])
+            return try URLEncoding.default.encode(request, with: [:])
             
         case .createInvite:
             return try JSONEncoding.default.encode(request, with: [:])
