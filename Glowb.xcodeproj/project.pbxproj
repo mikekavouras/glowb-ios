@@ -86,6 +86,8 @@
 		8D7291ED1DF4B086003F165F /* SecondaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291EC1DF4B086003F165F /* SecondaryTextLabel.swift */; };
 		8D7291F31DF4B383003F165F /* ColorPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291F21DF4B383003F165F /* ColorPreviewView.swift */; };
 		8D81296F1DF881FE00C50DEB /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D81296E1DF881FE00C50DEB /* Invite.swift */; };
+		8D915BB01DFF79CB0080D7BB /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D915BAF1DFF79CB0080D7BB /* Photo.swift */; };
+		8D915BB21DFF7C550080D7BB /* S3ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D915BB11DFF7C550080D7BB /* S3ImageUploader.swift */; };
 		8D921DEB1DF48B600056FAAC /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D921DEA1DF48B600056FAAC /* Styleable.swift */; };
 		8DA2DFA21DF79EB800B85B05 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA2DFA11DF79EB800B85B05 /* User.swift */; };
 		8DA75EE41DF355EB00A35737 /* InteractionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA75EE31DF355EB00A35737 /* InteractionViewController.swift */; };
@@ -189,6 +191,8 @@
 		8D7291EC1DF4B086003F165F /* SecondaryTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryTextLabel.swift; sourceTree = "<group>"; };
 		8D7291F21DF4B383003F165F /* ColorPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPreviewView.swift; sourceTree = "<group>"; };
 		8D81296E1DF881FE00C50DEB /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		8D915BAF1DFF79CB0080D7BB /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		8D915BB11DFF7C550080D7BB /* S3ImageUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3ImageUploader.swift; sourceTree = "<group>"; };
 		8D921DEA1DF48B600056FAAC /* Styleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
 		8DA2DFA11DF79EB800B85B05 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8DA75EE31DF355EB00A35737 /* InteractionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionViewController.swift; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 				8DD0DA4C1DFB3C6B000CB745 /* DescriptiveForceUnwrap.swift */,
 				8DD0DA4E1DFB3D6D000CB745 /* Plist.swift */,
 				8DD0DA501DFB44D6000CB745 /* ServerResponseParser.swift */,
+				8D915BB11DFF7C550080D7BB /* S3ImageUploader.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				8DA2DFA11DF79EB800B85B05 /* User.swift */,
 				8DD0DA561DFB5C72000CB745 /* AccessToken.swift */,
 				8D81296E1DF881FE00C50DEB /* Invite.swift */,
+				8D915BAF1DFF79CB0080D7BB /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -791,6 +797,7 @@
 				8D4D79FA1DF9E820002C09D2 /* GlowScene.swift in Sources */,
 				8D1537F91DFA6479008E199F /* BaseCollectionViewCell.swift in Sources */,
 				8D03A4271DFD04A500B73BD9 /* NotificationName+Custom.swift in Sources */,
+				8D915BB01DFF79CB0080D7BB /* Photo.swift in Sources */,
 				8D15380A1DFA6781008E199F /* UICollectionView+ReusableView.swift in Sources */,
 				8D38C7041DF64C840011AF52 /* ConnectAP.swift in Sources */,
 				8D38C70F1DF64C840011AF52 /* NetworkCredentialsViewController.swift in Sources */,
@@ -826,6 +833,7 @@
 				8D38C70A1DF64C840011AF52 /* Wifi.swift in Sources */,
 				8D38C6DA1DF625310011AF52 /* Device.swift in Sources */,
 				8D1538071DFA6479008E199F /* WiFiTableViewCell.swift in Sources */,
+				8D915BB21DFF7C550080D7BB /* S3ImageUploader.swift in Sources */,
 				8D7291E91DF4B04A003F165F /* Label.swift in Sources */,
 				8D38C7011DF64C840011AF52 /* Command+PublicKey.swift in Sources */,
 				8DD0DA4B1DFB3B25000CB745 /* PlistReadable.swift in Sources */,

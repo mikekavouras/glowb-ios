@@ -32,6 +32,10 @@ enum Router: URLRequestConvertible {
     case createInvite
     case claimInvite(Invite)
     
+    case getPhotos
+    case createPhoto
+    case updatePhoto(String)
+    
     fileprivate static let apiRoot: String = Plist.Config.APIRoot
     fileprivate static let appID: String = Plist.Config.appId
 }
@@ -43,27 +47,21 @@ extension Router {
         switch self {
         case .createOAuthToken:
             return try JSONEncoding.default.encode(request, with: [:])
-            
         case .refreshOAuthToken:
             return try JSONEncoding.default.encode(request, with: [:])
-            
         case .revokeOAuthToken:
             return try JSONEncoding.default.encode(request, with: [:])
             
         case .getDevices:
             return try URLEncoding.default.encode(request, with: [:])
-            
         case .getDevice(let deviceId):
             let params = [ "device_id" : deviceId ]
             return try URLEncoding.default.encode(request, with: params)
-            
         case .createDevice(let deviceId, let name):
             let params = [ "particle_id" : deviceId, "name" : name ]
             return try JSONEncoding.default.encode(request, with: params)
-            
         case .deleteDevice:
             return try JSONEncoding.default.encode(request, with: [:])
-            
         case .resetDevice:
             return try JSONEncoding.default.encode(request, with: [:])
             
@@ -72,19 +70,23 @@ extension Router {
                 "user_device_id" : interaction.device?.id ?? -1,
                 "name" : interaction.name
             ]
-            let r = try JSONEncoding.default.encode(request, with: params)
-            print(r)
-            return r
-            
+            return try JSONEncoding.default.encode(request, with: params)
         case .getInteractions:
             return try URLEncoding.default.encode(request, with: [:])
             
         case .createInvite:
             return try JSONEncoding.default.encode(request, with: [:])
-            
         case .claimInvite(let invite):
             let params = [ "token" : invite.token ]
             return try JSONEncoding.default.encode(request, with: params)
+            
+        case .getPhotos:
+            return try URLEncoding.default.encode(request, with: [:])
+        case .createPhoto:
+            return try JSONEncoding.default.encode(request, with: [:])
+            
+        case .updatePhoto:
+            return try JSONEncoding.default.encode(request, with: [:])
         }
     }
     
@@ -117,6 +119,13 @@ extension Router {
             return .post
         case .claimInvite:
             return .post
+        
+        case .getPhotos:
+            return .get
+        case .createPhoto:
+            return .post
+        case .updatePhoto:
+            return .patch
         }
     }
     
@@ -150,6 +159,13 @@ extension Router {
             return "/invite"
         case .claimInvite:
             return "/invite/accept"
+            
+        case .getPhotos:
+            return "/api/v1/photos"
+        case .createPhoto:
+            return "/api/v1/photos"
+        case .updatePhoto(let photoId):
+            return "/api/v1/photos/\(photoId)"
         }
     }
     

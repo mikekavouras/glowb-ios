@@ -206,6 +206,18 @@ extension InteractionViewController: UIImagePickerControllerDelegate, UINavigati
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         previewImageView.image = image
         self.dismiss(animated: true, completion: nil)
+        
+        guard let jpeg = UIImageJPEGRepresentation(image, 0.5) else { return }
+        
+        Photo.create().then { params in
+            S3ImageUploader.uploadImage(jpeg: jpeg, params: params).then { something -> Void in
+                
+            }.catch { error in
+                print(error)
+            }
+        }.catch { error in
+            print(error)
+        }
     }
 }
 
