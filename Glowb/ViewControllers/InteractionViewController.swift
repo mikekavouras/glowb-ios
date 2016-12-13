@@ -207,7 +207,7 @@ extension InteractionViewController: UIImagePickerControllerDelegate, UINavigati
         previewImageView.image = image
         self.dismiss(animated: true, completion: nil)
         
-        guard let jpeg = UIImageJPEGRepresentation(image, 0.5) else { return }
+        guard let jpeg = UIImageJPEGRepresentation(image, 0.1) else { return }
         
         Photo.create().then { params in
             S3ImageUploader.uploadImage(jpeg: jpeg, params: params).then { something -> Void in
