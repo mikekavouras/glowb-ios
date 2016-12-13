@@ -11,7 +11,7 @@ Dir.chdir "#{dir}"
 Dir.chdir "certs_repo"
 
 branch = 'master'
-app_identifer = ENV['APP_IDENTIFIER']
+app_identifier = ENV['APP_IDENTIFIER']
 
 puts "Checking out #{branch} branch"
 `git checkout #{branch}`
