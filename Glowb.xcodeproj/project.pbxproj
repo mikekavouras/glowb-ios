@@ -37,6 +37,7 @@
 		8D208B6B1DF3D707003209A5 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D208B6A1DF3D707003209A5 /* ReusableView.swift */; };
 		8D2220A41DEF3BB80082E315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2220A31DEF3BB80082E315 /* AppDelegate.swift */; };
 		8D2781E91DF491380050E4E8 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2781E81DF491380050E4E8 /* Themeable.swift */; };
+		8D2880D31E00ACA9009D5909 /* UIImage+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */; };
 		8D2DC9891DF71AF10074F194 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2DC9881DF71AF10074F194 /* Interaction.swift */; };
 		8D369A871DF78717002C8D72 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369A861DF78717002C8D72 /* Router.swift */; };
 		8D37CE4B1DF91B370068B09E /* CardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D37CE4A1DF91B370068B09E /* CardAnimationController.swift */; };
@@ -140,6 +141,7 @@
 		8D2220A01DEF3BB80082E315 /* Glowb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glowb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2220A31DEF3BB80082E315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D2781E81DF491380050E4E8 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
+		8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transform.swift"; sourceTree = "<group>"; };
 		8D2DC9881DF71AF10074F194 /* Interaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		8D369A861DF78717002C8D72 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8D37CE4A1DF91B370068B09E /* CardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardAnimationController.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				8D208B681DF3D6BE003209A5 /* UITableView+ReusableView.swift */,
 				8D1538091DFA6781008E199F /* UICollectionView+ReusableView.swift */,
 				8D03A4261DFD04A500B73BD9 /* NotificationName+Custom.swift */,
+				8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -864,6 +867,7 @@
 				8D1537F71DFA6479008E199F /* AddInteractionCollectionViewCell.swift in Sources */,
 				8D38C7101DF64C840011AF52 /* SelectNetworkViewController.swift in Sources */,
 				8D1537D41DFA58A0008E199F /* BaseNavigationController.swift in Sources */,
+				8D2880D31E00ACA9009D5909 /* UIImage+Transform.swift in Sources */,
 				8D208B691DF3D6BE003209A5 /* UITableView+ReusableView.swift in Sources */,
 				8D1537FD1DFA6479008E199F /* ColorSelectionRepresentableTableViewCell.swift in Sources */,
 				8D38C6E41DF6480C0011AF52 /* DeviceSelectionTableViewController.swift in Sources */,

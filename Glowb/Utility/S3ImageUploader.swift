@@ -17,8 +17,12 @@ enum S3ImageUploadError: Error {
 struct S3ImageUploader {
     
     static let url: String = "https://electrolamp-photos.s3.amazonaws.com"
+    static let headers: HTTPHeaders = [
+        "Content-Disposition": "form-data; name=\"file\"",
+        "Content-Type": "application/octet-stream"
+    ]
     
-    static func uploadImage(jpeg: Data, params: JSON) -> Promise<Void> {
+    static func uploadImage(jpeg: Data, params: JSON, progressHandler: ((Progress) -> Void)? = S3ImageUploader.handleProgress) -> Promise<Void> {
         
         return Promise { fulfill, reject in
             
@@ -31,13 +35,14 @@ struct S3ImageUploader {
                     data.append(valueData, withName: key)
                 }
                 
-                data.append(InputStream(data: jpeg), withLength: UInt64(jpeg.count), headers: [:])
+                data.append(InputStream(data: jpeg), withLength: UInt64(jpeg.count), headers: headers)
             }, to: url, method: .post) { result in
                 
                 switch result {
                 case .success(let request, _, _ ):
-                    request.uploadProgress(closure: S3ImageUploader.handleProgress).response { response in
+                    request.uploadProgress(closure: progressHandler!).response { response in
                         fulfill()
+                        print(String(data: response.data!, encoding: .utf8)!)
                     }
                 case .failure( let encodingError ):
                     reject(S3ImageUploadError.failedToUploadImage(encodingError.localizedDescription))

@@ -84,6 +84,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).setTitleTextAttributes([
             NSForegroundColorAttributeName: UIColor.white
         ], for: .normal)
+        
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).setTitleTextAttributes([
+            NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.5)
+        ], for: .disabled)
     }
 }
 

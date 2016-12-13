@@ -12,8 +12,10 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     
     static var storyboardName: StaticString = "Interaction"
 
-    @IBOutlet weak var previewImageView: UIImageView!
     var interaction = Interaction()
+    
+    @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var uploadProgressView: UIProgressView!
     
     lazy var imagePickerController: UIImagePickerController = {
         let picker = UIImagePickerController()
@@ -204,20 +206,40 @@ extension InteractionViewController: UITextFieldDelegate {
 
 extension InteractionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
         previewImageView.image = image
+        uploadImage(image)
+        
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func uploadImage(_ image: UIImage) {
+        guard let finalImage = image.scale(amount: 1000 / image.size.width),
+            let jpeg = UIImageJPEGRepresentation(finalImage, 0.5) else
+        { return }
         
-        guard let jpeg = UIImageJPEGRepresentation(image, 0.1) else { return }
+        navigationItem.rightBarButtonItem?.isEnabled = false
         
-        Photo.create().then { params in
-            S3ImageUploader.uploadImage(jpeg: jpeg, params: params).then { something -> Void in
-                print(something)
+        let completion = { [weak self] in
+            self?.navigationItem.rightBarButtonItem?.isEnabled = true
+            UIView.animate(withDuration: 0.3) {
+                self?.uploadProgressView.alpha = 0.0
+            }
+        }
+        
+        Photo.create().then { [weak self] params in
+            S3ImageUploader.uploadImage(jpeg: jpeg, params: params, progressHandler: self?.handleUploadProgress).then { something -> Void in
+                completion()
             }.catch { error in
-                print(error)
+                completion()
             }
         }.catch { error in
-            print(error)
+            completion()
         }
+    }
+    
+    private func handleUploadProgress(_ progress: Progress) {
+        uploadProgressView.progress = Float(progress.fractionCompleted)
     }
 }
 
