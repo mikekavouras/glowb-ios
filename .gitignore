@@ -52,5 +52,4 @@ fastlane/test_output
 .env
 **/configuration.*
 !**/Configuration.swift
-*/SupportingFiles/info.*
 /certs
