@@ -211,7 +211,7 @@ extension InteractionViewController: UIImagePickerControllerDelegate, UINavigati
         
         Photo.create().then { params in
             S3ImageUploader.uploadImage(jpeg: jpeg, params: params).then { something -> Void in
-                
+                print(something)
             }.catch { error in
                 print(error)
             }
