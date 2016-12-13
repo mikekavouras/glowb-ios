@@ -214,27 +214,20 @@ extension InteractionViewController: UIImagePickerControllerDelegate, UINavigati
     }
     
     private func uploadImage(_ image: UIImage) {
-        guard let finalImage = image.scale(amount: 1000 / image.size.width),
-            let jpeg = UIImageJPEGRepresentation(finalImage, 0.5) else
-        { return }
         
         navigationItem.rightBarButtonItem?.isEnabled = false
         
-        let completion = { [weak self] in
-            self?.navigationItem.rightBarButtonItem?.isEnabled = true
-            UIView.animate(withDuration: 0.3) {
-                self?.uploadProgressView.alpha = 0.0
-            }
-        }
-        
-        Photo.create().then { [weak self] params in
-            S3ImageUploader.uploadImage(jpeg: jpeg, params: params, progressHandler: self?.handleUploadProgress).then { something -> Void in
-                completion()
-            }.catch { error in
-                completion()
-            }
-        }.catch { error in
-            completion()
+        _ = Photo.create(image: image, uploadProgressHandler: handleUploadProgress).then { [weak self] photo -> Void in
+            self?.interaction.photo = photo
+        }.catch { error -> Void in
+            print(error)
+        }.always {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            UIView.animate(withDuration: 0.3, animations: {
+                self.uploadProgressView.alpha = 0.0
+            }, completion: { done in
+                self.uploadProgressView.progress = 0.0
+            })
         }
     }
     

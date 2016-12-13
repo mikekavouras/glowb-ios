@@ -9,9 +9,11 @@
 import Foundation
 import Alamofire
 import PromiseKit
+import SWXMLHash
 
 enum S3ImageUploadError: Error {
     case failedToUploadImage(String)
+    case failedToParseXMLResponse
 }
 
 struct S3ImageUploader {
@@ -22,7 +24,7 @@ struct S3ImageUploader {
         "Content-Type": "application/octet-stream"
     ]
     
-    static func uploadImage(jpeg: Data, params: JSON, progressHandler: ((Progress) -> Void)? = S3ImageUploader.handleProgress) -> Promise<Void> {
+    static func uploadImage(jpeg: Data, params: JSON, progressHandler: ((Progress) -> Void)? = S3ImageUploader.handleProgress) -> Promise<String> {
         
         return Promise { fulfill, reject in
             
@@ -41,8 +43,16 @@ struct S3ImageUploader {
                 switch result {
                 case .success(let request, _, _ ):
                     request.uploadProgress(closure: progressHandler!).response { response in
-                        fulfill()
-                        print(String(data: response.data!, encoding: .utf8)!)
+                        let xml = SWXMLHash.parse(response.data!)
+                        let eTag = xml["PostResponse"]["ETag"]
+                        guard let eTagElement = eTag.element,
+                            let eTagText = eTagElement.text else
+                        {
+                            reject(S3ImageUploadError.failedToParseXMLResponse)
+                            return
+                        }
+                        
+                        fulfill(eTagText)
                     }
                 case .failure( let encodingError ):
                     reject(S3ImageUploadError.failedToUploadImage(encodingError.localizedDescription))

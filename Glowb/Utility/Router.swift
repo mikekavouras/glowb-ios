@@ -34,7 +34,7 @@ enum Router: URLRequestConvertible {
     
     case getPhotos
     case createPhoto
-    case updatePhoto(String)
+    case updatePhoto(Photo)
     
     fileprivate static let apiRoot: String = Plist.Config.APIRoot
     fileprivate static let appID: String = Plist.Config.appId
@@ -84,9 +84,9 @@ extension Router {
             return try URLEncoding.default.encode(request, with: [:])
         case .createPhoto:
             return try JSONEncoding.default.encode(request, with: [:])
-            
-        case .updatePhoto:
-            return try JSONEncoding.default.encode(request, with: [:])
+        case .updatePhoto(let photo):
+            let params = photo.toJSON()
+            return try JSONEncoding.default.encode(request, with: params)
         }
     }
     
@@ -164,8 +164,8 @@ extension Router {
             return "/api/v1/photos"
         case .createPhoto:
             return "/api/v1/photos"
-        case .updatePhoto(let photoId):
-            return "/api/v1/photos/\(photoId)"
+        case .updatePhoto(let photo):
+            return "/api/v1/photos/\(photo.id)"
         }
     }
     

@@ -12,6 +12,7 @@ import PromiseKit
 struct Interaction {
     var color: Color?
     var device: Device?
+    var photo: Photo?
     var name: String = ""
     
     init(color: Color, device: Device) {
