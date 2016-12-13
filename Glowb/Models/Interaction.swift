@@ -12,6 +12,7 @@ import PromiseKit
 struct Interaction {
     var color: Color?
     var device: Device?
+    var name: String = ""
     
     init(color: Color, device: Device) {
         self.color = color
@@ -20,11 +21,10 @@ struct Interaction {
     
     init() {}
     
-    var asJSON: JSON {
-        return [:]
-    }
     
-    static func create(interaction: Interaction) -> Promise<Interaction> {
+    // MARK: - API
+    
+    static func create(_ interaction: Interaction) -> Promise<Interaction> {
         return Promise { fulfill, reject in
             return Alamofire.request(Router.createInteraction(interaction)).validate().responseJSON { response in
                 fulfill(Interaction())
@@ -41,3 +41,14 @@ struct Interaction {
     }
     
 }
+
+//private struct InteractionParser: ServerResponseParser {
+//    static func parseJSON(_ json: JSON) -> Alamofire.Result<[Interaction]> {
+//        if let data = json["data"] as? [JSON] {
+//            let devices: [Device] = data.flatMap { Mapper<Interaction>().map(JSON: $0) }
+//            return .success(devices)
+//        } else {
+//            return .failure(DeviceError.failedToParse)
+//        }
+//    }
+//}

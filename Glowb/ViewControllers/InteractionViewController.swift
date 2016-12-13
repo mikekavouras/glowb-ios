@@ -75,11 +75,17 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     // MARK: Actions
     
     @objc private func cancelButtonTapped() {
+        // TODO: Alert (u shur?)
         dismiss(animated: true, completion: nil)
     }
     
     @objc private func saveButtonTapped() {
-        print("SAVE RELATIONSHIP")
+        // TODO: Validation
+        Interaction.create(interaction).then { interaction in
+            print("Brown Spots on the Wall - Hoo Flung Poo")
+        }.catch { error in
+            
+        }
     }
     
     @IBAction func addImageButtonTapped(_ sender: Any) {
@@ -184,6 +190,10 @@ extension InteractionViewController {
 extension InteractionViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
+        if let text = textField.text {
+            interaction.name = text
+        }
         
         return true
     }

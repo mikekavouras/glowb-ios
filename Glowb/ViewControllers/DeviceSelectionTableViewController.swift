@@ -40,7 +40,7 @@ class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: 
             Device.create(deviceId: id, name: "Slinky").then { device -> Void in
                 User.current.devices.append(device)
                 self.dismiss(animated: true, completion: nil)
-//                self.refreshDevices()
+                self.refreshDevices()
             }.catch { error in
                 print(error)
             }
@@ -61,6 +61,9 @@ class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: 
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         print("commit")
+        
+        // delete device
+        // reload table
     }
     
     

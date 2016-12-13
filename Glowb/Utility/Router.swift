@@ -68,8 +68,13 @@ extension Router {
             return try JSONEncoding.default.encode(request, with: [:])
             
         case .createInteraction(let interaction):
-            let params = [ "interaction" : interaction.asJSON ]
-            return try JSONEncoding.default.encode(request, with: params)
+            let params: JSON = [
+                "user_device_id" : interaction.device?.id ?? -1,
+                "name" : interaction.name
+            ]
+            let r = try JSONEncoding.default.encode(request, with: params)
+            print(r)
+            return r
             
         case .getInteractions:
             return try URLEncoding.default.encode(request, with: [:])
@@ -137,9 +142,9 @@ extension Router {
             return "/api/v1/devices/reset/\(deviceID)"
             
         case .createInteraction:
-            return "/interaction"
+            return "/api/v1/interactions"
         case .getInteractions:
-            return "/interactions"
+            return "/api/v1/interactions"
             
         case .createInvite:
             return "/invite"
