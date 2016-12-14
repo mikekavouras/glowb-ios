@@ -19,7 +19,7 @@ struct Interaction: Mappable {
     var device: Device?
     var photo: Photo?
     var name: String = ""
-    var id: String?
+    var id: String = ""
     
     var imageUrl: URL? {
         guard let token = photo?.token else { return nil }
@@ -69,6 +69,13 @@ struct Interaction: Mappable {
                     reject(error)
                 }
             }
+        }
+    }
+    
+    func interact() {
+        Alamofire.request(Router.createEvent(self)).validate().responseJSON { response in
+            print(response)
+            print(response.result.value)
         }
     }
     

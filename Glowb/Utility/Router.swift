@@ -26,8 +26,9 @@ enum Router: URLRequestConvertible {
     case deleteDevice(String)
     case resetDevice(String)
     
-    case createInteraction(Interaction)
     case getInteractions
+    case createInteraction(Interaction)
+    case createEvent(Interaction)
     
     case createInvite
     case claimInvite(Invite)
@@ -65,6 +66,8 @@ extension Router {
         case .resetDevice:
             return try JSONEncoding.default.encode(request, with: [:])
             
+        case .getInteractions:
+            return try URLEncoding.default.encode(request, with: [:])
         case .createInteraction(let interaction):
             let params: JSON = [
                 "user_device_id" : interaction.device?.id ?? -1,
@@ -72,8 +75,8 @@ extension Router {
                 "photo_id" : interaction.photo?.id ?? ""
             ]
             return try JSONEncoding.default.encode(request, with: params)
-        case .getInteractions:
-            return try URLEncoding.default.encode(request, with: [:])
+        case .createEvent:
+            return try JSONEncoding.default.encode(request, with: [:])
             
         case .createInvite:
             return try JSONEncoding.default.encode(request, with: [:])
@@ -115,6 +118,8 @@ extension Router {
             return .post
         case .getInteractions:
             return .get
+        case .createEvent:
+            return .post
             
         case .createInvite:
             return .post
@@ -155,6 +160,8 @@ extension Router {
             return "/api/v1/interactions"
         case .getInteractions:
             return "/api/v1/interactions"
+        case .createEvent(let interaction):
+            return "/api/v1/interactions/\(interaction.id)"
             
         case .createInvite:
             return "/invite"

@@ -111,7 +111,7 @@ extension InteractionsViewController: UICollectionViewDelegate {
         switch indexPath.row {
         case 0..<User.current.interactions.count:
             let interaction = User.current.interactions[indexPath.row]
-            print(interaction)
+            interaction.interact()
         case User.current.interactions.count:
             displayInteractionViewController()
         default: break
