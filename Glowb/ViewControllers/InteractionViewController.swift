@@ -83,10 +83,11 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     
     @objc private func saveButtonTapped() {
         // TODO: Validation
-        Interaction.create(interaction).then { interaction in
-            print("Brown Spots on the Wall - Hoo Flung Poo")
+        Interaction.create(interaction).then { interaction -> Void in
+            User.current.interactions.append(interaction)
+            self.dismiss(animated: true, completion: nil)
         }.catch { error in
-            
+            print(error)
         }
     }
     

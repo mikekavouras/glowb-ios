@@ -18,7 +18,7 @@ enum PhotoError: Error {
 }
 
 struct Photo: Mappable {
-    var id: String
+    var id: String?
     var filename: String?
     var ext: String = ""
     var mimeType: String?
@@ -29,17 +29,14 @@ struct Photo: Mappable {
     
     var s3Params: JSON?
     
-    init?(map: Map) {
-        guard let data = map.JSON["data"] as? JSON,
-            let id = data["id"] as? String else
-        { return nil }
-        
-        self.id = id
-    }
+    init?(map: Map) {}
     
     mutating func mapping(map: Map) {
-        id       <- map["data.id"]
-        s3Params <- map["data.attributes.params"]
+        id             <- map["id"]
+        s3Params       <- map["params"]
+        originalHeight <- map["original_height"]
+        originalWidth  <- map["original_width"]
+        token          <- map["token"]
     }
     
     func toJSON() -> [String : Any] {
@@ -53,8 +50,8 @@ struct Photo: Mappable {
     static func create(image: UIImage, uploadProgressHandler: @escaping (Progress) -> Void) -> Promise<Photo> {
         return Promise { fulfill, reject in
             
-            guard let jpeg = UIImageJPEGRepresentation(image, 0.5),
-                let finalImage = image.scale(amount: 1000 / image.size.width) else
+            guard let finalImage = image.scale(amount: 1000 / image.size.width),
+                let jpeg = UIImageJPEGRepresentation(finalImage, 0.5) else
             {
                 reject(PhotoError.failedToProcessImage)
                 return
@@ -111,9 +108,18 @@ struct Photo: Mappable {
 
 private struct PhotoParser: ServerResponseParser {
     static func parseJSON(_ json: JSON) -> Alamofire.Result<Photo> {
-        guard let photo = Mapper<Photo>().map(JSON: json) else {
+        guard let data = json["data"] as? JSON,
+            let id = data["id"] as? String,
+            let attributes = data["attributes"] as? JSON else
+        { return .failure(ServerError.invalidJSONFormat) }
+        
+        var newJSON: JSON = attributes
+        newJSON["id"] = id
+        
+        guard let photo = Mapper<Photo>().map(JSON: newJSON) else {
             return .failure(ServerError.invalidJSONFormat)
         }
+        
         return .success(photo)
     }
 }

@@ -68,7 +68,8 @@ extension Router {
         case .createInteraction(let interaction):
             let params: JSON = [
                 "user_device_id" : interaction.device?.id ?? -1,
-                "name" : interaction.name
+                "name" : interaction.name,
+                "photo_id" : interaction.photo?.id ?? ""
             ]
             return try JSONEncoding.default.encode(request, with: params)
         case .getInteractions:
@@ -165,7 +166,7 @@ extension Router {
         case .createPhoto:
             return "/api/v1/photos"
         case .updatePhoto(let photo):
-            return "/api/v1/photos/\(photo.id)"
+            return "/api/v1/photos/\(photo.id ?? "")"
         }
     }
     

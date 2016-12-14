@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class InteractionsViewController: BaseViewController {
 
@@ -19,6 +20,13 @@ class InteractionsViewController: BaseViewController {
         super.viewDidLoad()
         
         setup()
+        
+        Interaction.fetchAll().then { interactions -> Void in
+            User.current.interactions = interactions
+            self.collectionView.reloadData()
+        }.catch { error in
+            print(error)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +51,7 @@ class InteractionsViewController: BaseViewController {
         collectionView.dataSource = self
     
         collectionView.register(cellType: AddInteractionCollectionViewCell.self)
-//        collectionView.register(InteractionCollectionViewCell.Nib, forCellWithReuseIdentifier: InteractionCollectionViewCell.CellIdentifier)
+        collectionView.register(cellType: InteractionCollectionViewCell.self)
     }
     
     
@@ -69,11 +77,29 @@ extension InteractionsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return User.current.interactions.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusable(cellType: AddInteractionCollectionViewCell.self, forIndexPath: indexPath)
+        switch indexPath.row {
+        case 0..<User.current.interactions.count:
+            let cell = collectionView.dequeueReusable(cellType: InteractionCollectionViewCell.self, forIndexPath: indexPath)
+            let interaction = User.current.interactions[indexPath.row]
+            
+            if let imageUrl = interaction.imageUrl {
+                cell.imageView.af_setImage(withURL: imageUrl)
+            }
+            
+            return cell
+        case User.current.interactions.count:
+            return collectionView.dequeueReusable(cellType: AddInteractionCollectionViewCell.self, forIndexPath: indexPath)
+        default:
+            return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        (cell as? InteractionCollectionViewCell)?.imageView.af_cancelImageRequest()
     }
 }
 
@@ -82,7 +108,14 @@ extension InteractionsViewController: UICollectionViewDataSource {
 
 extension InteractionsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        displayInteractionViewController()
+        switch indexPath.row {
+        case 0..<User.current.interactions.count:
+            let interaction = User.current.interactions[indexPath.row]
+            print(interaction)
+        case User.current.interactions.count:
+            displayInteractionViewController()
+        default: break
+        }
     }
 }
 

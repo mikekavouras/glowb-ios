@@ -12,6 +12,8 @@ import PromiseKit
 struct User {
     static var current = User()
     
+    var interactions: [Interaction] = []
+    
     var accessToken: String? {
         get {
             return AccessToken.current

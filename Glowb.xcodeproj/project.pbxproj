@@ -38,6 +38,8 @@
 		8D2220A41DEF3BB80082E315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2220A31DEF3BB80082E315 /* AppDelegate.swift */; };
 		8D2781E91DF491380050E4E8 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2781E81DF491380050E4E8 /* Themeable.swift */; };
 		8D2880D31E00ACA9009D5909 /* UIImage+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */; };
+		8D2880D51E00C0CE009D5909 /* InteractionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2880D41E00C0CE009D5909 /* InteractionCollectionViewCell.swift */; };
+		8D2880D71E00C0ED009D5909 /* InteractionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2880D61E00C0ED009D5909 /* InteractionCollectionViewCell.xib */; };
 		8D2DC9891DF71AF10074F194 /* Interaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2DC9881DF71AF10074F194 /* Interaction.swift */; };
 		8D369A871DF78717002C8D72 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D369A861DF78717002C8D72 /* Router.swift */; };
 		8D37CE4B1DF91B370068B09E /* CardAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D37CE4A1DF91B370068B09E /* CardAnimationController.swift */; };
@@ -142,6 +144,8 @@
 		8D2220A31DEF3BB80082E315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D2781E81DF491380050E4E8 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
 		8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transform.swift"; sourceTree = "<group>"; };
+		8D2880D41E00C0CE009D5909 /* InteractionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionCollectionViewCell.swift; sourceTree = "<group>"; };
+		8D2880D61E00C0ED009D5909 /* InteractionCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InteractionCollectionViewCell.xib; sourceTree = "<group>"; };
 		8D2DC9881DF71AF10074F194 /* Interaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interaction.swift; sourceTree = "<group>"; };
 		8D369A861DF78717002C8D72 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8D37CE4A1DF91B370068B09E /* CardAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardAnimationController.swift; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 				8D1537E41DFA6479008E199F /* Base */,
 				8D1537E21DFA6479008E199F /* AddInteractionCollectionViewCell.swift */,
 				8D1537E31DFA6479008E199F /* AddInteractionCollectionViewCell.xib */,
+				8D2880D41E00C0CE009D5909 /* InteractionCollectionViewCell.swift */,
+				8D2880D61E00C0ED009D5909 /* InteractionCollectionViewCell.xib */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 				8DC174C11DF68A4400FB7A13 /* NetworkCredentials.storyboard in Resources */,
 				8D669EF11DF358000029FDB0 /* LaunchScreen.storyboard in Resources */,
 				8D1538041DFA6479008E199F /* TextFieldTableViewCell.xib in Resources */,
+				8D2880D71E00C0ED009D5909 /* InteractionCollectionViewCell.xib in Resources */,
 				8DB1E08A1DF366AE000648C3 /* Assets.xcassets in Resources */,
 				8D1537FE1DFA6479008E199F /* ColorSelectionRepresentableTableViewCell.xib in Resources */,
 			);
@@ -854,6 +861,7 @@
 				8D38C7051DF64C840011AF52 /* ParticleCommunicable.swift in Sources */,
 				8D1537D81DFA59D0008E199F /* InteractionsViewController.swift in Sources */,
 				8D38C6D01DF6228F0011AF52 /* SelectableTableViewController.swift in Sources */,
+				8D2880D51E00C0CE009D5909 /* InteractionCollectionViewCell.swift in Sources */,
 				8D1537D51DFA58A0008E199F /* BaseTableViewController.swift in Sources */,
 				8D38C70C1DF64C840011AF52 /* SwiftyRSA.swift in Sources */,
 				8D38C71D1DF652470011AF52 /* Button.swift in Sources */,

@@ -21,4 +21,7 @@ target 'Glowb' do
 
   # https://github.com/drmohundro/SWXMLHash
   pod 'SWXMLHash', '~> 3.0.0'
+
+  # https://github.com/Alamofire/AlamofireImage
+  pod 'AlamofireImage', '~> 3.1'
 end
