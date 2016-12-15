@@ -40,16 +40,21 @@ class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: 
             Device.create(deviceId: id, name: "Slinky").then { device -> Void in
                 User.current.devices.append(device)
                 self.dismiss(animated: true, completion: nil)
-                self.refreshDevices()
+                self.refreshDevices(device)
             }.catch { error in
                 print(error)
             }
         }
     }
     
-    private func refreshDevices() {
-        let devices = User.current.devices
-        let selectableDevices = devices.map { SelectableViewModel(model: $0, selectedState: .deselected) }
+    private func refreshDevices(_ device: Device) {
+//        let devices = User.current.devices
+//        let selectableDevices = devices.map { item -> SelectableViewModel<Device> in
+//            let state = item == device ? .selected : .deselected
+//            return SelectableViewModel(model: item, selectedState: state)
+//        }
+//        
+//        items = selectableDevices
         
         self.tableView.reloadData()
     }

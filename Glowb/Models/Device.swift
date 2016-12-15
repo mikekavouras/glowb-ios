@@ -85,6 +85,10 @@ struct Device: Mappable {
     }
 }
 
+func ==(lhs: Device, rhs: Device) -> Bool {
+    return lhs.id == rhs.id
+}
+
 private struct DevicesParser: ServerResponseParser {
     static func parseJSON(_ json: JSON) -> Alamofire.Result<[Device]> {
         guard let data = json["user_devices"] as? [JSON] else {

@@ -16,6 +16,7 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
     static var nibName: String = "InteractionCollectionViewCell"
     
     
+    @IBOutlet weak var nameLabel: PrimaryTextLabel!
     @IBOutlet private weak var editButton: UIButton!
     
     fileprivate let outOfFocusVisibleHeight: CGFloat = 60.0
@@ -36,6 +37,7 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
     
     fileprivate lazy var foregroundView: BaseView = {
         let view = BaseView()
+        view.theme = .dark
         view.layer.cornerRadius = self.cornerRadius
         view.clipsToBounds = true
         
@@ -57,6 +59,7 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
     
     lazy var foregroundImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFill
         
         return imageView

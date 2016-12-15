@@ -94,6 +94,8 @@ extension InteractionsViewController: UICollectionViewDataSource {
                 cell.foregroundImageView.af_setImage(withURL: imageUrl)
             }
             
+            cell.nameLabel.text = interaction.name
+            
             cell.editButtonTappedHandler = { [weak self] in
                 self?.displayInteractionViewController(interaction)
             }

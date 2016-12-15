@@ -32,8 +32,23 @@
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7QM-vY-ZvZ">
-                                <rect key="frame" x="112" y="157" width="46" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gw-mW-AOn" customClass="PrimaryTextLabel" customModule="Glowb" customModuleProvider="target">
+                                <rect key="frame" x="98.5" y="76.5" width="73" height="33.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7QM-vY-ZvZ" customClass="Button" customModule="Glowb" customModuleProvider="target">
+                                <rect key="frame" x="75" y="150" width="120" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="39M-5F-eeC"/>
+                                    <constraint firstAttribute="height" constant="44" id="cyS-Ss-k5U"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Edit">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -48,7 +63,9 @@
                             <constraint firstAttribute="trailing" secondItem="OhO-ar-x2h" secondAttribute="trailing" id="QcJ-M8-cQh"/>
                             <constraint firstAttribute="trailing" secondItem="9z2-5Q-NTd" secondAttribute="trailing" id="URy-CL-L06"/>
                             <constraint firstAttribute="bottom" secondItem="OhO-ar-x2h" secondAttribute="bottom" id="WfF-lE-M4d"/>
+                            <constraint firstItem="7QM-vY-ZvZ" firstAttribute="top" secondItem="9gw-mW-AOn" secondAttribute="bottom" constant="40" id="dFg-jn-bCs"/>
                             <constraint firstItem="7QM-vY-ZvZ" firstAttribute="centerX" secondItem="FUT-B9-lwB" secondAttribute="centerX" id="dJR-ck-2m7"/>
+                            <constraint firstItem="9gw-mW-AOn" firstAttribute="centerX" secondItem="FUT-B9-lwB" secondAttribute="centerX" id="fJZ-rE-HiY"/>
                             <constraint firstItem="9z2-5Q-NTd" firstAttribute="top" secondItem="FUT-B9-lwB" secondAttribute="top" id="hws-Ps-leh"/>
                             <constraint firstAttribute="bottom" secondItem="9z2-5Q-NTd" secondAttribute="bottom" id="lgh-9W-RWo"/>
                             <constraint firstItem="OhO-ar-x2h" firstAttribute="top" secondItem="FUT-B9-lwB" secondAttribute="top" id="uFE-cL-tzd"/>
@@ -101,6 +118,7 @@
                 <outlet property="backgroundContainerView" destination="FUT-B9-lwB" id="VAd-Nc-nXr"/>
                 <outlet property="backgroundImageView" destination="9z2-5Q-NTd" id="jSs-HB-MP0"/>
                 <outlet property="editButton" destination="7QM-vY-ZvZ" id="ezg-f5-OSR"/>
+                <outlet property="nameLabel" destination="9gw-mW-AOn" id="pNy-nK-uM6"/>
                 <outlet property="scrollContentView" destination="D4f-LH-RYD" id="Sxl-7E-3f9"/>
                 <outlet property="scrollContentViewHeightConstraint" destination="F9N-bY-hS6" id="ePu-o2-RiT"/>
                 <outlet property="scrollContentViewWidthConstraint" destination="cKY-iV-ipS" id="slB-hd-eUQ"/>

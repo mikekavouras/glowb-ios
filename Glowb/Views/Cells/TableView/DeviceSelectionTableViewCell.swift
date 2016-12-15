@@ -8,6 +8,18 @@
 
 import UIKit
 
-class DeviceSelectionTableViewCell: BaseTableViewCell {
-
+class DeviceSelectionTableViewCell: BaseTableViewCell, ReusableView, Selectable {
+    static var identifier: String = "DeviceSelectionCellIdentifier"
+    static var nibName: String = "DeviceSelectionTableViewCell"
+    
+    var selectedState: SelectedState = .deselected {
+        didSet { updateStateUI() }
+    }
+    
+    @IBOutlet private weak var selectedIndicator: UIImageView!
+    @IBOutlet weak var label: PrimaryTextLabel!
+    
+    private func updateStateUI() {
+        selectedIndicator.isHidden = selectedState == .deselected
+    }
 }

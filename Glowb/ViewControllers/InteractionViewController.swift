@@ -129,10 +129,19 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     
     fileprivate func showDevicesViewController() {
         let devices = User.current.devices
-        let selectableDevices = devices.map { SelectableViewModel(model: $0, selectedState: .deselected) }
-        let viewController = DeviceSelectionTableViewController(items: selectableDevices, configure: { (cell: TextSelectionRepresentableTableViewCell, item) in
+        let selectableDevices = devices.map { item -> SelectableViewModel<Device> in
+            var state: SelectedState = .deselected
+            if let device = interaction.device {
+                state = item == device ? .selected : .deselected
+            }
+            return SelectableViewModel(model: item, selectedState: state)
+        }
+
+        let viewController = DeviceSelectionTableViewController(items: selectableDevices, configure: { (cell: DeviceSelectionTableViewCell, item) in
             cell.label.text = item.model.name
+            cell.selectedState = item.selectedState
         })
+
         viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }
@@ -146,10 +155,12 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
             }
             return SelectableViewModel(model: color, selectedState: state)
         }
+
         let viewController = SelectableTableViewController(items: selectableColors, configure: { (cell: ColorSelectionTableViewCell, item) in
             cell.color = item.model.color
             cell.selectedState = item.selectedState
         })
+
         viewController.selectionStyle = .single
         viewController.delegate = self
         navigationController?.pushViewController(viewController, animated: true)
