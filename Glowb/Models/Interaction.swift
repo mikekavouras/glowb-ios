@@ -57,6 +57,21 @@ struct Interaction: Mappable {
         }
     }
     
+    static func update(_ interaction: Interaction) -> Promise<Interaction> {
+        return Promise { fulfill, reject in
+            return Alamofire.request(Router.updateInteraction(interaction)).validate().responseJSON { response in
+                let result = InteractionParser.parseResponse(response)
+                
+                switch result {
+                case .success(let interaction):
+                    fulfill(interaction)
+                case .failure(let error):
+                    reject(error)
+                }
+            }
+        }
+    }
+    
     static func fetchAll() -> Promise<[Interaction]> {
         return Promise { fulfill, reject in
             return Alamofire.request(Router.getInteractions).validate().responseJSON { response in
@@ -78,6 +93,12 @@ struct Interaction: Mappable {
         }
     }
     
+}
+
+
+func ==(lhs: Interaction, rhs: Interaction) -> Bool {
+    guard lhs.id != nil, rhs.id != nil else { return false }
+    return lhs.id! == rhs.id!
 }
 
 

@@ -91,9 +91,30 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     
     @objc private func saveButtonTapped() {
         // TODO: Validation
+        
+        if interaction.id == nil {
+            createInteraction()
+        } else {
+            updateInteraction()
+        }
+        
+    }
+    
+    private func createInteraction() {
         Interaction.create(interaction).then { interaction -> Void in
             User.current.interactions.append(interaction)
             self.dismiss(animated: true, completion: nil)
+        }.catch { error in
+            print(error)
+        }
+    }
+    
+    private func updateInteraction() {
+        Interaction.update(interaction).then { interaction -> Void in
+            if let idx = (User.current.interactions.index { $0 == interaction } ) {
+                User.current.interactions[idx] = interaction
+                self.dismiss(animated: true, completion: nil)
+            }
         }.catch { error in
             print(error)
         }
@@ -227,17 +248,20 @@ extension InteractionViewController: UIImagePickerControllerDelegate, UINavigati
         
         navigationItem.rightBarButtonItem?.isEnabled = false
         
+        uploadProgressView.progress = 0.0
+        UIView.animate(withDuration: 0.3) {
+            self.uploadProgressView.alpha = 1.0
+        }
+        
         _ = Photo.create(image: image, uploadProgressHandler: handleUploadProgress).then { [weak self] photo -> Void in
             self?.interaction.photo = photo
         }.catch { error -> Void in
             print(error)
         }.always {
             self.navigationItem.rightBarButtonItem?.isEnabled = true
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.3) {
                 self.uploadProgressView.alpha = 0.0
-            }, completion: { done in
-                self.uploadProgressView.progress = 0.0
-            })
+            }
         }
     }
     

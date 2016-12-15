@@ -51,7 +51,7 @@ struct Photo: Mappable {
         return Promise { fulfill, reject in
             
             guard let finalImage = image.scale(amount: 1000 / image.size.width),
-                let jpeg = UIImageJPEGRepresentation(finalImage, 0.5) else
+                let jpeg = UIImageJPEGRepresentation(image, 0.7) else
             {
                 reject(PhotoError.failedToProcessImage)
                 return

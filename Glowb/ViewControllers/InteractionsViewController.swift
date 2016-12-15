@@ -88,6 +88,8 @@ extension InteractionsViewController: UICollectionViewDataSource {
             let interaction = User.current.interactions[indexPath.row]
             
             if let imageUrl = interaction.imageUrl {
+                cell.backgroundImageView.image = nil
+                cell.foregroundImageView.image = nil
                 cell.backgroundImageView.af_setImage(withURL: imageUrl)
                 cell.foregroundImageView.af_setImage(withURL: imageUrl)
             }
@@ -141,28 +143,27 @@ extension InteractionsViewController: UICollectionViewDelegateFlowLayout {
 
 extension InteractionsViewController: UIViewControllerPreviewingDelegate {
     
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController?
+    {
         guard let _ = collectionView.indexPathsForSelectedItems,
             let indexPath = collectionView.indexPathForItem(at: location),
             let cell = collectionView.cellForItem(at: indexPath) else {
                 return nil
         }
         
-        return nil
-//        guard indexPath.row != User.currentUser.interactions.count else { return nil }
-//        
-//        previewingContext.sourceRect = cell.frame
-//        let viewController = HeartViewController(nibName: HeartViewController.nibName(), bundle: nil)
-//        viewController.preferredContentSize = CGSize(width: view.frame.size.width - 30, height: view.frame.size.width - 30)
-//        
-//        User.currentUser.interactions[indexPath.row].activate()
-//        
-//        return viewController
+        guard indexPath.row != User.current.interactions.count else { return nil }
+        
+        previewingContext.sourceRect = cell.frame
+        let viewController = InteractingViewController()
+        viewController.preferredContentSize = CGSize(width: view.frame.size.width - 30, height: view.frame.size.width - 30)
+        
+        let interaction = User.current.interactions[indexPath.row]
+        interaction.interact()
+        
+        return viewController
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {}
-    
-    
 }
 
 

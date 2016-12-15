@@ -36,6 +36,7 @@
 		8D208B691DF3D6BE003209A5 /* UITableView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D208B681DF3D6BE003209A5 /* UITableView+ReusableView.swift */; };
 		8D208B6B1DF3D707003209A5 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D208B6A1DF3D707003209A5 /* ReusableView.swift */; };
 		8D2220A41DEF3BB80082E315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2220A31DEF3BB80082E315 /* AppDelegate.swift */; };
+		8D2725441E0244E6006D1C20 /* InteractingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2725431E0244E6006D1C20 /* InteractingViewController.swift */; };
 		8D2781E91DF491380050E4E8 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2781E81DF491380050E4E8 /* Themeable.swift */; };
 		8D2880D31E00ACA9009D5909 /* UIImage+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */; };
 		8D2880D51E00C0CE009D5909 /* InteractionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2880D41E00C0CE009D5909 /* InteractionCollectionViewCell.swift */; };
@@ -142,6 +143,7 @@
 		8D208B6A1DF3D707003209A5 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		8D2220A01DEF3BB80082E315 /* Glowb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glowb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2220A31DEF3BB80082E315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D2725431E0244E6006D1C20 /* InteractingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractingViewController.swift; sourceTree = "<group>"; };
 		8D2781E81DF491380050E4E8 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
 		8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transform.swift"; sourceTree = "<group>"; };
 		8D2880D41E00C0CE009D5909 /* InteractionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 			children = (
 				8D1537D01DFA58A0008E199F /* Base */,
 				8D1537D71DFA59D0008E199F /* InteractionsViewController.swift */,
+				8D2725431E0244E6006D1C20 /* InteractingViewController.swift */,
 				8DA75EE31DF355EB00A35737 /* InteractionViewController.swift */,
 				8D38C6CF1DF6228F0011AF52 /* SelectableTableViewController.swift */,
 				8D38C6E31DF6480C0011AF52 /* DeviceSelectionTableViewController.swift */,
@@ -835,6 +838,7 @@
 				8D7291EB1DF4B07E003F165F /* PrimaryTextLabel.swift in Sources */,
 				8D38C7031DF64C840011AF52 /* Command.swift in Sources */,
 				8D208B6B1DF3D707003209A5 /* ReusableView.swift in Sources */,
+				8D2725441E0244E6006D1C20 /* InteractingViewController.swift in Sources */,
 				8D38C7141DF64E660011AF52 /* WizardIntroViewController.swift in Sources */,
 				8D2DC9891DF71AF10074F194 /* Interaction.swift in Sources */,
 				8DB1E0911DF36E6F000648C3 /* StoryboardInitializable.swift in Sources */,
