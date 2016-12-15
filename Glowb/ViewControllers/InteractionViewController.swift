@@ -249,8 +249,10 @@ extension InteractionViewController: UITextFieldDelegate {
 extension InteractionViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
-        previewImageView.image = image
-        uploadImage(image)
+        if let finalImage = image.scale(amount: 2000 / image.size.width) {
+            previewImageView.image = finalImage
+            uploadImage(finalImage)
+        }
         
         self.dismiss(animated: true, completion: nil)
     }

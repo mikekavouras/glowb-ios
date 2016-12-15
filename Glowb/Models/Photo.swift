@@ -50,9 +50,7 @@ struct Photo: Mappable {
     static func create(image: UIImage, uploadProgressHandler: @escaping (Progress) -> Void) -> Promise<Photo> {
         return Promise { fulfill, reject in
             
-            guard let finalImage = image.scale(amount: 1000 / image.size.width),
-                let jpeg = UIImageJPEGRepresentation(image, 0.7) else
-            {
+            guard let jpeg = UIImageJPEGRepresentation(image, 0.9) else {
                 reject(PhotoError.failedToProcessImage)
                 return
             }
@@ -70,8 +68,8 @@ struct Photo: Mappable {
                     
                     S3ImageUploader.uploadImage(jpeg: jpeg, params: params, progressHandler: uploadProgressHandler).then { eTag -> Void in
                         
-                        photo.originalHeight = finalImage.size.height
-                        photo.originalWidth = finalImage.size.width
+                        photo.originalHeight = image.size.height
+                        photo.originalWidth = image.size.width
                         photo.eTag = eTag
                         
                         photo.update().then { photo in
