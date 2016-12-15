@@ -70,18 +70,10 @@ extension Router {
         case .getInteractions:
             return try URLEncoding.default.encode(request, with: [:])
         case .createInteraction(let interaction):
-            let params: JSON = [
-                "user_device_id" : interaction.device?.id ?? -1,
-                "name" : interaction.name,
-                "photo_id" : interaction.photo?.id ?? ""
-            ]
+            let params = interaction.asJSON
             return try JSONEncoding.default.encode(request, with: params)
         case .updateInteraction(let interaction):
-            let params: JSON = [
-                "user_device_id" : interaction.device?.id ?? -1,
-                "name" : interaction.name,
-                "photo_id" : interaction.photo?.id ?? ""
-            ]
+            let params = interaction.asJSON
             return try JSONEncoding.default.encode(request, with: params)
         case .createEvent:
             return try JSONEncoding.default.encode(request, with: [:])

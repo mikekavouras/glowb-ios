@@ -15,11 +15,16 @@ enum InteractionError: Error {
 }
 
 struct Interaction: Mappable {
-    var color: Color?
+    var color: Color? {
+        didSet { updateRGB() }
+    }
     var device: Device?
     var photo: Photo?
     var name: String = ""
     var id: Int?
+    var red: Int = 0
+    var green: Int = 0
+    var blue: Int = 0
     
     var imageUrl: URL? {
         guard let token = photo?.token else { return nil }
@@ -37,8 +42,38 @@ struct Interaction: Mappable {
         photo  <- map["photo"]
         device <- map["user_device"]
         name   <- map["name"]
+        red    <- map["red"]
+        green  <- map["green"]
+        blue   <- map["blue"]
     }
     
+    
+    private mutating func updateRGB() {
+        guard let color = color?.color else { return }
+        
+        red = 0
+        green = 0
+        blue = 0
+        
+        if color == UIColor.red {
+            red = 255
+        } else if color == UIColor.green {
+            green = 255
+        } else if color == UIColor.blue {
+            blue = 255
+        }
+    }
+    
+    var asJSON: JSON {
+        return [
+            "user_device_id" : device?.id ?? -1,
+            "name" : name,
+            "photo_id" : photo?.id ?? "",
+            "red" : red,
+            "green" : green,
+            "blue" : blue
+        ]
+    }
     
     // MARK: - API
     
