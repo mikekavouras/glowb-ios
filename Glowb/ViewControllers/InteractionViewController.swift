@@ -92,6 +92,8 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     @objc private func saveButtonTapped() {
         // TODO: Validation
         
+        view.endEditing(true)
+        
         if interaction.id == nil {
             createInteraction()
         } else {
