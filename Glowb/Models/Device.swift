@@ -21,25 +21,21 @@ enum DeviceError: Error {
 } 
 struct Device: Mappable {
     var name: String
-    var particleId: String
+    var particleId: String = ""
     var id: String
     let connectionStatus: DeviceConnectionStatus = .disconnected
     
     init?(map: Map) {
         guard let userDeviceId = map.JSON["id"] as? String,
-            let name = map.JSON["name"] as? String,
-            let device = map.JSON["device"] as? JSON,
-            let particleId = device["particle_id"] as? String else
+            let name = map.JSON["name"] as? String else
         { return nil }
         
         self.name = name
         self.id = userDeviceId
-        self.particleId = particleId
     }
     
     mutating func mapping(map: Map) {
         name       <- map["name"]
-        particleId <- map["device.particleId"]
         id         <- map["id"]
     }
     

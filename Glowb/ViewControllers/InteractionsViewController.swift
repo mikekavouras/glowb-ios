@@ -57,8 +57,9 @@ class InteractionsViewController: BaseViewController {
     
     // MARK: Navigation
     
-    fileprivate func displayInteractionViewController() {
+    fileprivate func displayInteractionViewController(_ interaction: Interaction? = nil) {
         let viewController = InteractionViewController.initFromStoryboard()
+        viewController.interaction = interaction
         let navigationController = BaseNavigationController(rootViewController: viewController)
         present(navigationController, animated: true, completion: nil)
     }
@@ -87,7 +88,12 @@ extension InteractionsViewController: UICollectionViewDataSource {
             let interaction = User.current.interactions[indexPath.row]
             
             if let imageUrl = interaction.imageUrl {
-                cell.imageView.af_setImage(withURL: imageUrl)
+                cell.backgroundImageView.af_setImage(withURL: imageUrl)
+                cell.foregroundImageView.af_setImage(withURL: imageUrl)
+            }
+            
+            cell.editButtonTappedHandler = { [weak self] in
+                self?.displayInteractionViewController(interaction)
             }
             
             return cell
@@ -99,7 +105,8 @@ extension InteractionsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        (cell as? InteractionCollectionViewCell)?.imageView.af_cancelImageRequest()
+        (cell as? InteractionCollectionViewCell)?.backgroundImageView.af_cancelImageRequest()
+        (cell as? InteractionCollectionViewCell)?.foregroundImageView.af_cancelImageRequest()
     }
 }
 

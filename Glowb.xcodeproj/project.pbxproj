@@ -36,6 +36,7 @@
 		8D208B691DF3D6BE003209A5 /* UITableView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D208B681DF3D6BE003209A5 /* UITableView+ReusableView.swift */; };
 		8D208B6B1DF3D707003209A5 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D208B6A1DF3D707003209A5 /* ReusableView.swift */; };
 		8D2220A41DEF3BB80082E315 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2220A31DEF3BB80082E315 /* AppDelegate.swift */; };
+		8D2725421E0219D9006D1C20 /* PhotoTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2725411E0219D9006D1C20 /* PhotoTransform.swift */; };
 		8D2781E91DF491380050E4E8 /* Themeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2781E81DF491380050E4E8 /* Themeable.swift */; };
 		8D2880D31E00ACA9009D5909 /* UIImage+Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */; };
 		8D2880D51E00C0CE009D5909 /* InteractionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2880D41E00C0CE009D5909 /* InteractionCollectionViewCell.swift */; };
@@ -142,6 +143,7 @@
 		8D208B6A1DF3D707003209A5 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		8D2220A01DEF3BB80082E315 /* Glowb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Glowb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D2220A31DEF3BB80082E315 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D2725411E0219D9006D1C20 /* PhotoTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTransform.swift; sourceTree = "<group>"; };
 		8D2781E81DF491380050E4E8 /* Themeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themeable.swift; sourceTree = "<group>"; };
 		8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Transform.swift"; sourceTree = "<group>"; };
 		8D2880D41E00C0CE009D5909 /* InteractionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -349,6 +351,14 @@
 			path = Glowb;
 			sourceTree = "<group>";
 		};
+		8D2725401E0219CE006D1C20 /* Transforms */ = {
+			isa = PBXGroup;
+			children = (
+				8D2725411E0219D9006D1C20 /* PhotoTransform.swift */,
+			);
+			path = Transforms;
+			sourceTree = "<group>";
+		};
 		8D2781E31DF48FAF0050E4E8 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +368,7 @@
 				8DD0DA4E1DFB3D6D000CB745 /* Plist.swift */,
 				8DD0DA501DFB44D6000CB745 /* ServerResponseParser.swift */,
 				8D915BB11DFF7C550080D7BB /* S3ImageUploader.swift */,
+				8D2725401E0219CE006D1C20 /* Transforms */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -800,6 +811,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D2725421E0219D9006D1C20 /* PhotoTransform.swift in Sources */,
 				8D38C6D81DF6247F0011AF52 /* SelectableViewModel.swift in Sources */,
 				8D5AE8361DF499E600A520D4 /* BaseTextField.swift in Sources */,
 				8D38C6FF1DF64C840011AF52 /* Command+ConfigureAP.swift in Sources */,

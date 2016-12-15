@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class InteractionViewController: BaseTableViewController, StoryboardInitializable {
     
     static var storyboardName: StaticString = "Interaction"
 
-    var interaction = Interaction()
+    var interaction: Interaction!
     
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var uploadProgressView: UIProgressView!
@@ -52,6 +53,10 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
         setupNavigationItem()
         setupTableView()
         setupImageView()
+        
+        if interaction == nil {
+            interaction = Interaction()
+        }
     
         User.current.fetchDevices().catch { error in
             print(error)
@@ -71,6 +76,9 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     
     private func setupImageView() {
         previewImageView.layer.cornerRadius = 13.0
+        if let url = interaction.imageUrl {
+            previewImageView.af_setImage(withURL: url)
+        }
         _ = imagePickerController // eager load
     }
     
@@ -148,6 +156,7 @@ extension InteractionViewController {
             cell.textField.delegate = self
             cell.label.text = "Name"
             cell.selectionStyle = .none
+            cell.textField.text = interaction.name
             return cell
         case 1:
             let cell = tableView.dequeueReusable(cellType: TextSelectionRepresentableTableViewCell.self, forIndexPath: indexPath)
