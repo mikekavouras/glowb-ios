@@ -232,14 +232,10 @@ extension InteractionViewController {
 // MARK: - Text field delegate
 
 extension InteractionViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if let text = textField.text {
             interaction.name = text
         }
-        
-        return true
     }
 }
 
