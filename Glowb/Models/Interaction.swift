@@ -15,9 +15,20 @@ enum InteractionError: Error {
 }
 
 struct Interaction: Mappable {
-    var color: Color? {
-        didSet { updateRGB() }
+    private var _color: UIColor {
+        if red == 255 { return .red }
+        if green == 255 { return .green }
+        if blue == 255 { return .blue }
+        return .black
     }
+    
+    var color: Color? {
+        get {
+            return Color(_color)
+        }
+        set { updateRGB(newValue) }
+    }
+    
     var device: Device?
     var photo: Photo?
     var name: String = ""
@@ -48,8 +59,8 @@ struct Interaction: Mappable {
     }
     
     
-    private mutating func updateRGB() {
-        guard let color = color?.color else { return }
+    private mutating func updateRGB(_ newColor: Color?) {
+        guard let color = newColor?.color else { return }
         
         red = 0
         green = 0
