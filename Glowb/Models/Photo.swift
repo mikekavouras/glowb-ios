@@ -6,10 +6,9 @@
 //  Copyright © 2016 Michael Kavouras. All rights reserved.
 //
 
-import Foundation
-import PromiseKit
 import Alamofire
 import ObjectMapper
+import PromiseKit
 
 enum PhotoError: Error {
     case failedToCreate
