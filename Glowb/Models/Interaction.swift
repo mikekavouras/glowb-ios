@@ -19,7 +19,7 @@ struct Interaction: Mappable {
     var device: Device?
     var photo: Photo?
     var name: String = ""
-    var id: String = ""
+    var id: Int?
     
     var imageUrl: URL? {
         guard let token = photo?.token else { return nil }
@@ -75,7 +75,6 @@ struct Interaction: Mappable {
     func interact() {
         Alamofire.request(Router.createEvent(self)).validate().responseJSON { response in
             print(response)
-            print(response.result.value)
         }
     }
     
@@ -86,15 +85,7 @@ struct Interaction: Mappable {
 
 private struct InteractionParser: ServerResponseParser {
     static func parseJSON(_ json: JSON) -> Alamofire.Result<Interaction> {
-        guard let data = json["data"] as? JSON,
-            let id = data["id"] as? String,
-            let attributes = data["attributes"] as? JSON else
-        { return .failure(ServerError.invalidJSONFormat) }
-        
-        var newJSON: JSON = attributes
-        newJSON["id"] = id
-        
-        guard let interaction = Mapper<Interaction>().map(JSON: newJSON) else {
+        guard let interaction = Mapper<Interaction>().map(JSON: json) else {
             return .failure(InteractionError.failedToParse)
         }
         
@@ -104,20 +95,11 @@ private struct InteractionParser: ServerResponseParser {
 
 private struct InteractionsParser: ServerResponseParser {
     static func parseJSON(_ json: JSON) -> Alamofire.Result<[Interaction]> {
-        if let data = json["data"] as? [JSON] {
-            let interactions: [Interaction] = data.flatMap { item in
-                guard let id = item["id"] as? String,
-                    let attributes = item["attributes"] as? JSON else
-                { return nil }
-                
-                var newJSON: JSON = attributes
-                newJSON["id"] = id
-                
-                return Mapper<Interaction>().map(JSON: newJSON)
-            }
-            return .success(interactions)
-        } else {
-            return .failure(InteractionError.failedToParse)
+        guard let data = json["interactions"] as? [JSON] else {
+            return .failure(ServerError.invalidJSONFormat)
         }
+        
+        let interactions: [Interaction] = data.flatMap { Mapper<Interaction>().map(JSON: $0) }
+        return .success(interactions)
     }
 }

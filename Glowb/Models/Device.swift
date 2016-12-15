@@ -22,11 +22,11 @@ enum DeviceError: Error {
 struct Device: Mappable {
     var name: String
     var particleId: String = ""
-    var id: String
+    var id: Int
     let connectionStatus: DeviceConnectionStatus = .disconnected
     
     init?(map: Map) {
-        guard let userDeviceId = map.JSON["id"] as? String,
+        guard let userDeviceId = map.JSON["id"] as? Int,
             let name = map.JSON["name"] as? String else
         { return nil }
         
@@ -87,35 +87,18 @@ struct Device: Mappable {
 
 private struct DevicesParser: ServerResponseParser {
     static func parseJSON(_ json: JSON) -> Alamofire.Result<[Device]> {
-        if let data = json["data"] as? [JSON] {
-            let devices: [Device] = data.flatMap { item in
-                guard let id = item["id"] as? String,
-                    let attributes = item["attributes"] as? JSON else
-                { return nil }
-                
-                var newJSON: JSON = attributes
-                newJSON["id"] = id
-                
-                return Mapper<Device>().map(JSON: newJSON)
-            }
-            return .success(devices)
-        } else {
-            return .failure(DeviceError.failedToParse)
+        guard let data = json["user_devices"] as? [JSON] else {
+            return .failure(ServerError.invalidJSONFormat)
         }
+        
+        let devices: [Device] = data.flatMap { Mapper<Device>().map(JSON: $0) }
+        return .success(devices)
     }
 }
 
 private struct DeviceParser: ServerResponseParser {
     static func parseJSON(_ json: JSON) -> Alamofire.Result<Device> {
-        guard let data = json["data"] as? JSON,
-            let id = data["id"] as? String,
-            let attributes = data["attribues"] as? JSON else
-        { return .failure(ServerError.invalidJSONFormat) }
-        
-        var newJSON: JSON = attributes
-        newJSON["id"] = id
-        
-        guard let device = Mapper<Device>().map(JSON: newJSON) else {
+        guard let device = Mapper<Device>().map(JSON: json) else {
             return .failure(DeviceError.failedToParse)
         }
         

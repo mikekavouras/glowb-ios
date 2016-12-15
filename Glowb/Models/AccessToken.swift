@@ -78,13 +78,9 @@ struct AccessToken {
 
 private struct AccessTokenParser: ServerResponseParser {
     static func parseJSON(_ json: JSON) -> Alamofire.Result<String> {
-        if let data = json["data"] as? JSON,
-            let attributes = data["attributes"] as? JSON,
-            let token = attributes["access_token"] as? String
-        {
-            return .success(token)
-        } else {
+        guard let token = json["access_token"] as? String else {
             return .failure(AccessTokenError.failedToParseAccessToken)
         }
+        return .success(token)
     }
 }

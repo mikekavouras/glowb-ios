@@ -50,14 +50,14 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     // MARK: Setup
     
     private func setup() {
-        setupNavigationItem()
-        setupTableView()
-        setupImageView()
-        
         if interaction == nil {
             interaction = Interaction()
         }
     
+        setupNavigationItem()
+        setupTableView()
+        setupImageView()
+        
         User.current.fetchDevices().catch { error in
             print(error)
         }

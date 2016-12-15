@@ -23,8 +23,8 @@ enum Router: URLRequestConvertible {
     case getDevices
     case getDevice
     case createDevice(String, String)
-    case deleteDevice(String)
-    case resetDevice(String)
+    case deleteDevice(Int)
+    case resetDevice(Int)
     
     case getInteractions
     case createInteraction(Interaction)
@@ -173,7 +173,7 @@ extension Router {
         case .createPhoto:
             return "/api/v1/photos"
         case .updatePhoto(let photo):
-            return "/api/v1/photos/\(photo.id ?? "")"
+            return "/api/v1/photos/\(photo.id)"
         }
     }
     

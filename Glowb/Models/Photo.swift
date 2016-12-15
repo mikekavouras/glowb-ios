@@ -18,7 +18,7 @@ enum PhotoError: Error {
 }
 
 struct Photo: Mappable {
-    var id: String?
+    var id: Int?
     var filename: String?
     var ext: String = ""
     var mimeType: String?
@@ -108,15 +108,7 @@ struct Photo: Mappable {
 
 private struct PhotoParser: ServerResponseParser {
     static func parseJSON(_ json: JSON) -> Alamofire.Result<Photo> {
-        guard let data = json["data"] as? JSON,
-            let id = data["id"] as? String,
-            let attributes = data["attributes"] as? JSON else
-        { return .failure(ServerError.invalidJSONFormat) }
-        
-        var newJSON: JSON = attributes
-        newJSON["id"] = id
-        
-        guard let photo = Mapper<Photo>().map(JSON: newJSON) else {
+        guard let photo = Mapper<Photo>().map(JSON: json) else {
             return .failure(ServerError.invalidJSONFormat)
         }
         
