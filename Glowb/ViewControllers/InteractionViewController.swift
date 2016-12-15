@@ -296,6 +296,8 @@ extension InteractionViewController: SelectableTableViewControllerDelegate {
             interaction.device = selection.model
         }
         
+        _ = navigationController?.popViewController(animated: true)
+        
         tableView.reloadData()
     }
 }
