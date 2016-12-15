@@ -213,6 +213,10 @@ extension InteractionViewController {
 extension InteractionViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 0:
+            if let cell = tableView.cellForRow(at: indexPath) as? TextFieldTableViewCell {
+                cell.textField.becomeFirstResponder()
+            }
         case 1:
             showDevicesViewController()
         case 2:
