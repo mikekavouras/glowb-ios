@@ -126,7 +126,6 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
         if firstAppearance {
             firstAppearance = false
             
-            
             scrollContentViewWidthConstraint.constant = frame.size.width
             scrollContentViewHeightConstraint.constant = frame.size.height * 2.0 - outOfFocusVisibleHeight
             
