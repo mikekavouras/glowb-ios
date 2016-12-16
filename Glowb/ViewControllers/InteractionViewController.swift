@@ -19,6 +19,7 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     static var storyboardName: StaticString = "Interaction"
 
     var interaction: Interaction!
+    var isUploadingImage = false
     
     var state: InteractionState {
         return interaction?.id == nil ? .new : .edit
@@ -55,6 +56,10 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
         view.endEditing(true)
     }
     
+    override func viewDidLayoutSubviews() {
+        tableView.tableFooterView?.frame.size.height = 80.0
+        super.viewDidLayoutSubviews()
+    }
     
     // MARK: Setup
     
@@ -78,10 +83,32 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     }
     
     private func setupTableView() {
+        setupTableCells()
+        setupTableFooterView()
+    }
+    
+    private func setupTableCells() {
         tableView.register(cellType: TextFieldTableViewCell.self)
         tableView.register(cellType: TextSelectionRepresentableTableViewCell.self)
         tableView.register(cellType: ColorSelectionRepresentableTableViewCell.self)
-        tableView.register(cellType: SingleActionTableViewCell.self)
+    }
+    
+    private func setupTableFooterView() {
+        
+        if interaction?.id == nil { return }
+        
+        let footerView = BaseView()
+        footerView.theme = .dark
+        let button = UIButton()
+        button.setTitle("Delete", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        footerView.addSubview(button)
+        button.snp.makeConstraints { make in
+            make.left.bottom.right.equalToSuperview()
+            make.height.equalTo(44.0)
+        }
+        button.addTarget(self, action: #selector(showDeleteInteraction), for: .touchUpInside)
+        tableView.tableFooterView = footerView
     }
     
     private func setupImageView() {
@@ -132,7 +159,28 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
         }
     }
     
+    @objc fileprivate func showDeleteInteraction() {
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+            self.interaction.delete().then { _ -> Void in
+                if let idx = (User.current.interactions.index { $0 == self.interaction } ) {
+                    User.current.interactions.remove(at: idx)
+                }
+                self.dismiss(animated: true, completion: nil)
+            }.catch { error in
+                print(error)
+            }
+        }
+        
+        let alertController = UIAlertController(title: "Delete this interaction?", message: "Are you sure you want to delete this interaction?", preferredStyle: .alert)
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @IBAction func addImageButtonTapped(_ sender: Any) {
+        if isUploadingImage { return }
         present(imagePickerController, animated: true, completion: nil)
     }
     
@@ -189,10 +237,7 @@ extension InteractionViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if state == .new {
-            return 3
-        }
-        return 4
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -217,11 +262,6 @@ extension InteractionViewController {
             cell.accessoryType = .disclosureIndicator
             cell.color = interaction.color?.color
             return cell
-        case 3:
-            let cell = tableView.dequeueReusable(cellType: SingleActionTableViewCell.self, forIndexPath: indexPath)
-            cell.label.text = "Delete"
-            cell.label.textColor = .red
-            return cell
         default: return UITableViewCell()
         }
     }
@@ -241,24 +281,6 @@ extension InteractionViewController {
             showDevicesViewController()
         case 2:
             showColorsViewController()
-        case 3:
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
-                self.interaction.delete().then { _ -> Void in
-                    if let idx = (User.current.interactions.index { $0 == self.interaction } ) {
-                        User.current.interactions.remove(at: idx)
-                    }
-                    self.dismiss(animated: true, completion: nil)
-                }.catch { error in
-                    print(error)
-                }
-            }
-            
-            let alertController = UIAlertController(title: "Delete this interaction?", message: "Are you sure you want to delete this interaction?", preferredStyle: .alert)
-            alertController.addAction(cancelAction)
-            alertController.addAction(deleteAction)
-            
-            present(alertController, animated: true, completion: nil)
         default: break
         }
         
@@ -302,11 +324,14 @@ extension InteractionViewController: UIImagePickerControllerDelegate, UINavigati
     
     private func uploadImage(_ image: UIImage) {
         
+        isUploadingImage = true
+        
         navigationItem.rightBarButtonItem?.isEnabled = false
         
         uploadProgressView.progress = 0.0
         UIView.animate(withDuration: 0.3) {
             self.uploadProgressView.alpha = 1.0
+            self.previewImageView.alpha = 0.5
         }
         
         _ = Photo.create(image: image, uploadProgressHandler: handleUploadProgress).then { [weak self] photo -> Void in
@@ -317,6 +342,8 @@ extension InteractionViewController: UIImagePickerControllerDelegate, UINavigati
             self.navigationItem.rightBarButtonItem?.isEnabled = true
             UIView.animate(withDuration: 0.3) {
                 self.uploadProgressView.alpha = 0.0
+                self.previewImageView.alpha = 1.0
+                self.isUploadingImage = false
             }
         }
     }
