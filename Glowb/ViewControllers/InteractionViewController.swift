@@ -95,13 +95,18 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     
     private func setupTableFooterView() {
         
-        if interaction?.id == nil { return }
+        if state == .new { return }
         
         let footerView = BaseView()
         footerView.theme = .dark
         let button = UIButton()
-        button.setTitle("Delete", for: .normal)
-        button.setTitleColor(.red, for: .normal)
+        button.setTitle("delete", for: .normal)
+        button.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
+        button.imageView?.tintColor = .red
+        button.imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 10)
+        button.contentEdgeInsets = .init(top: 0, left: 10, bottom: 0, right: 0)
+        button.setTitleColor(.glowbRed, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15.0)
         footerView.addSubview(button)
         button.snp.makeConstraints { make in
             make.left.bottom.right.equalToSuperview()

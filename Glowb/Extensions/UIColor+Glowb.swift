@@ -30,4 +30,8 @@ extension UIColor {
         return UIColor(red: 25/255.0, green: 67/255.0, blue: 128/255.0, alpha: 1.0)
     }
     
+    class var glowbRed: UIColor {
+        return  UIColor(red: 222/255.0, green: 71/255.0, blue: 71/255.0, alpha: 1.0)
+    }
+    
 }
