@@ -9,11 +9,20 @@
 import UIKit
 import AlamofireImage
 
+enum InteractionState {
+    case new
+    case edit
+}
+
 class InteractionViewController: BaseTableViewController, StoryboardInitializable {
     
     static var storyboardName: StaticString = "Interaction"
 
     var interaction: Interaction!
+    
+    var state: InteractionState {
+        return interaction?.id == nil ? .new : .edit
+    }
     
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var uploadProgressView: UIProgressView!
@@ -72,6 +81,7 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
         tableView.register(cellType: TextFieldTableViewCell.self)
         tableView.register(cellType: TextSelectionRepresentableTableViewCell.self)
         tableView.register(cellType: ColorSelectionRepresentableTableViewCell.self)
+        tableView.register(cellType: SingleActionTableViewCell.self)
     }
     
     private func setupImageView() {
@@ -94,7 +104,7 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
         
         view.endEditing(true)
         
-        if interaction.id == nil {
+        if state == .new {
             createInteraction()
         } else {
             updateInteraction()
@@ -179,7 +189,10 @@ extension InteractionViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if state == .new {
+            return 3
+        }
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -204,6 +217,11 @@ extension InteractionViewController {
             cell.accessoryType = .disclosureIndicator
             cell.color = interaction.color?.color
             return cell
+        case 3:
+            let cell = tableView.dequeueReusable(cellType: SingleActionTableViewCell.self, forIndexPath: indexPath)
+            cell.label.text = "Delete"
+            cell.label.textColor = .red
+            return cell
         default: return UITableViewCell()
         }
     }
@@ -223,6 +241,24 @@ extension InteractionViewController {
             showDevicesViewController()
         case 2:
             showColorsViewController()
+        case 3:
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+                self.interaction.delete().then { _ -> Void in
+                    if let idx = (User.current.interactions.index { $0 == self.interaction } ) {
+                        User.current.interactions.remove(at: idx)
+                    }
+                    self.dismiss(animated: true, completion: nil)
+                }.catch { error in
+                    print(error)
+                }
+            }
+            
+            let alertController = UIAlertController(title: "Delete this interaction?", message: "Are you sure you want to delete this interaction?", preferredStyle: .alert)
+            alertController.addAction(cancelAction)
+            alertController.addAction(deleteAction)
+            
+            present(alertController, animated: true, completion: nil)
         default: break
         }
         

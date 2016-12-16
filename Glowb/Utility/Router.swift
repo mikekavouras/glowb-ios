@@ -29,6 +29,7 @@ enum Router: URLRequestConvertible {
     case getInteractions
     case createInteraction(Interaction)
     case updateInteraction(Interaction)
+    case deleteInteraction(Int)
     case createEvent(Interaction)
     
     case createInvite
@@ -78,6 +79,8 @@ extension Router {
         case .updateInteraction(let interaction):
             let params = interaction.asJSON
             return try JSONEncoding.default.encode(request, with: params)
+        case .deleteInteraction:
+            return try URLEncoding.default.encode(request, with: [:])
         case .createEvent:
             return try JSONEncoding.default.encode(request, with: [:])
             
@@ -100,7 +103,7 @@ extension Router {
             let params = [ "interaction_id" : interactionId ]
             return try JSONEncoding.default.encode(request, with: params)
         case .deleteShare:
-            return try JSONEncoding.default.encode(request, with: [:])
+            return try URLEncoding.default.encode(request, with: [:])
         }
     }
     
@@ -130,6 +133,8 @@ extension Router {
             return .get
         case .updateInteraction:
             return .patch
+        case .deleteInteraction:
+            return .delete
         case .createEvent:
             return .post
             
@@ -180,6 +185,8 @@ extension Router {
             return "/api/v1/interactions"
         case .updateInteraction(let interaction):
             return "/api/v1/interactions/\(interaction.id!)"
+        case .deleteInteraction(let interactionId):
+            return "/api/v1/interactions/\(interactionId)"
         case .createEvent(let interaction):
             return "/api/v1/interactions/\(interaction.id!)"
             

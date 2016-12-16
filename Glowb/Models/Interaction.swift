@@ -12,6 +12,7 @@ import ObjectMapper
 
 enum InteractionError: Error {
     case failedToParse
+    case emptyId
 }
 
 struct Interaction: Mappable {
@@ -86,7 +87,23 @@ struct Interaction: Mappable {
         ]
     }
     
+    
     // MARK: - API
+    
+    static func fetchAll() -> Promise<[Interaction]> {
+        return Promise { fulfill, reject in
+            return Alamofire.request(Router.getInteractions).validate().responseJSON { response in
+                let result = InteractionsParser.parseResponse(response)
+                
+                switch result {
+                case .success(let interactions):
+                    fulfill(interactions)
+                case .failure(let error):
+                    reject(error)
+                }
+            }
+        }
+    }
     
     static func create(_ interaction: Interaction) -> Promise<Interaction> {
         return Promise { fulfill, reject in
@@ -118,16 +135,17 @@ struct Interaction: Mappable {
         }
     }
     
-    static func fetchAll() -> Promise<[Interaction]> {
+    func delete() -> Promise<Void> {
         return Promise { fulfill, reject in
-            return Alamofire.request(Router.getInteractions).validate().responseJSON { response in
-                let result = InteractionsParser.parseResponse(response)
-                
-                switch result {
-                case .success(let interactions):
-                    fulfill(interactions)
-                case .failure(let error):
-                    reject(error)
+            guard let id = id else {
+                reject(InteractionError.emptyId)
+                return
+            }
+            Alamofire.request(Router.deleteInteraction(id)).validate().response { response in
+                if response.error == nil {
+                    fulfill()
+                } else {
+                    reject(ServerError.invalidStatus)
                 }
             }
         }
