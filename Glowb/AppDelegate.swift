@@ -73,10 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupNavigationBar() {
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().titleTextAttributes = [
+        UINavigationBar.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).tintColor = .white
+        UINavigationBar.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).shadowImage = UIImage()
+        UINavigationBar.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.white
         ]
         

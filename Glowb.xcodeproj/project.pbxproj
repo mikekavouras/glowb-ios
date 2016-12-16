@@ -99,6 +99,7 @@
 		8DB1E08F1DF36E60000648C3 /* NibInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E08E1DF36E60000648C3 /* NibInitializable.swift */; };
 		8DB1E0911DF36E6F000648C3 /* StoryboardInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E0901DF36E6F000648C3 /* StoryboardInitializable.swift */; };
 		8DB1E0931DF3CB3D000648C3 /* DashedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB1E0921DF3CB3D000648C3 /* DashedView.swift */; };
+		8DB399241E03A832005DFC7E /* Share.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB399231E03A832005DFC7E /* Share.swift */; };
 		8DC057491DFB328800B26BB4 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DC057481DFB328800B26BB4 /* Configuration.plist */; };
 		8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */; };
 		8DC174C11DF68A4400FB7A13 /* NetworkCredentials.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC174C01DF68A4400FB7A13 /* NetworkCredentials.storyboard */; };
@@ -209,6 +210,7 @@
 		8DB1E08E1DF36E60000648C3 /* NibInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibInitializable.swift; sourceTree = "<group>"; };
 		8DB1E0901DF36E6F000648C3 /* StoryboardInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
 		8DB1E0921DF3CB3D000648C3 /* DashedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashedView.swift; sourceTree = "<group>"; };
+		8DB399231E03A832005DFC7E /* Share.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Share.swift; sourceTree = "<group>"; };
 		8DC057481DFB328800B26BB4 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		8DC174BA1DF66D8100FB7A13 /* Connect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Connect.storyboard; sourceTree = "<group>"; };
 		8DC174C01DF68A4400FB7A13 /* NetworkCredentials.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NetworkCredentials.storyboard; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				8DD0DA561DFB5C72000CB745 /* AccessToken.swift */,
 				8D81296E1DF881FE00C50DEB /* Invite.swift */,
 				8D915BAF1DFF79CB0080D7BB /* Photo.swift */,
+				8DB399231E03A832005DFC7E /* Share.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -854,6 +857,7 @@
 				8D1538051DFA6479008E199F /* TextSelectionRepresentableTableViewCell.swift in Sources */,
 				8D1537D61DFA58A0008E199F /* BaseViewController.swift in Sources */,
 				8D7291ED1DF4B086003F165F /* SecondaryTextLabel.swift in Sources */,
+				8DB399241E03A832005DFC7E /* Share.swift in Sources */,
 				8D37CE4B1DF91B370068B09E /* CardAnimationController.swift in Sources */,
 				8DD0DA4F1DFB3D6D000CB745 /* Plist.swift in Sources */,
 				8D1537FA1DFA6479008E199F /* CollectionViewCell.swift in Sources */,

@@ -54,12 +54,25 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7J-rO-aOR" customClass="Button" customModule="Glowb" customModuleProvider="target">
+                                <rect key="frame" x="75" y="220" width="120" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="aTy-6E-b4v"/>
+                                    <constraint firstAttribute="height" constant="44" id="dkV-dX-TL9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="o7J-rO-aOR" firstAttribute="top" secondItem="7QM-vY-ZvZ" secondAttribute="bottom" constant="8" id="0Qe-ug-D96"/>
                             <constraint firstItem="7QM-vY-ZvZ" firstAttribute="centerY" secondItem="FUT-B9-lwB" secondAttribute="centerY" id="8ny-Yh-s1y"/>
                             <constraint firstItem="OhO-ar-x2h" firstAttribute="leading" secondItem="FUT-B9-lwB" secondAttribute="leading" id="EpL-68-tCE"/>
                             <constraint firstItem="9z2-5Q-NTd" firstAttribute="leading" secondItem="FUT-B9-lwB" secondAttribute="leading" id="Jxw-sp-zD5"/>
+                            <constraint firstItem="o7J-rO-aOR" firstAttribute="centerX" secondItem="FUT-B9-lwB" secondAttribute="centerX" id="NSJ-vy-isF"/>
                             <constraint firstAttribute="trailing" secondItem="OhO-ar-x2h" secondAttribute="trailing" id="QcJ-M8-cQh"/>
                             <constraint firstAttribute="trailing" secondItem="9z2-5Q-NTd" secondAttribute="trailing" id="URy-CL-L06"/>
                             <constraint firstAttribute="bottom" secondItem="OhO-ar-x2h" secondAttribute="bottom" id="WfF-lE-M4d"/>
@@ -123,6 +136,7 @@
                 <outlet property="scrollContentViewHeightConstraint" destination="F9N-bY-hS6" id="ePu-o2-RiT"/>
                 <outlet property="scrollContentViewWidthConstraint" destination="cKY-iV-ipS" id="slB-hd-eUQ"/>
                 <outlet property="scrollView" destination="1qr-zW-OpF" id="rfZ-65-jBu"/>
+                <outlet property="shareButton" destination="o7J-rO-aOR" id="MT7-ao-a7L"/>
             </connections>
             <point key="canvasLocation" x="-104" y="80"/>
         </collectionViewCell>

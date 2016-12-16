@@ -11,13 +11,14 @@ import UIKit
 class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
     
     var editButtonTappedHandler: (() -> Void)?
+    var shareButtonTappedHandler: (() -> Void)?
     
     static var identifier: String = "InteractionCellIdentifier"
     static var nibName: String = "InteractionCollectionViewCell"
     
-    
     @IBOutlet weak var nameLabel: PrimaryTextLabel!
     @IBOutlet private weak var editButton: UIButton!
+    @IBOutlet private weak var shareButton: UIButton!
     
     fileprivate let outOfFocusVisibleHeight: CGFloat = 60.0
     fileprivate let cornerRadius: CGFloat = 20.0
@@ -110,6 +111,10 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
         let point = gesture.location(in: contentView)
         if editButton.frame.contains(point) && isSkrilt {
             editButtonTappedHandler?()
+        }
+        
+        if shareButton.frame.contains(point) && isSkrilt {
+            shareButtonTappedHandler?()
         }
     }
     

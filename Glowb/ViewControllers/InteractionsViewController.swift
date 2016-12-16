@@ -63,6 +63,23 @@ class InteractionsViewController: BaseViewController {
         let navigationController = BaseNavigationController(rootViewController: viewController)
         present(navigationController, animated: true, completion: nil)
     }
+    
+    fileprivate func displayShareAction(_ interaction: Interaction) {
+        guard let id = interaction.id else { return }
+        Share.create(interactionId: id).then { share in
+            self.displayActivitySheet(share: share)
+        }.catch { error in
+                print(error)
+        }
+    }
+    
+    private func displayActivitySheet(share: Share) {
+        let text = "Glow me!"
+        let activityItems = [text as AnyObject, share.url as AnyObject]
+        
+        let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+    }
 }
 
 
@@ -98,6 +115,10 @@ extension InteractionsViewController: UICollectionViewDataSource {
             
             cell.editButtonTappedHandler = { [weak self] in
                 self?.displayInteractionViewController(interaction)
+            }
+            
+            cell.shareButtonTappedHandler = { [weak self] in
+                self?.displayShareAction(interaction)
             }
             
             return cell
