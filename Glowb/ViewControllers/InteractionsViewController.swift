@@ -21,8 +21,7 @@ class InteractionsViewController: BaseViewController {
         
         setup()
         
-        Interaction.fetchAll().then { interactions -> Void in
-            User.current.interactions = interactions
+        User.current.fetchInteractions().then { _ in 
             self.collectionView.reloadData()
         }.catch { error in
             print(error)
@@ -40,10 +39,14 @@ class InteractionsViewController: BaseViewController {
     
     private func setup() {
         setupCollectionView()
-        registerForPreviewing(with: self, sourceView: collectionView)
+        setupForceTouch()
         
         // eager load
         let _ = InteractionViewController.initFromStoryboard()
+    }
+    
+    private func setupForceTouch() {
+        registerForPreviewing(with: self, sourceView: collectionView)
     }
     
     private func setupCollectionView() {
@@ -76,9 +79,17 @@ class InteractionsViewController: BaseViewController {
     private func displayActivitySheet(share: Share) {
         let text = "Glow me!"
         let activityItems = [text as AnyObject, share.url as AnyObject]
-        
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Action
+    
+    @IBAction func settingsButtonTapped(_ sender: Any) {
+        let viewController = SettingsViewController()
+        let navController = BaseNavigationController(rootViewController: viewController)
+        present(navController, animated: true, completion: nil)
     }
 }
 
@@ -160,6 +171,7 @@ extension InteractionsViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+
 // MARK: - Previewing context delegate
 
 extension InteractionsViewController: UIViewControllerPreviewingDelegate {
@@ -185,23 +197,4 @@ extension InteractionsViewController: UIViewControllerPreviewingDelegate {
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {}
-}
-
-
-// MARK: - Scroll view delegate
-
-extension InteractionsViewController {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        if let cells = collectionView.visibleCells as? [InteractionCollectionViewCell] {
-//            for cell in cells {
-//                cell.resetScroll()
-//            }
-//        }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        if scrollView == collectionView && scrollView.contentOffset.x < -70 {
-//            performSegue(withIdentifier: "SettingsSegueIdentifier", sender: self)
-//        }
-    }
 }

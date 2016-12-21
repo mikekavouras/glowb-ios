@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		2466D85396CA6A7CB0B2396E /* Pods_Glowb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EB6C2F626DEB611EBB91E0 /* Pods_Glowb.framework */; };
 		8D03A4271DFD04A500B73BD9 /* NotificationName+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D03A4261DFD04A500B73BD9 /* NotificationName+Custom.swift */; };
+		8D1285001E09976300E01348 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1284FF1E09976300E01348 /* SettingsViewController.swift */; };
+		8D1285041E09AF6000E01348 /* DeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1285031E09AF6000E01348 /* DeviceDetailViewController.swift */; };
+		8D1285071E09ED9400E01348 /* SingleActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1285051E09ED9400E01348 /* SingleActionTableViewCell.swift */; };
+		8D1285081E09ED9400E01348 /* SingleActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D1285061E09ED9400E01348 /* SingleActionTableViewCell.xib */; };
+		8D12850A1E0A01F900E01348 /* Int+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1285091E0A01F900E01348 /* Int+Date.swift */; };
+		8D12850D1E0A06D200E01348 /* RubyDateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D12850C1E0A06D200E01348 /* RubyDateTransform.swift */; };
 		8D1537D41DFA58A0008E199F /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1537D11DFA58A0008E199F /* BaseNavigationController.swift */; };
 		8D1537D51DFA58A0008E199F /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1537D21DFA58A0008E199F /* BaseTableViewController.swift */; };
 		8D1537D61DFA58A0008E199F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1537D31DFA58A0008E199F /* BaseViewController.swift */; };
@@ -116,6 +122,12 @@
 		54E12DCAF388AD1CFD8675D0 /* Pods-Glowb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.release.xcconfig"; sourceTree = "<group>"; };
 		81B97BEB0DC2885E869503AF /* Pods-Glowb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.debug.xcconfig"; sourceTree = "<group>"; };
 		8D03A4261DFD04A500B73BD9 /* NotificationName+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationName+Custom.swift"; sourceTree = "<group>"; };
+		8D1284FF1E09976300E01348 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8D1285031E09AF6000E01348 /* DeviceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDetailViewController.swift; sourceTree = "<group>"; };
+		8D1285051E09ED9400E01348 /* SingleActionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleActionTableViewCell.swift; sourceTree = "<group>"; };
+		8D1285061E09ED9400E01348 /* SingleActionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleActionTableViewCell.xib; sourceTree = "<group>"; };
+		8D1285091E0A01F900E01348 /* Int+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Date.swift"; sourceTree = "<group>"; };
+		8D12850C1E0A06D200E01348 /* RubyDateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyDateTransform.swift; sourceTree = "<group>"; };
 		8D1537D11DFA58A0008E199F /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		8D1537D21DFA58A0008E199F /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		8D1537D31DFA58A0008E199F /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +266,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8D12850B1E0A06C400E01348 /* Transforms */ = {
+			isa = PBXGroup;
+			children = (
+				8D12850C1E0A06D200E01348 /* RubyDateTransform.swift */,
+			);
+			path = Transforms;
+			sourceTree = "<group>";
+		};
 		8D1537D01DFA58A0008E199F /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +321,8 @@
 				8D1537F41DFA6479008E199F /* TextSelectionRepresentableTableViewCell.xib */,
 				8D1537F51DFA6479008E199F /* WiFiTableViewCell.swift */,
 				8D1537F61DFA6479008E199F /* WiFiTableViewCell.xib */,
+				8D1285051E09ED9400E01348 /* SingleActionTableViewCell.swift */,
+				8D1285061E09ED9400E01348 /* SingleActionTableViewCell.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -343,6 +365,7 @@
 				8D38C6D31DF623C90011AF52 /* Models */,
 				8D38C6D61DF6247F0011AF52 /* ViewModels */,
 				8D669EF71DF358A30029FDB0 /* Extensions */,
+				8D12850B1E0A06C400E01348 /* Transforms */,
 				8DB1E08D1DF36E60000648C3 /* Protocols */,
 				8D2781E31DF48FAF0050E4E8 /* Utility */,
 				8D37CE491DF91B290068B09E /* Transitions */,
@@ -495,6 +518,8 @@
 				8DA75EE31DF355EB00A35737 /* InteractionViewController.swift */,
 				8D38C6CF1DF6228F0011AF52 /* SelectableTableViewController.swift */,
 				8D38C6E31DF6480C0011AF52 /* DeviceSelectionTableViewController.swift */,
+				8D1284FF1E09976300E01348 /* SettingsViewController.swift */,
+				8D1285031E09AF6000E01348 /* DeviceDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -569,6 +594,7 @@
 				8D1538091DFA6781008E199F /* UICollectionView+ReusableView.swift */,
 				8D03A4261DFD04A500B73BD9 /* NotificationName+Custom.swift */,
 				8D2880D21E00ACA9009D5909 /* UIImage+Transform.swift */,
+				8D1285091E0A01F900E01348 /* Int+Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -728,6 +754,7 @@
 				8D1538081DFA6479008E199F /* WiFiTableViewCell.xib in Resources */,
 				8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */,
 				8D1537F81DFA6479008E199F /* AddInteractionCollectionViewCell.xib in Resources */,
+				8D1285081E09ED9400E01348 /* SingleActionTableViewCell.xib in Resources */,
 				8DC174C11DF68A4400FB7A13 /* NetworkCredentials.storyboard in Resources */,
 				8D669EF11DF358000029FDB0 /* LaunchScreen.storyboard in Resources */,
 				8D1538041DFA6479008E199F /* TextFieldTableViewCell.xib in Resources */,
@@ -826,6 +853,7 @@
 				8D1537FC1DFA6479008E199F /* TableViewCell.swift in Sources */,
 				8D37CE4D1DF91B510068B09E /* CardPresentationController.swift in Sources */,
 				8D38C71F1DF652600011AF52 /* PrimaryButton.swift in Sources */,
+				8D12850D1E0A06D200E01348 /* RubyDateTransform.swift in Sources */,
 				8D38C70B1DF64C840011AF52 /* Reachability.m in Sources */,
 				8D5AE8371DF499E600A520D4 /* TextField.swift in Sources */,
 				8DA75EE41DF355EB00A35737 /* InteractionViewController.swift in Sources */,
@@ -833,7 +861,9 @@
 				8DD0DA4D1DFB3C6B000CB745 /* DescriptiveForceUnwrap.swift in Sources */,
 				8D369A871DF78717002C8D72 /* Router.swift in Sources */,
 				8D669EFB1DF358B60029FDB0 /* UIColor+Glowb.swift in Sources */,
+				8D1285071E09ED9400E01348 /* SingleActionTableViewCell.swift in Sources */,
 				8D1537FB1DFA6479008E199F /* BaseTableViewCell.swift in Sources */,
+				8D12850A1E0A01F900E01348 /* Int+Date.swift in Sources */,
 				8D38C7021DF64C840011AF52 /* Command+ScanAP.swift in Sources */,
 				8D81296F1DF881FE00C50DEB /* Invite.swift in Sources */,
 				8D5AE8271DF499B100A520D4 /* View.swift in Sources */,
@@ -856,12 +886,14 @@
 				8DD0DA4B1DFB3B25000CB745 /* PlistReadable.swift in Sources */,
 				8D1538051DFA6479008E199F /* TextSelectionRepresentableTableViewCell.swift in Sources */,
 				8D1537D61DFA58A0008E199F /* BaseViewController.swift in Sources */,
+				8D1285041E09AF6000E01348 /* DeviceDetailViewController.swift in Sources */,
 				8D7291ED1DF4B086003F165F /* SecondaryTextLabel.swift in Sources */,
 				8DB399241E03A832005DFC7E /* Share.swift in Sources */,
 				8D37CE4B1DF91B370068B09E /* CardAnimationController.swift in Sources */,
 				8DD0DA4F1DFB3D6D000CB745 /* Plist.swift in Sources */,
 				8D1537FA1DFA6479008E199F /* CollectionViewCell.swift in Sources */,
 				8DB1E08F1DF36E60000648C3 /* NibInitializable.swift in Sources */,
+				8D1285001E09976300E01348 /* SettingsViewController.swift in Sources */,
 				8D1538011DFA6479008E199F /* DeviceSelectionTableViewCell.swift in Sources */,
 				8D38C7061DF64C840011AF52 /* DeviceCommunicationManager.swift in Sources */,
 				8DB1E0931DF3CB3D000648C3 /* DashedView.swift in Sources */,

@@ -12,8 +12,6 @@ import PromiseKit
 struct User {
     static var current = User()
     
-    var interactions: [Interaction] = []
-    
     var accessToken: String? {
         get {
             return AccessToken.current
@@ -37,6 +35,22 @@ struct User {
             print(error)
         }
         
+    }
+    
+    
+    // MARK: Interactions
+    
+    var interactions: [Interaction] = []
+    
+    func fetchInteractions() -> Promise<[Interaction]> {
+        return Promise { fulfill, reject in
+            Interaction.fetchAll().then { interactions -> Void in
+                User.current.interactions = interactions
+                fulfill(interactions)
+            }.catch { error in
+                reject(error)
+            }
+        }
     }
     
     

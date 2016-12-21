@@ -32,7 +32,7 @@ enum Router: URLRequestConvertible {
     case deleteInteraction(Int)
     case createEvent(Interaction)
     
-    case createInvite
+    case createInvite(Int, Date, Int)
     case claimInvite(Invite)
     
     case getPhotos
@@ -84,8 +84,12 @@ extension Router {
         case .createEvent:
             return try JSONEncoding.default.encode(request, with: [:])
             
-        case .createInvite:
-            return try JSONEncoding.default.encode(request, with: [:])
+        case .createInvite(let deviceId, let expiresAt, let limit):
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            let dateString = formatter.string(from: expiresAt)
+            let params: JSON = [ "device_id" : deviceId, "expires_at" : dateString, "usage_limit" : limit ]
+            return try JSONEncoding.default.encode(request, with: params)
         case .claimInvite(let invite):
             let params = [ "token" : invite.token ]
             return try JSONEncoding.default.encode(request, with: params)
@@ -191,9 +195,9 @@ extension Router {
             return "/api/v1/interactions/\(interaction.id!)"
             
         case .createInvite:
-            return "/invite"
+            return "/api/v1/invites"
         case .claimInvite:
-            return "/invite/accept"
+            return "/api/v1/invites/accept"
             
         case .getPhotos:
             return "/api/v1/photos"

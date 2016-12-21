@@ -8,14 +8,36 @@
 
 import Alamofire
 import PromiseKit
+import ObjectMapper
 
-struct Invite {
-    let token: String
+enum InviteError: Error {
+    case failedToParse
+}
+
+struct Invite: Mappable {
+    var token: String!
+    var usageLimit: Int = 0
+    var expiresAt: Date?
     
-    static func create(invite: Invite) -> Promise<Invite> {
+    init?(map: Map) {}
+    
+    mutating func mapping(map: Map) {
+        token      <- map["token"]
+        usageLimit <- map["usage_limit"]
+        expiresAt  <- (map["expires_at"], RubyDateTransform())
+    }
+    
+    static func create(deviceId: Int, expiresAt: Date = 1.day.fromNow, limit: Int = 1) -> Promise<Invite> {
         return Promise { fulfill, reject in
-            Alamofire.request(Router.createInvite).validate().responseJSON { response in
-                fulfill(Invite(token: ""))
+            Alamofire.request(Router.createInvite(deviceId, expiresAt, limit)).validate().responseJSON { response in
+                let result = InviteParser.parseResponse(response)
+                
+                switch result {
+                case .success(let invite):
+                    fulfill(invite)
+                case .failure(let error):
+                    reject(error)
+                }
             }
         }
     }
@@ -23,8 +45,18 @@ struct Invite {
     static func claim(invite: Invite) -> Promise<Invite> {
         return Promise { fulfill, reject in
             Alamofire.request(Router.claimInvite(invite)).validate().responseJSON { response in
-                fulfill(Invite(token: ""))
+                
             }
         }
+    }
+}
+
+private struct InviteParser: ServerResponseParser {
+    static func parseJSON(_ json: JSON) -> Alamofire.Result<Invite> {
+        guard let invite = Mapper<Invite>().map(JSON: json) else {
+            return .failure(InviteError.failedToParse)
+        }
+        
+        return .success(invite)
     }
 }
