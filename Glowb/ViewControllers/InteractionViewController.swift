@@ -203,10 +203,7 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
             return SelectableViewModel(model: item, selectedState: state)
         }
 
-        let viewController = DeviceSelectionTableViewController(items: selectableDevices, configure: { (cell: DeviceSelectionTableViewCell, item) in
-            cell.label.text = item.model.name
-            cell.selectedState = item.selectedState
-        })
+        let viewController = DeviceSelectionTableViewController(items: selectableDevices)
 
         viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
