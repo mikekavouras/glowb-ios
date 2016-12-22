@@ -59,6 +59,19 @@ struct User {
     var devices: [Device] = []
     
     @discardableResult
+    func deleteDevice(_ device: Device) -> Promise<Void> {
+        return Promise { fulfill, reject in
+            device.delete().then { _ -> Void in
+                let newDevices = self.devices.filter { $0 != device }
+                User.current.devices = newDevices
+                fulfill()
+            }.catch { error in 
+                reject(error)
+            }
+        }
+    }
+    
+    @discardableResult
     func fetchDevices() -> Promise<[Device]> {
         return Promise { fulfill, reject in
             Device.fetchAll().then { devices -> Void in

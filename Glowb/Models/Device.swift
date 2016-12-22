@@ -19,7 +19,7 @@ enum DeviceError: Error {
     case failedToParse
     case failedToDelete
 } 
-struct Device: Mappable {
+struct Device: Mappable, Equatable {
     var name: String
     var particleId: String = ""
     var id: Int
@@ -74,12 +74,15 @@ struct Device: Mappable {
     
     func delete() -> Promise<Void> {
         return Promise { fulfill, reject in
-            Alamofire.request(Router.deleteDevice(self.id)).validate().responseJSON { response in
-                if response.result.isSuccess {
-                    fulfill()
-                } else {
+            Alamofire.request(Router.deleteDevice(self.id)).validate().response { response in
+                guard let urlResponse = response.response,
+                    urlResponse.statusCode == 200 else
+                {
                     reject(DeviceError.failedToDelete)
+                    return
                 }
+                
+                fulfill()
             }
         }
     }

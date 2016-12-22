@@ -25,6 +25,11 @@ class SettingsViewController: BaseTableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     
     // MARK: - Setup
     
@@ -90,11 +95,16 @@ class SettingsViewController: BaseTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        print("commit")
-        
-        // delete device
-        // reload table
+        // TODO: Are you shur????
+        let device = User.current.devices[indexPath.row]
+        User.current.deleteDevice(device).then { _ in
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }.catch { error in
+            print(error)
+        }
     }
     
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 56.0
+    }
 }

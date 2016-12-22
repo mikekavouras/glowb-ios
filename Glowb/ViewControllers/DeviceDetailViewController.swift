@@ -85,6 +85,12 @@ class DeviceDetailViewController: BaseTableViewController {
             }.catch { error in
                 print(error)
             }
+        case 2:
+            User.current.deleteDevice(device).then { _ in
+                _ = self.navigationController?.popViewController(animated: true)
+            }.catch { error in
+                print(error)
+            }
         default: break
         }
     }
