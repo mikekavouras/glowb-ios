@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wHa-uk-7Fz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wHa-uk-7Fz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,10 +37,28 @@
                                     <action selector="getStartedButtonTapped:" destination="wHa-uk-7Fz" eventType="touchUpInside" id="VEj-94-bUd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcm-qe-ujx" customClass="PrimaryButton" customModule="Glowb" customModuleProvider="target">
+                                <rect key="frame" x="127" y="223.5" width="120" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rNE-NO-zTz"/>
+                                    <constraint firstAttribute="width" constant="120" id="uvm-Iy-8Fw"/>
+                                </constraints>
+                                <state key="normal" title="Redeem Invite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="redeemInviteButtonTapped:" destination="wHa-uk-7Fz" eventType="touchUpInside" id="ziJ-LB-jW4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CCu-6J-cgG" firstAttribute="centerX" secondItem="Jzu-9o-OyR" secondAttribute="centerX" id="Cgi-40-Qyq"/>
+                            <constraint firstItem="CCu-6J-cgG" firstAttribute="top" secondItem="Kcm-qe-ujx" secondAttribute="bottom" constant="44" id="Np8-OS-XmN"/>
+                            <constraint firstItem="Kcm-qe-ujx" firstAttribute="centerX" secondItem="CCu-6J-cgG" secondAttribute="centerX" id="hpy-ac-wBb"/>
                             <constraint firstItem="CCu-6J-cgG" firstAttribute="centerY" secondItem="Jzu-9o-OyR" secondAttribute="centerY" id="y6M-sH-39x"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>

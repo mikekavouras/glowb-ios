@@ -10,6 +10,6 @@ struct Plist {
     struct Config: PlistReadable {
         static var plistName = "Configuration"
         static var appId = Config.unsafeString("APP_ID")
-        static var APIRoot = Target.current == TargetType.simulator ? Config.unsafeString("API_LOCALHOST_URL") : Config.unsafeString("API_IP_URL")
+        static var APIRoot = Target.current == TargetType.simulator ? "http://localhost:3000" : Config.unsafeString("API_URL")
     }
 }

@@ -42,10 +42,17 @@ struct Invite: Mappable {
         }
     }
     
-    static func claim(invite: Invite) -> Promise<Invite> {
+    static func claim(name: String, code: String) -> Promise<Device> {
         return Promise { fulfill, reject in
-            Alamofire.request(Router.claimInvite(invite)).validate().responseJSON { response in
+            Alamofire.request(Router.claimInvite(name, code)).validate().responseJSON { response in
+                let result = DeviceParser.parseResponse(response)
                 
+                switch result {
+                case .success(let device):
+                    fulfill(device)
+                case .failure(let error):
+                    reject(error)
+                }
             }
         }
     }

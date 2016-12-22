@@ -9,7 +9,7 @@
 
 import UIKit
 
-class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: SelectableTableViewController<Item, Cell> {
+class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: SelectableTableViewController<Item, Cell>, WizardIntroViewControllerDelegate {
     
     
     // MARK: - Life cycle
@@ -28,6 +28,7 @@ class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: 
     }
     
     private func setupNavigationItem() {
+        title = "Device"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDeviceButtonTapped))
     }
     
@@ -76,10 +77,20 @@ class DeviceSelectionTableViewController<Item: Selectable, Cell: ReusableView>: 
     
     @objc private func addDeviceButtonTapped() {
         let viewController = WizardIntroViewController.initFromStoryboard()
+        viewController.delegate = self
         let navigationController = BaseNavigationController(rootViewController: viewController)
         navigationController.transitioningDelegate = CardTransitioningDelegate.shared
         navigationController.modalPresentationStyle = .custom
         
         present(navigationController, animated: true, completion: nil)
     }
+    
+    
+    // MARK: - WizardIntroViewControllerDelegate
+    
+    func viewController(viewController: WizardIntroViewController, didFinishWithDevice device: Device) {
+        User.current.devices.append(device)
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

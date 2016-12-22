@@ -100,7 +100,7 @@ private struct DevicesParser: ServerResponseParser {
     }
 }
 
-private struct DeviceParser: ServerResponseParser {
+struct DeviceParser: ServerResponseParser {
     static func parseJSON(_ json: JSON) -> Alamofire.Result<Device> {
         guard let device = Mapper<Device>().map(JSON: json) else {
             return .failure(DeviceError.failedToParse)

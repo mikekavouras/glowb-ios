@@ -33,7 +33,7 @@ enum Router: URLRequestConvertible {
     case createEvent(Interaction)
     
     case createInvite(Int, Date, Int)
-    case claimInvite(Invite)
+    case claimInvite(String, String)
     
     case getPhotos
     case createPhoto
@@ -90,8 +90,8 @@ extension Router {
             let dateString = formatter.string(from: expiresAt)
             let params: JSON = [ "device_id" : deviceId, "expires_at" : dateString, "usage_limit" : limit ]
             return try JSONEncoding.default.encode(request, with: params)
-        case .claimInvite(let invite):
-            let params = [ "token" : invite.token ]
+        case .claimInvite(let name, let token):
+            let params = [ "name" : name, "token" : token ]
             return try JSONEncoding.default.encode(request, with: params)
             
         case .getPhotos:

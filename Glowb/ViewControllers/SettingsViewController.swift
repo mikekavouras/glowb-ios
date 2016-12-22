@@ -39,7 +39,7 @@ class SettingsViewController: BaseTableViewController {
     
     private func setupNavigationItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
-        title = "Settings"
+        title = "Devices"
     }
     
     
@@ -77,10 +77,6 @@ class SettingsViewController: BaseTableViewController {
     
     
     // MARK: - Table view delegate
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Devices"
-    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let device = User.current.devices[indexPath.row]
