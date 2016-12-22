@@ -19,6 +19,10 @@ class WizardIntroViewController: BaseViewController, StoryboardInitializable {
     static var storyboardName: StaticString = "WizardIntro"
     
     @IBAction func redeemInviteButtonTapped(_ sender: Any) {
+        displayRedeemUI()
+    }
+    
+    private func displayRedeemUI() {
        let alertController = UIAlertController(title: "Redeem", message: "Enter your invite code", preferredStyle: .alert)
         
         let codeTextField = { (textField: UITextField) -> Void in
@@ -39,18 +43,28 @@ class WizardIntroViewController: BaseViewController, StoryboardInitializable {
                 Invite.claim(name: name, code: code).then { device in
                     self.delegate?.viewController(viewController: self, didFinishWithDevice: device)
                 }.catch { error in
-                    print(error)
+                    self.displayErrorUI(error: error)
                 }
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) 
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
         
         alertController.addTextField(configurationHandler: codeTextField)
         alertController.addTextField(configurationHandler: nameTextField)
         alertController.addAction(cancelAction)
         alertController.addAction(submitAction)
         
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func displayErrorUI(error: Error) {
+        // TODO: Better error messaging
+        let alertController = UIAlertController(title: "Error", message: "There was an error", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Dismiss", style: .default) { action in
+            self.displayRedeemUI()
+        }
+        alertController.addAction(action)
         present(alertController, animated: true, completion: nil)
     }
     
