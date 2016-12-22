@@ -113,8 +113,12 @@ class ConnectingProgressViewController: BaseViewController {
         }
         
         if isHostReachable {
+            // TODO: Fun UI (ALL CONNECTED!!!!)
             print("IT'S ALL DONE WE DID IT!")
-            NotificationCenter.default.post(name: .particleDeviceConnected, object: nil, userInfo: ["device_id" : deviceId ])
+            displayNameInputUI() { name in
+                let userInfo = [ "device_id" : self.deviceId, "device_name" : name ]
+                NotificationCenter.default.post(name: .particleDeviceConnected, object: nil, userInfo: userInfo)
+            }
         } else {
             print("this shit failed")
         }
@@ -128,5 +132,29 @@ class ConnectingProgressViewController: BaseViewController {
         let status = reachability.currentReachabilityStatus()
         
         isHostReachable = status.rawValue == 1 || status.rawValue == 2
+    }
+    
+    // MARK: - 
+    
+    private func displayNameInputUI(completion: @escaping (String) -> Void) {
+       let alertController = UIAlertController(title: "Redeem", message: "Enter your invite code", preferredStyle: .alert)
+        
+        let nameTextField = { (textField: UITextField) -> Void in
+            textField.placeholder = "Name (e.g. living room)"
+        }
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { action in
+            if let textFields = alertController.textFields,
+                let nameField = textFields.last,
+                let name = nameField.text
+            {
+                completion(name)
+            }
+        }
+        
+        alertController.addTextField(configurationHandler: nameTextField)
+        alertController.addAction(submitAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }

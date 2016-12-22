@@ -21,45 +21,125 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCu-6J-cgG" customClass="PrimaryButton" customModule="Glowb" customModuleProvider="target">
-                                <rect key="frame" x="128" y="312" width="120" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-lq-3id" customClass="BaseView" customModule="Glowb" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="236.5" width="375" height="194"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTn-Az-8Sp" customClass="BaseView" customModule="Glowb" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Device?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0O-Ly-KLp" customClass="PrimaryTextLabel" customModule="Glowb" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCu-6J-cgG" customClass="PrimaryButton" customModule="Glowb" customModuleProvider="target">
+                                                <rect key="frame" x="127.5" y="33" width="120" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="Ky4-8N-0J8"/>
+                                                    <constraint firstAttribute="width" constant="120" id="PtQ-fs-Rki"/>
+                                                </constraints>
+                                                <state key="normal" title="Connect"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="getStartedButtonTapped:" destination="wHa-uk-7Fz" eventType="touchUpInside" id="VEj-94-bUd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="CCu-6J-cgG" secondAttribute="bottom" id="HxK-1r-lOR"/>
+                                            <constraint firstItem="w0O-Ly-KLp" firstAttribute="top" secondItem="TTn-Az-8Sp" secondAttribute="top" id="aF9-lt-9X4"/>
+                                            <constraint firstItem="CCu-6J-cgG" firstAttribute="centerX" secondItem="TTn-Az-8Sp" secondAttribute="centerX" id="amu-Ng-oHU"/>
+                                            <constraint firstAttribute="trailing" secondItem="w0O-Ly-KLp" secondAttribute="trailing" id="arw-Eq-PLb"/>
+                                            <constraint firstItem="CCu-6J-cgG" firstAttribute="top" secondItem="w0O-Ly-KLp" secondAttribute="bottom" constant="12" id="f9C-Ky-CPi"/>
+                                            <constraint firstItem="w0O-Ly-KLp" firstAttribute="leading" secondItem="TTn-Az-8Sp" secondAttribute="leading" id="nHS-qd-I0J"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVj-8F-IA5" customClass="BaseView" customModule="Glowb" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="117" width="375" height="77"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite code?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ5-C6-OS6" customClass="PrimaryTextLabel" customModule="Glowb" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcm-qe-ujx" customClass="PrimaryButton" customModule="Glowb" customModuleProvider="target">
+                                                <rect key="frame" x="127.5" y="33" width="120" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="rNE-NO-zTz"/>
+                                                    <constraint firstAttribute="width" constant="120" id="uvm-Iy-8Fw"/>
+                                                </constraints>
+                                                <state key="normal" title="Redeem"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="redeemInviteButtonTapped:" destination="wHa-uk-7Fz" eventType="touchUpInside" id="ziJ-LB-jW4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Kcm-qe-ujx" secondAttribute="bottom" id="FGY-px-RYc"/>
+                                            <constraint firstItem="Kcm-qe-ujx" firstAttribute="top" secondItem="kJ5-C6-OS6" secondAttribute="bottom" constant="12" id="IXY-pD-Cus"/>
+                                            <constraint firstAttribute="trailing" secondItem="kJ5-C6-OS6" secondAttribute="trailing" id="PHR-6o-PBs"/>
+                                            <constraint firstItem="Kcm-qe-ujx" firstAttribute="centerX" secondItem="YVj-8F-IA5" secondAttribute="centerX" id="Rhm-lu-UhM"/>
+                                            <constraint firstItem="kJ5-C6-OS6" firstAttribute="top" secondItem="YVj-8F-IA5" secondAttribute="top" id="ZUe-bi-zK9"/>
+                                            <constraint firstItem="kJ5-C6-OS6" firstAttribute="leading" secondItem="YVj-8F-IA5" secondAttribute="leading" id="yVE-Ik-gjI"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Ky4-8N-0J8"/>
-                                    <constraint firstAttribute="width" constant="120" id="PtQ-fs-Rki"/>
+                                    <constraint firstAttribute="trailing" secondItem="YVj-8F-IA5" secondAttribute="trailing" id="4AS-fE-f2c"/>
+                                    <constraint firstItem="YVj-8F-IA5" firstAttribute="leading" secondItem="jbx-lq-3id" secondAttribute="leading" id="Fp4-8u-V5j"/>
+                                    <constraint firstAttribute="bottom" secondItem="YVj-8F-IA5" secondAttribute="bottom" id="L9k-oa-dhD"/>
+                                    <constraint firstItem="YVj-8F-IA5" firstAttribute="top" secondItem="TTn-Az-8Sp" secondAttribute="bottom" constant="40" id="TU1-fA-mCW"/>
+                                    <constraint firstAttribute="trailing" secondItem="TTn-Az-8Sp" secondAttribute="trailing" id="YYH-kX-YaL"/>
+                                    <constraint firstItem="TTn-Az-8Sp" firstAttribute="leading" secondItem="jbx-lq-3id" secondAttribute="leading" id="m6m-nU-cHM"/>
+                                    <constraint firstItem="TTn-Az-8Sp" firstAttribute="top" secondItem="jbx-lq-3id" secondAttribute="top" id="nI5-jb-yMi"/>
                                 </constraints>
-                                <state key="normal" title="Get Started"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="getStartedButtonTapped:" destination="wHa-uk-7Fz" eventType="touchUpInside" id="VEj-94-bUd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcm-qe-ujx" customClass="PrimaryButton" customModule="Glowb" customModuleProvider="target">
-                                <rect key="frame" x="127" y="224" width="120" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="rNE-NO-zTz"/>
-                                    <constraint firstAttribute="width" constant="120" id="uvm-Iy-8Fw"/>
-                                </constraints>
-                                <state key="normal" title="Redeem Invite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="redeemInviteButtonTapped:" destination="wHa-uk-7Fz" eventType="touchUpInside" id="ziJ-LB-jW4"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CCu-6J-cgG" firstAttribute="centerX" secondItem="Jzu-9o-OyR" secondAttribute="centerX" id="Cgi-40-Qyq"/>
-                            <constraint firstItem="CCu-6J-cgG" firstAttribute="top" secondItem="Kcm-qe-ujx" secondAttribute="bottom" constant="44" id="Np8-OS-XmN"/>
-                            <constraint firstItem="Kcm-qe-ujx" firstAttribute="centerX" secondItem="CCu-6J-cgG" secondAttribute="centerX" id="hpy-ac-wBb"/>
-                            <constraint firstItem="CCu-6J-cgG" firstAttribute="centerY" secondItem="Jzu-9o-OyR" secondAttribute="centerY" id="y6M-sH-39x"/>
+                            <constraint firstItem="jbx-lq-3id" firstAttribute="leading" secondItem="Jzu-9o-OyR" secondAttribute="leading" id="7ka-Y9-ibA"/>
+                            <constraint firstAttribute="trailing" secondItem="jbx-lq-3id" secondAttribute="trailing" id="LYu-ou-VpB"/>
+                            <constraint firstItem="jbx-lq-3id" firstAttribute="centerX" secondItem="Jzu-9o-OyR" secondAttribute="centerX" id="bhy-Qq-tIh"/>
+                            <constraint firstItem="jbx-lq-3id" firstAttribute="centerY" secondItem="Jzu-9o-OyR" secondAttribute="centerY" id="ef8-a9-Omh"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
