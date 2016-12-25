@@ -62,7 +62,7 @@ end
 
 private_lane :build do |options|
   certs
-  increment_build_number
+  # increment_build_number
   configure
   gym(
     verbose: true,
