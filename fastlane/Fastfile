@@ -68,7 +68,7 @@ private_lane :build do |options|
     verbose: true,
     include_bitcode: true,
     include_symbols: true,
-    scheme: "Glowb",
+    scheme: "Distribution",
     output_directory: "build",
     export_options: {
       thinning: "<thin-for-all-variants>"
