@@ -93,11 +93,12 @@ class DeviceCommunicationManager {
         let port = DeviceCommunicationManager.ConnectionEndpointPort
         connection = DeviceConnection(withIPAddress: ipAddress, port: port)
         
+        connection!.delegate = self;
+
         connectionCommand = { [unowned self] in
             command(self.connection!)
         }
     
-        connection!.delegate = self;
     }
     
     

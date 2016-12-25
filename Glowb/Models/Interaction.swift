@@ -17,6 +17,9 @@ enum InteractionError: Error {
 
 struct Interaction: Mappable {
     private var _color: UIColor {
+        if red == 255 && blue == 16 { return .magenta }
+        if red == 255 && blue == 128 { return .purple }
+        if green == 128 && blue == 255 { return .cyan }
         if red == 255 { return .red }
         if green == 255 { return .green }
         if blue == 255 { return .blue }
@@ -40,7 +43,7 @@ struct Interaction: Mappable {
     
     var imageUrl: URL? {
         guard let token = photo?.token else { return nil }
-        let string = "https://electrolamp-photos.s3.amazonaws.com/development/uploads/\(token).jpg"
+        let string = "https://electrolamp-photos.s3.amazonaws.com/production/uploads/\(token).jpg"
         guard let url = URL(string: string) else { return nil }
         return url
     }
@@ -73,6 +76,15 @@ struct Interaction: Mappable {
             green = 255
         } else if color == UIColor.blue {
             blue = 255
+        } else if color == UIColor.magenta {
+            red = 255
+            blue = 16
+        } else if color == UIColor.cyan {
+            green = 128
+            blue = 255
+        } else if color == UIColor.purple {
+            red = 255
+            blue = 128
         }
     }
     
