@@ -210,7 +210,7 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
     }
     
     fileprivate func showColorsViewController() {
-        let colors = [Color(.red), Color(.green), Color(.blue)]
+        let colors = [Color(.red), Color(.green), Color(.blue), Color(.magenta), Color(.purple), Color(.cyan)]
         let selectableColors = colors.map { color -> SelectableViewModel<Color> in
             var state: SelectedState = .deselected
             if let rColor = interaction.color {
