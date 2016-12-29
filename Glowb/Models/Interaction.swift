@@ -42,9 +42,8 @@ struct Interaction: Mappable {
     var blue: Int = 0
     
     var imageUrl: URL? {
-        guard let token = photo?.token else { return nil }
-        let string = "https://electrolamp-photos.s3.amazonaws.com/production/uploads/\(token).jpg"
-        guard let url = URL(string: string) else { return nil }
+        guard let urlString = photo?.url,
+            let url = URL(string: urlString) else { return nil }
         return url
     }
     

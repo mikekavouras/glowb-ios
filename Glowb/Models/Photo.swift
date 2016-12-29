@@ -25,6 +25,7 @@ struct Photo: Mappable {
     var originalHeight: CGFloat = 0
     var eTag: String = ""
     var token: String?
+    var url: String?
     
     var s3Params: JSON?
     
@@ -35,6 +36,7 @@ struct Photo: Mappable {
         s3Params       <- map["params"]
         originalHeight <- map["original_height"]
         originalWidth  <- map["original_width"]
+        url            <- map["url"]
         token          <- map["token"]
     }
     
@@ -42,7 +44,7 @@ struct Photo: Mappable {
         return [
             "sha" : eTag,
             "original_width" : originalWidth,
-            "original_height" : originalHeight
+            "original_height" : originalHeight,
         ]
     }
     
