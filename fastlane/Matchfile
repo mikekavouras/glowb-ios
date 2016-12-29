@@ -7,4 +7,3 @@ app_identifier ENV['APP_IDENTIFIER']
 git_branch 'master'
 username ENV['APPLE_USERNAME']
 readonly true
-

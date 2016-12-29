@@ -1,5 +1,5 @@
-require 'dotenv'
-require 'yaml'
+fastlane_require 'dotenv'
+fastlane_require 'yaml'
 
 Dotenv.load
 
