@@ -29,6 +29,7 @@ class DeviceCommunicationManager {
     // MARK: Public API
     
     func sendCommand<T: ParticleCommunicable>(_ type: T.Type, completion: @escaping (ResultType<T.ResponseType, ConnectionError>) -> Void) {
+        
         runCommand(onConnection: { connection in
             connection.writeString(T.command)
         }, onCompletion: { result in
@@ -137,8 +138,9 @@ extension DeviceCommunicationManager: DeviceConnectionDelegate {
         switch state {
         case .opened:
             connectionCommand?()
+        case .openTimeout:
+            completionCommand?(.failure(ConnectionError.timeout))
         case .error:
-            print("connection error!")
             completionCommand?(.failure(ConnectionError.couldNotConnect))
         default: break
         }

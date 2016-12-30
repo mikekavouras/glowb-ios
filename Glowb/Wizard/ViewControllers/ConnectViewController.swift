@@ -13,7 +13,7 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
     
     static var storyboardName: StaticString = "Connect"
     
-    lazy var wifi: Wifi = {
+    fileprivate lazy var wifi: Wifi = {
         return Wifi { [weak self] state in
             self?.onConnectionHandler(state: state)
         }
@@ -21,6 +21,8 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
     
     fileprivate var communicationManager: DeviceCommunicationManager?
     fileprivate var deviceId: String = ""
+
+    fileprivate var deviceConnectRetryCount: Int = 0
     
     
     // MARK: Life cycle
@@ -48,7 +50,7 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
         content.body = "Tap to continue Setup"
         content.sound = UNNotificationSound.default()
     
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.2, repeats: false)
         let request = UNNotificationRequest(identifier: "ConnectedIdentifier", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
@@ -63,14 +65,12 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
         }
         if state == .active {
             wifi.stopMonitoringConnection()
-            
-            getDeviceId { id in
-                self.getPublicKey { _ in
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            getDeviceId { [weak self] id in
+                self?.getPublicKey { [weak self] _ in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         let networkViewController = SelectNetworkViewController()
                         networkViewController.deviceId = id
-                        self.navigationController?.pushViewController(networkViewController, animated: true)
+                        self?.navigationController?.pushViewController(networkViewController, animated: true)
                     }
                 }
             }
@@ -81,31 +81,51 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
     // MARK: -
 
     private func getDeviceId(completion: @escaping (String) -> Void) {
-        print("GETTING DEVICE INFO...")
         communicationManager = DeviceCommunicationManager()
-        communicationManager?.sendCommand(Command.Device.self) { [unowned self] result in
+        communicationManager?.sendCommand(Command.Device.self) { [weak self] result in
             switch result {
             case .success(let value):
                 completion(value.deviceId)
             case .failure(let error):
-                self.wifi.startMonitoringConnectionInForeground()
-                print(error)
+                if error == ConnectionError.timeout {
+                    if self != nil && self!.deviceConnectRetryCount >= 5 {
+                        self?.showConnectionFailureAlert()
+                        return
+                    }
+                    self?.deviceConnectRetryCount += 1
+                    self?.wifi.startMonitoringConnectionInForeground()
+                } else {
+                    self?.showConnectionFailureAlert()
+                }
             }
         }
     }
     
     private func getPublicKey(completion: @escaping () -> Void) {
-        print("GETTING PUBLIC KEY")
         communicationManager = DeviceCommunicationManager()
-        communicationManager!.sendCommand(Command.PublicKey.self) { [unowned self] result in
+        communicationManager!.sendCommand(Command.PublicKey.self) { [weak self] result in
             switch result {
             case .success:
                 completion()
-            case .failure(let error):
-                self.wifi.startMonitoringConnectionInForeground()
-                print(error)
+            case .failure:
+                self?.wifi.startMonitoringConnectionInForeground()
             }
         }
+    }
+    
+    
+    // MARK: - 
+    
+    private func showConnectionFailureAlert() {
+        let action = UIAlertAction(title: "Try again", style: .default) { action in
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        
+        let alert = UIAlertController(title: "Could not connect", message: "We're having trouble connecting to your device. Double check your device is on and ready to connect (blinking blue).", preferredStyle: .alert)
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
     }
 }
 

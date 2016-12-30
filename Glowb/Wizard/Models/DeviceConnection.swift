@@ -17,6 +17,7 @@ enum ConnectionError: Error {
     case noSpaceAvailable
     case jsonParseError
     case couldNotConnect
+    case timeout
 }
 
 protocol DeviceConnectionDelegate: class {
@@ -40,7 +41,7 @@ class DeviceConnection: NSObject {
     var inputStream: InputStream?
     var outputStream: OutputStream?
     
-    var socketTimer: Timer?
+    var timeoutTimer: Timer?
     
     var receivedDataBuffer = ""
     var streamState: (input: Bool, output: Bool) = (false, false)
@@ -61,6 +62,9 @@ class DeviceConnection: NSObject {
         super.init()
         
         initSocket()
+        
+        timeoutTimer = Timer(timeInterval: 5.0, target: self, selector: #selector(self.socketOpenTimeoutHandler(timer:)), userInfo: nil, repeats: false)
+        RunLoop.current.add(timeoutTimer!, forMode: .commonModes)
     }
     
     deinit {
@@ -77,13 +81,11 @@ class DeviceConnection: NSObject {
         
         [inputStream, outputStream].forEach { stream in
             stream.delegate = self
-            stream.open()
             stream.schedule(in: RunLoop.current, forMode: .defaultRunLoopMode)
         }
         
-        socketTimer = Timer(timeInterval: 3.0, target: self, selector: #selector(self.socketOpenTimeoutHandler(timer:)), userInfo: nil, repeats: false)
-        
-        RunLoop.current.add(socketTimer!, forMode: .defaultRunLoopMode)
+        inputStream.open()
+        outputStream.open()
     }
     
     func socketOpenTimeoutHandler(timer: Timer) {
@@ -98,9 +100,9 @@ class DeviceConnection: NSObject {
                 delegate?.deviceConnection(connection: self, didUpdateState: .error)
                 return
         }
+        
 
         DispatchQueue.main.async { [unowned self] in
-            print("we got room??? \(outputStream.hasSpaceAvailable)")
             if outputStream.hasSpaceAvailable {
                 let _ = buffer.withUnsafeBytes { outputStream.write($0, maxLength: buffer.count) }
             } else {
@@ -110,7 +112,7 @@ class DeviceConnection: NSObject {
     }
     
     private func close() {
-        socketTimer?.invalidate()
+        timeoutTimer?.invalidate()
         
         outputStream?.remove(from: RunLoop.current, forMode: .defaultRunLoopMode)
         outputStream?.close()
@@ -136,13 +138,13 @@ extension DeviceConnection: StreamDelegate {
             
             if case (true, true) = streamState {
                 delegate?.deviceConnection(connection: self, didUpdateState: .opened)
-                socketTimer?.invalidate()
             }
             return
         }
 
         if eventCode == .hasSpaceAvailable || eventCode == .hasBytesAvailable {
             guard let inputStream = inputStream else { return }
+            
             if aStream == inputStream {
                 var buffer = [UInt8](repeatElement(0, count: 1024))
                 while inputStream.hasBytesAvailable {
@@ -156,6 +158,9 @@ extension DeviceConnection: StreamDelegate {
         }
         
         if eventCode == .endEncountered {
+            
+            timeoutTimer?.invalidate()
+            
             if aStream == outputStream {
                 streamState = (streamState.input, false)
             }
