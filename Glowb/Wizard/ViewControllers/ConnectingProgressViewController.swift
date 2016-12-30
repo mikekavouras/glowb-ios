@@ -62,9 +62,13 @@ class ConnectingProgressViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        print("a")
         configureDeviceNetworkCredentials {
+            print("c")
             self.connectDeviceToNetwork {
+                print("e")
                 self.waitForCloudConnection {
+                    print("g")
                     self.checkForInternetConnectivity()
                 }
             }
@@ -75,6 +79,7 @@ class ConnectingProgressViewController: BaseViewController {
     // MARK: Connecting
     
     private func configureDeviceNetworkCredentials(completion: @escaping () -> Void) {
+        print("b")
         communicationManager = DeviceCommunicationManager()
         communicationManager?.configureAP(network: network) { [unowned self] result in
             self.communicationManager = nil
@@ -83,45 +88,61 @@ class ConnectingProgressViewController: BaseViewController {
     }
     
     private func connectDeviceToNetwork(completion: @escaping () -> Void) {
+        print("d")
         communicationManager = DeviceCommunicationManager()
         communicationManager?.connectAP { [unowned self] result in
             self.communicationManager = nil
             
             var retries = 0
-            while Wifi.isDeviceConnected(.photon) == true && retries < 10 {
-                Thread.sleep(forTimeInterval: 2.0)
-                retries += 1
+            
+            func connect() {
+                if Wifi.isDeviceConnected(.photon) == true && retries < 10 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        retries += 1
+                        connect()
+                    }
+                } else {
+                    // TODO: Handle error case (never connected)
+                    completion()
+                }
             }
             
-            completion()
+            connect()
         }
     }
     
     private func waitForCloudConnection(completion: @escaping () -> Void) {
+        print("f")
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { 
             completion()
         }
     }
     
     private func checkForInternetConnectivity() {
+        print("h")
+        
         var retries = 0
-        while !isHostReachable {
-            for _ in 0..<5 {
-                Thread.sleep(forTimeInterval: 2.0)
-                retries += 1
+        func connect() {
+            print("trying to connect")
+            if !isHostReachable && retries < 5 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    retries += 1
+                    connect()
+                }
+            } else {
+                if isHostReachable {
+                    print("IT'S ALL DONE WE DID IT!")
+                    displayNameInputUI() { name in
+                        let userInfo = [ "device_id" : self.deviceId, "device_name" : name ]
+                        NotificationCenter.default.post(name: .particleDeviceConnected, object: nil, userInfo: userInfo)
+                    }
+                } else {
+                    print("this shit failed")
+                }
             }
         }
         
-        if isHostReachable {
-            // TODO: Fun UI (ALL CONNECTED!!!!)
-            print("IT'S ALL DONE WE DID IT!")
-            displayNameInputUI() { name in
-                let userInfo = [ "device_id" : self.deviceId, "device_name" : name ]
-                NotificationCenter.default.post(name: .particleDeviceConnected, object: nil, userInfo: userInfo)
-            }
-        } else {
-            print("this shit failed")
-        }
+        connect()
     }
     
     
@@ -130,6 +151,8 @@ class ConnectingProgressViewController: BaseViewController {
     @objc private func reachabilityChanged(notification: NSNotification) {
         guard let reachability = notification.object as? Reachability else { return }
         let status = reachability.currentReachabilityStatus()
+        
+        print("Reachability changed: \(status.rawValue)")
         
         isHostReachable = status.rawValue == 1 || status.rawValue == 2
     }
