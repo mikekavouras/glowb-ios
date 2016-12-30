@@ -62,9 +62,8 @@ class DeviceSelectionTableViewController: BaseTableViewController {
         if let id = notification.userInfo?["device_id"] as? String,
             let name = notification.userInfo?["device_name"] as? String {
             Device.create(deviceId: id, name: name).then { device -> Void in
-                User.current.devices.append(device)
-                self.dismiss(animated: true, completion: nil)
                 self.refreshDevices(device)
+                self.dismiss(animated: true, completion: nil)
             }.catch { error in
                 print(error)
             }
@@ -72,10 +71,13 @@ class DeviceSelectionTableViewController: BaseTableViewController {
     }
     
     fileprivate func refreshDevices(_ device: Device) {
+        var devices = User.current.devices.filter { $0.id != device.id }
+        devices.append(device)
+        User.current.devices = devices
+        
         let selectableDevices = User.current.devices.map { (item) -> SelectableViewModel<Device> in
-            // TODO: auto select, make sure to call delegate method
-//            let state: SelectedState = (device == item) ? .selected : .deselected
-            return SelectableViewModel(model: item, selectedState: .deselected)
+            let state: SelectedState = (device == item) ? .selected : .deselected
+            return SelectableViewModel(model: item, selectedState: state)
         }
         
         items = selectableDevices

@@ -137,13 +137,13 @@ class ConnectingProgressViewController: BaseViewController {
     // MARK: - 
     
     private func displayNameInputUI(completion: @escaping (String) -> Void) {
-       let alertController = UIAlertController(title: "Redeem", message: "Enter your invite code", preferredStyle: .alert)
+       let alertController = UIAlertController(title: "Connected!", message: "Name your device", preferredStyle: .alert)
         
         let nameTextField = { (textField: UITextField) -> Void in
             textField.placeholder = "Name (e.g. living room)"
         }
         
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { action in
+        let submitAction = UIAlertAction(title: "Finish", style: .default) { action in
             if let textFields = alertController.textFields,
                 let nameField = textFields.last,
                 let name = nameField.text
