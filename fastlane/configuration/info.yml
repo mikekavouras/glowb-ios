@@ -1,0 +1,41 @@
+Development: &Development
+  CFBundleDevelopmentRegion: en
+  CFBundleExecutable: $(EXECUTABLE_NAME)
+  Configuration: $(CONFIGURATION)
+  CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+  CFBundleInfoDictionaryVersion: "6.0"
+  CFBundlePackageType: APPL
+  NSPhotoLibraryUsageDescription: "Photos are special ✨📸 ✨<"
+  CFBundleSignature: "????"
+  UISupportedInterfaceOrientations: [ 'UIInterfaceOrientationPortrait' ]
+  LSApplicationCategoryType:
+  LSRequiresIPhoneOS: true
+  UIRequiredDeviceCapabilities: [ armv7 ]
+  UIRequiresFullScreen: true
+  UIMainStoryboardFile: "Interactions"
+  NSAppTransportSecurity:
+    NSExceptionDomains:
+      localhost:
+        NSIncludesSubdomains: false
+        NSTemporaryExceptionAllowsInsecureHTTPLoads: true
+        NSTemporaryExceptionMinimumTLSVersion: TLSv1.1
+      lamp.electrolamp.org:
+        NSIncludesSubdomains: true
+        NSTemporaryExceptionAllowsInsecureHTTPLoads: true
+        NSTemporaryExceptionMinimumTLSVersion: TLSv1.1
+  CFBundleDisplayName: "Glowb α"
+  CFBundleName: "Glowb Alpha"
+  CFBundleShortVersionString: "1.0"
+  CFBundleVersion: "6"
+  UILaunchStoryboardName: "LaunchScreen"
+  UIViewControllerBasedStatusBarAppearance: false
+
+Beta: &Beta
+  <<: *Development
+  CFBundleDisplayName: "Glowb β"
+  CFBundleName: "Glowb Beta"
+
+Distribution:
+  <<: *Beta
+  CFBundleDisplayName: "Glowb"
+  CFBundleName: "Glowb"

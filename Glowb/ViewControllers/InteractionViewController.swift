@@ -50,6 +50,10 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
         setup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        _ = imagePickerController // eager load
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -121,7 +125,6 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
         if let url = interaction.imageUrl {
             previewImageView.af_setImage(withURL: url)
         }
-        _ = imagePickerController // eager load
     }
     
     

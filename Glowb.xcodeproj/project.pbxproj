@@ -114,6 +114,11 @@
 		8DD0DA4F1DFB3D6D000CB745 /* Plist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0DA4E1DFB3D6D000CB745 /* Plist.swift */; };
 		8DD0DA511DFB44D6000CB745 /* ServerResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0DA501DFB44D6000CB745 /* ServerResponseParser.swift */; };
 		8DD0DA571DFB5C72000CB745 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0DA561DFB5C72000CB745 /* AccessToken.swift */; };
+		8DF27C8B1E16FD1700C266AA /* Distribution.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C8A1E16FD1700C266AA /* Distribution.xcconfig */; };
+		8DF27C8D1E16FD1B00C266AA /* Beta.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C8C1E16FD1B00C266AA /* Beta.xcconfig */; };
+		8DF27C911E1704B100C266AA /* Info.Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C8E1E1704B100C266AA /* Info.Development.plist */; };
+		8DF27C921E1704B100C266AA /* Info.Distribution.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C8F1E1704B100C266AA /* Info.Distribution.plist */; };
+		8DF27C951E17144500C266AA /* Info.Beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C941E17144500C266AA /* Info.Beta.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -217,7 +222,6 @@
 		8D921DEA1DF48B600056FAAC /* Styleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
 		8DA2DFA11DF79EB800B85B05 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8DA75EE31DF355EB00A35737 /* InteractionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractionViewController.swift; sourceTree = "<group>"; };
-		8DB1E0861DF36670000648C3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DB1E0891DF366AE000648C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DB1E08E1DF36E60000648C3 /* NibInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibInitializable.swift; sourceTree = "<group>"; };
 		8DB1E0901DF36E6F000648C3 /* StoryboardInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInitializable.swift; sourceTree = "<group>"; };
@@ -232,7 +236,15 @@
 		8DD0DA501DFB44D6000CB745 /* ServerResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerResponseParser.swift; sourceTree = "<group>"; };
 		8DD0DA531DFB4B74000CB745 /* Glowb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Glowb.entitlements; sourceTree = "<group>"; };
 		8DD0DA561DFB5C72000CB745 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		8DF27C891E16FCC800C266AA /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		8DF27C8A1E16FD1700C266AA /* Distribution.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Distribution.xcconfig; sourceTree = "<group>"; };
+		8DF27C8C1E16FD1B00C266AA /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
+		8DF27C8E1E1704B100C266AA /* Info.Development.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.Development.plist; sourceTree = "<group>"; };
+		8DF27C8F1E1704B100C266AA /* Info.Distribution.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.Distribution.plist; sourceTree = "<group>"; };
+		8DF27C941E17144500C266AA /* Info.Beta.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.Beta.plist; sourceTree = "<group>"; };
 		A10438662ADFB9A7338445F0 /* Pods-Glowb.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.development.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.development.xcconfig"; sourceTree = "<group>"; };
+		C1098F6E588B831593282996 /* Pods-Glowb.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.staging.xcconfig"; sourceTree = "<group>"; };
+		FF8363CB06CE3216576FA70D /* Pods-Glowb.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Glowb.beta.xcconfig"; path = "Pods/Target Support Files/Pods-Glowb/Pods-Glowb.beta.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +266,8 @@
 				54E12DCAF388AD1CFD8675D0 /* Pods-Glowb.release.xcconfig */,
 				A10438662ADFB9A7338445F0 /* Pods-Glowb.development.xcconfig */,
 				35C3DF68DDB96707364A4512 /* Pods-Glowb.distribution.xcconfig */,
+				C1098F6E588B831593282996 /* Pods-Glowb.staging.xcconfig */,
+				FF8363CB06CE3216576FA70D /* Pods-Glowb.beta.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -631,7 +645,12 @@
 			children = (
 				8DD0DA531DFB4B74000CB745 /* Glowb.entitlements */,
 				8D38C7121DF64CC80011AF52 /* Glowb-Bridging-Header.h */,
-				8DB1E0861DF36670000648C3 /* Info.plist */,
+				8DF27C891E16FCC800C266AA /* Development.xcconfig */,
+				8DF27C8C1E16FD1B00C266AA /* Beta.xcconfig */,
+				8DF27C8A1E16FD1700C266AA /* Distribution.xcconfig */,
+				8DF27C8E1E1704B100C266AA /* Info.Development.plist */,
+				8DF27C8F1E1704B100C266AA /* Info.Distribution.plist */,
+				8DF27C941E17144500C266AA /* Info.Beta.plist */,
 				8DC057481DFB328800B26BB4 /* Configuration.plist */,
 			);
 			path = SupportingFiles;
@@ -746,15 +765,20 @@
 				8D38C7171DF64F3E0011AF52 /* WizardIntro.storyboard in Resources */,
 				8D4D79F71DF9E809002C09D2 /* Glow.sks in Resources */,
 				8D669EF41DF358370029FDB0 /* Interaction.storyboard in Resources */,
+				8DF27C8D1E16FD1B00C266AA /* Beta.xcconfig in Resources */,
 				8D1538021DFA6479008E199F /* DeviceSelectionTableViewCell.xib in Resources */,
 				8D4D79F61DF9E809002C09D2 /* Assets.xcassets in Resources */,
+				8DF27C951E17144500C266AA /* Info.Beta.plist in Resources */,
 				8DC057491DFB328800B26BB4 /* Configuration.plist in Resources */,
 				8D1538001DFA6479008E199F /* ColorSelectionTableViewCell.xib in Resources */,
+				8DF27C8B1E16FD1700C266AA /* Distribution.xcconfig in Resources */,
 				8D1538061DFA6479008E199F /* TextSelectionRepresentableTableViewCell.xib in Resources */,
 				8D1538081DFA6479008E199F /* WiFiTableViewCell.xib in Resources */,
 				8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */,
 				8D1537F81DFA6479008E199F /* AddInteractionCollectionViewCell.xib in Resources */,
+				8DF27C921E1704B100C266AA /* Info.Distribution.plist in Resources */,
 				8D1285081E09ED9400E01348 /* SingleActionTableViewCell.xib in Resources */,
+				8DF27C911E1704B100C266AA /* Info.Development.plist in Resources */,
 				8DC174C11DF68A4400FB7A13 /* NetworkCredentials.storyboard in Resources */,
 				8D669EF11DF358000029FDB0 /* LaunchScreen.storyboard in Resources */,
 				8D1538041DFA6479008E199F /* TextFieldTableViewCell.xib in Resources */,
@@ -928,7 +952,9 @@
 /* Begin XCBuildConfiguration section */
 		8DD0DA451DFB36D3000CB745 /* Development */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DF27C891E16FCC800C266AA /* Development.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -981,19 +1007,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A10438662ADFB9A7338445F0 /* Pods-Glowb.development.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Glowb/SupportingFiles/Glowb.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Kavouras (A4Y7UW5AJH)";
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = A56D86G827;
-				INFOPLIST_FILE = Glowb/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = $inherited;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mikekavouras.Glowb;
+				PRODUCT_BUNDLE_IDENTIFIER = $inherited;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7115ce92-6c58-456c-a91c-ff31c8de4ed0";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.mikekavouras.Glowb";
+				PROVISIONING_PROFILE = "e821907f-3ead-49fd-bcad-733501d3420c";
+				PROVISIONING_PROFILE_SPECIFIER = "com.mikekavouras.Glowb.development Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1003,7 +1029,9 @@
 		};
 		8DD0DA471DFB36D9000CB745 /* Distribution */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DF27C8A1E16FD1700C266AA /* Distribution.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1049,18 +1077,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 35C3DF68DDB96707364A4512 /* Pods-Glowb.distribution.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Glowb/SupportingFiles/Glowb.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Kavouras (A56D86G827)";
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = A56D86G827;
-				INFOPLIST_FILE = Glowb/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = $inherited;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mikekavouras.Glowb;
+				PRODUCT_BUNDLE_IDENTIFIER = $inherited;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8754ee0a-22af-45da-81fa-1e02ed832bc0";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.mikekavouras.Glowb";
 				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1069,6 +1096,82 @@
 			};
 			name = Distribution;
 		};
+		8DF27C871E16FB2A00C266AA /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DF27C8C1E16FD1B00C266AA /* Beta.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Beta;
+		};
+		8DF27C881E16FB2A00C266AA /* Beta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF8363CB06CE3216576FA70D /* Pods-Glowb.beta.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Glowb/SupportingFiles/Glowb.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Kavouras (A4Y7UW5AJH)";
+				CURRENT_PROJECT_VERSION = 17;
+				DEVELOPMENT_TEAM = A56D86G827;
+				INFOPLIST_FILE = $inherited;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = $inherited;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "com.mikekavouras.Glowb.beta Development";
+				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Beta;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1076,6 +1179,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DD0DA451DFB36D3000CB745 /* Development */,
+				8DF27C871E16FB2A00C266AA /* Beta */,
 				8DD0DA471DFB36D9000CB745 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1085,6 +1189,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8DD0DA461DFB36D3000CB745 /* Development */,
+				8DF27C881E16FB2A00C266AA /* Beta */,
 				8DD0DA481DFB36D9000CB745 /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;

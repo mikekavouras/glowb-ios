@@ -10,6 +10,11 @@ sudo gem install fastlane
 fastlane beta
 ```
 
+### app_store
+```
+fastlane app_store
+```
+
 ### configure
 ```
 fastlane configure

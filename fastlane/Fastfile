@@ -4,24 +4,35 @@ fastlane_require 'yaml'
 Dotenv.load
 
 lane :beta do |options|
-  build
-  upload
+  build(app_identifier: 'com.mikekavouras.Glowb.beta')
+  upload(scheme: 'Beta')
+end
+
+lane :app_store do |options|
+  build(app_identifier: 'com.mikekavouras.Glowb')
+  upload(scheme: 'Distribution')
 end
 
 lane :configure do |options|
-  data = ::YAML.load_file(File.new("configuration/configuration.yml"))
+    load_configuration(namespace: 'configuration')
+    load_configuration(namespace: 'info')
+end
+
+private_lane :load_configuration do |options|
+  namespace = options[:namespace]
+  data = ::YAML.load_file(File.new("configuration/#{namespace}.yml"))
   envs = data.keys
   keys = data[envs.first].keys
 
   envs.each do |env|
-    File.open("../Glowb/SupportingFiles/Configuration.#{env}.plist", 'w') do |file|
+    File.open("../Glowb/SupportingFiles/#{namespace.capitalize}.#{env}.plist", 'w') do |file|
       file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
       file.write("<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n")
       file.write("<plist version=\"1.0\">\n<dict>\n></dict>\n</plist>")
     end
 
     update_info_plist(
-      plist_path: "Glowb/SupportingFiles/Configuration.#{env}.plist",
+      plist_path: "Glowb/SupportingFiles/#{namespace.capitalize}.#{env}.plist",
       block: lambda { |plist|
         keys.each do |key|
           plist[key] = data[env][key]
@@ -32,8 +43,24 @@ lane :configure do |options|
 end
 
 lane :certs do
-  ['development', 'appstore'].each do |env|
-    match(type: env)
+  ['master', 'beta', 'development'].each do |branch|
+    ['development', 'appstore'].each do |env|
+      match(
+        app_identifier: app_identifier(branch: branch),
+        type: env,
+        git_branch: branch
+      )
+    end
+  end
+end
+
+private_lane :app_identifier do |options|
+  if options[:branch] == 'development'
+    'com.mikekavouras.Glowb.development'
+  elsif options[:branch] == 'beta'
+    'com.mikekavouras.Glowb.beta'
+  else
+    'com.mikekavouras.Glowb'
   end
 end
 
@@ -54,7 +81,7 @@ end
 private_lane :upload do |options|
   pilot(
     ipa:  "build/Glowb.ipa",
-    app_identifier: ENV['APP_IDENTIFIER'],
+    app_identifier: options[:app_identifier],
     username: ENV['APPLE_USERNAME'],
     skip_waiting_for_build_processing: true,
   )
@@ -68,7 +95,7 @@ private_lane :build do |options|
     verbose: true,
     include_bitcode: true,
     include_symbols: true,
-    scheme: "Distribution",
+    scheme: options[:scheme],
     output_directory: "build",
     export_options: {
       thinning: "<thin-for-all-variants>"

@@ -1,0 +1,10 @@
+//
+//  Development.xcconfig
+//  Glowb
+//
+//  Created by Michael Kavouras on 12/30/16.
+//  Copyright © 2016 Michael Kavouras. All rights reserved.
+//
+
+PRODUCT_BUNDLE_IDENTIFIER = com.mikekavouras.Glowb.development
+INFOPLIST_FILE = Glowb/SupportingFiles/Info.Development.plist
