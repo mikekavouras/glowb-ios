@@ -4,13 +4,13 @@ fastlane_require 'yaml'
 Dotenv.load
 
 lane :beta do |options|
-  build(app_identifier: 'com.mikekavouras.Glowb.beta')
-  upload(scheme: 'Beta')
+  build(scheme: 'Beta')
+  upload(app_identifier: 'com.mikekavouras.Glowb.beta')
 end
 
 lane :app_store do |options|
-  build(app_identifier: 'com.mikekavouras.Glowb')
-  upload(scheme: 'Distribution')
+  build(scheme: 'Distribution')
+  upload(app_identifier: 'com.mikekavouras.Glowb')
 end
 
 lane :configure do |options|
