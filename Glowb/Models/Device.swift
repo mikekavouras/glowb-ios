@@ -37,6 +37,7 @@ struct Device: Mappable, Equatable {
     mutating func mapping(map: Map) {
         name       <- map["name"]
         id         <- map["id"]
+        particleId <- map["particle_id"]
     }
     
     
