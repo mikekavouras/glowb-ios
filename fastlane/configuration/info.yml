@@ -5,7 +5,7 @@ Development: &Development
   CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
   CFBundleInfoDictionaryVersion: "6.0"
   CFBundlePackageType: APPL
-  NSPhotoLibraryUsageDescription: "Photos are special ✨📸 ✨<"
+  NSPhotoLibraryUsageDescription: "Photos are special ✨📸 ✨"
   CFBundleSignature: "????"
   UISupportedInterfaceOrientations: [ 'UIInterfaceOrientationPortrait' ]
   LSApplicationCategoryType:
