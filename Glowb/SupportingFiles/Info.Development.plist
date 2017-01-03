@@ -53,7 +53,7 @@
 		</dict>
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Photos are special ✨📸 ✨&lt;</string>
+	<string>Photos are special ✨📸 ✨</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
