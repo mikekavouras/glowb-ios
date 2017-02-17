@@ -26,7 +26,7 @@ Development: &Development
   CFBundleDisplayName: "Glowb α"
   CFBundleName: "Glowb Alpha"
   CFBundleShortVersionString: "1.0"
-  CFBundleVersion: "6"
+  CFBundleVersion: "7"
   UILaunchStoryboardName: "LaunchScreen"
   UIViewControllerBasedStatusBarAppearance: false
 
