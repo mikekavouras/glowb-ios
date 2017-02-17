@@ -29,7 +29,15 @@ struct Photo: Mappable {
     
     var s3Params: JSON?
     
+    
+    // MARK: - Life cycle
+    // MARK: -
+    
     init?(map: Map) {}
+    
+    
+    // MARK: - Mapping
+    // MARK: -
     
     mutating func mapping(map: Map) {
         id             <- map["id"]
@@ -47,6 +55,12 @@ struct Photo: Mappable {
             "original_height" : originalHeight,
         ]
     }
+    
+    
+    // MARK: - API
+    // MARK: -
+    
+    // MARK: create
     
     static func create(image: UIImage, uploadProgressHandler: @escaping (Progress) -> Void) -> Promise<Photo> {
         return Promise { fulfill, reject in
@@ -88,6 +102,8 @@ struct Photo: Mappable {
             }
         }
     }
+    
+    // MARK: update
     
     func update() -> Promise<Photo> {
         return Promise { fulfill, reject in

@@ -22,9 +22,14 @@ enum DeviceError: Error {
 struct Device: Mappable, Equatable {
     var name: String
     var particleId: String = ""
-    var id: Int
+    var id: Int = 0
     let connectionStatus: DeviceConnectionStatus = .disconnected
     
+    init(name: String, id: Int, particleId: String) {
+        self.name = name
+        self.id = id
+        self.particleId = particleId
+    }
     init?(map: Map) {
         guard let userDeviceId = map.JSON["id"] as? Int,
             let name = map.JSON["name"] as? String else
@@ -42,6 +47,7 @@ struct Device: Mappable, Equatable {
     
     
     // MARK: - API
+    // MARK: - 
     
     static func fetchAll() -> Promise<[Device]> {
         return Promise { fulfill, reject in
@@ -66,6 +72,24 @@ struct Device: Mappable, Equatable {
                 switch result {
                 case .success(let devices):
                     fulfill(devices)
+                case.failure(let error):
+                    reject(error)
+                }
+            }
+        }
+    }
+    
+    func update() -> Promise<Device> {
+        return Promise { fulfill, reject in
+            Alamofire.request(Router.updateDevice(self.id, name)).validate().responseJSON { response in
+                let result = DeviceParser.parseResponse(response)
+                
+                switch result {
+                case .success(let device):
+                    let newDevice = Device(name: device.name, id: device.id, particleId: device.particleId)
+                    let newDevices = User.current.devices.filter { $0 != self }
+                    User.current.devices = newDevices + [device]
+                    fulfill(newDevice)
                 case.failure(let error):
                     reject(error)
                 }

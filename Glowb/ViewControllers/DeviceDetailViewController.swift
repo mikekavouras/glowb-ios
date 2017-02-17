@@ -12,22 +12,37 @@ class DeviceDetailViewController: BaseTableViewController {
     
     var device: Device!
 
+    
     // MARK: - Life cycle
+    // MARK: - 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTableView()
+        setup()
     }
     
     
     // MARK: - Setup
+    // MARK: -
+    
+    private func setup() {
+        setupNavigationItem()
+        setupTableView()
+    }
+    
+    private func setupNavigationItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveDeviceTapped))
+    }
     
     private func setupTableView() {
         tableView.register(cellType: TextFieldTableViewCell.self)
         tableView.register(cellType: SingleActionTableViewCell.self)
     }
     
+    
+    // MARK: - Actions
+    // MARK: - 
     
     private func displayShare(for invite: Invite) {
         let text = "You're invited!"
@@ -36,8 +51,19 @@ class DeviceDetailViewController: BaseTableViewController {
         present(activityController, animated: true, completion: nil)
     }
     
+    @objc private func saveDeviceTapped() {
+        view.endEditing(true)
+        
+        device.update().then { _ in
+            _ = self.navigationController?.popViewController(animated: true)
+        }.catch { error in
+            print(error)
+        }
+    }
+    
     
     // MARK: - Table view data source
+    // MARK: -
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
@@ -54,6 +80,9 @@ class DeviceDetailViewController: BaseTableViewController {
             cell.label.text = "Name:"
             cell.textField.text = device.name
             cell.textField.textAlignment = .left
+            cell.textField.delegate = self
+            cell.textField.clearButtonMode = .whileEditing
+            cell.textField.autocapitalizationType = .sentences
             return cell
         case 1:
             let cell = tableView.dequeueReusable(cellType: SingleActionTableViewCell.self, forIndexPath: indexPath)
@@ -70,6 +99,7 @@ class DeviceDetailViewController: BaseTableViewController {
 
     
     // MARK: - Table view delegate
+    // MARK: - 
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -92,6 +122,22 @@ class DeviceDetailViewController: BaseTableViewController {
                 print(error)
             }
         default: break
+        }
+    }
+}
+
+
+// MARK: - Text file delegate
+
+extension DeviceDetailViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text {
+            device.name = text
         }
     }
 }

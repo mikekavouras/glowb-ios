@@ -16,29 +16,36 @@ enum APIError: Error {
 
 enum Router: URLRequestConvertible {
     
+    // auth
     case createOAuthToken
     case refreshOAuthToken
     case revokeOAuthToken
     
+    // devices
     case getDevices
     case getDevice
+    case updateDevice(Int, String)
     case createDevice(String, String)
     case deleteDevice(Int)
     case resetDevice(Int)
     
+    // interactions
     case getInteractions
     case createInteraction(Interaction)
     case updateInteraction(Interaction)
     case deleteInteraction(Int)
     case createEvent(Interaction)
     
+    // invites
     case createInvite(Int, Date, Int)
     case claimInvite(String, String)
     
+    // photos
     case getPhotos
     case createPhoto
     case updatePhoto(Photo)
     
+    // shares
     case createShare(Int)
     case deleteShare(Share)
     
@@ -63,6 +70,9 @@ extension Router {
         case .getDevice(let deviceId):
             let params = [ "device_id" : deviceId ]
             return try URLEncoding.default.encode(request, with: params)
+        case .updateDevice(_, let name):
+            let params = [ "name" : name ]
+            return try JSONEncoding.default.encode(request, with: params)
         case .createDevice(let deviceId, let name):
             let params = [ "particle_id" : deviceId, "name" : name ]
             return try JSONEncoding.default.encode(request, with: params)
@@ -124,6 +134,8 @@ extension Router {
             return .get
         case .getDevice:
             return .get
+        case .updateDevice:
+            return .patch
         case .createDevice:
             return .post
         case .deleteDevice:
@@ -175,6 +187,8 @@ extension Router {
         case .getDevices:
             return "/api/v1/devices"
         case .getDevice(let deviceID):
+            return "/api/v1/devices/\(deviceID)"
+        case .updateDevice(let deviceID, _):
             return "/api/v1/devices/\(deviceID)"
         case .createDevice:
             return "/api/v1/devices"

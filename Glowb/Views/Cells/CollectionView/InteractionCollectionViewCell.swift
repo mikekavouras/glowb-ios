@@ -10,27 +10,48 @@ import UIKit
 
 class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
     
+    var interaction: Interaction? {
+        didSet {
+            guard let interaction = interaction else { return  }
+            if let imageUrl = interaction.imageUrl {
+                backgroundImageView.image = nil
+                foregroundImageView.image = nil
+                backgroundImageView.af_setImage(withURL: imageUrl)
+                foregroundImageView.af_setImage(withURL: imageUrl)
+            }
+            
+            nameLabel.text = interaction.name
+            guard let device = interaction.device,
+                let color = interaction.color else { return }
+            
+            deviceLabel.text = device.name
+            deviceColorView.color = color.color
+        }
+    }
+    
     var editButtonTappedHandler: (() -> Void)?
     var shareButtonTappedHandler: (() -> Void)?
     
     static var identifier: String = "InteractionCellIdentifier"
     static var nibName: String = "InteractionCollectionViewCell"
     
-    @IBOutlet weak var nameLabel: PrimaryTextLabel!
+    @IBOutlet private weak var deviceColorView: ColorPreviewView!
+    @IBOutlet private weak var deviceLabel: PrimaryTextLabel!
+    @IBOutlet private weak var nameLabel: PrimaryTextLabel!
     @IBOutlet private weak var editButton: UIButton!
     @IBOutlet private weak var shareButton: UIButton!
     
     fileprivate let outOfFocusVisibleHeight: CGFloat = 60.0
     fileprivate let cornerRadius: CGFloat = 20.0
 
-    @IBOutlet weak var backgroundContainerView: BaseView!
+    @IBOutlet fileprivate weak var backgroundContainerView: BaseView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var backgroundBlurView: UIVisualEffectView!
+    @IBOutlet private weak var backgroundBlurView: UIVisualEffectView!
     
-    @IBOutlet weak private var scrollView: UIScrollView!
-    @IBOutlet weak private var scrollContentView: UIView!
-    @IBOutlet weak private var scrollContentViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var scrollContentViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scrollContentView: UIView!
+    @IBOutlet private weak var scrollContentViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var scrollContentViewWidthConstraint: NSLayoutConstraint!
     
     private var isSkrilt: Bool {
         return scrollView.contentOffset.y == 0
@@ -88,6 +109,8 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
         
         backgroundBlurView.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
         backgroundImageView.alpha = 0.45
+        
+        editButton.layer.cornerRadius = 6.0
         
         scrollContentView.addSubview(shadowView)
         shadowView.snp.makeConstraints { make in 

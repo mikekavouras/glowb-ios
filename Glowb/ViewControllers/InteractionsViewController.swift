@@ -114,16 +114,7 @@ extension InteractionsViewController: UICollectionViewDataSource {
         case 0..<User.current.interactions.count:
             let cell = collectionView.dequeueReusable(cellType: InteractionCollectionViewCell.self, forIndexPath: indexPath)
             let interaction = User.current.interactions[indexPath.row]
-            
-            if let imageUrl = interaction.imageUrl {
-                cell.backgroundImageView.image = nil
-                cell.foregroundImageView.image = nil
-                cell.backgroundImageView.af_setImage(withURL: imageUrl)
-                cell.foregroundImageView.af_setImage(withURL: imageUrl)
-            }
-            
-            cell.nameLabel.text = interaction.name
-            
+            cell.interaction = interaction
             cell.editButtonTappedHandler = { [weak self] in
                 self?.displayInteractionViewController(interaction)
             }
