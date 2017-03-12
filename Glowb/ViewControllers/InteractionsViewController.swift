@@ -8,13 +8,45 @@
 
 import UIKit
 import AlamofireImage
+import AVFoundation
+import SnapKit
+
+fileprivate enum SettingsGearState {
+    case inactive
+    case active
+}
 
 class InteractionsViewController: BaseViewController {
+    
+    // MARK: - Properties
+    // MARK: -
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var gearIcon: UIImageView!
+    
+    fileprivate var settingsViewController: SettingsViewController?
+    fileprivate var isDragging = false
+    
+    fileprivate var gearState: SettingsGearState = .inactive {
+        didSet {
+            switch self.gearState {
+            case .inactive:
+                UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    self.gearIcon.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+                    self.gearIcon.alpha = 0.3
+                }, completion: nil)
+            default:
+                UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1.0, options: .curveEaseOut, animations: {
+                    self.gearIcon.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                    self.gearIcon.alpha = 1.0
+                }, completion: nil)
+            }
+        }
+    }
     
     
-    // MARK: Life cycle
+    // MARK: - Life cycle
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +58,7 @@ class InteractionsViewController: BaseViewController {
         }.catch { error in
             print(error)
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,15 +67,20 @@ class InteractionsViewController: BaseViewController {
         collectionView.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     
     // MARK: - Setup
+    // MARK: -
     
     private func setup() {
         setupCollectionView()
         setupForceTouch()
-        
-        // eager load
-        let _ = InteractionViewController.initFromStoryboard()
+        gearIcon.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        gearIcon.alpha = 0.3
     }
     
     private func setupForceTouch() {
@@ -55,10 +93,16 @@ class InteractionsViewController: BaseViewController {
     
         collectionView.register(cellType: AddInteractionCollectionViewCell.self)
         collectionView.register(cellType: InteractionCollectionViewCell.self)
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.trailing.bottom.equalToSuperview()
+            make.leading.equalToSuperview()
+        }
     }
     
     
-    // MARK: Navigation
+    // MARK: - Navigation
+    // MARK: -
     
     fileprivate func displayInteractionViewController(_ interaction: Interaction? = nil) {
         let viewController = InteractionViewController.initFromStoryboard()
@@ -72,7 +116,7 @@ class InteractionsViewController: BaseViewController {
         Share.create(interactionId: id).then { share in
             self.displayActivitySheet(share: share)
         }.catch { error in
-                print(error)
+            print(error)
         }
     }
     
@@ -84,7 +128,8 @@ class InteractionsViewController: BaseViewController {
     }
     
     
-    // MARK: - Action
+    // MARK: - Actions
+    // MARK: - 
     
     @IBAction func settingsButtonTapped(_ sender: Any) {
         let viewController = SettingsViewController()
@@ -95,11 +140,9 @@ class InteractionsViewController: BaseViewController {
 
 
 // MARK: - Collection view data source
+// MARK: - 
 
 extension InteractionsViewController: UICollectionViewDataSource {
-    
-    
-    // MARK: - Collection view data source
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -139,6 +182,7 @@ extension InteractionsViewController: UICollectionViewDataSource {
 
 
 // MARK: - Collection view delegate
+// MARK: -
 
 extension InteractionsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -155,6 +199,7 @@ extension InteractionsViewController: UICollectionViewDelegate {
 
 
 // MARK: - Collection view flow layout
+// MARK: - 
 
 extension InteractionsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -164,6 +209,7 @@ extension InteractionsViewController: UICollectionViewDelegateFlowLayout {
 
 
 // MARK: - Previewing context delegate
+// MARK: - 
 
 extension InteractionsViewController: UIViewControllerPreviewingDelegate {
     
@@ -188,4 +234,44 @@ extension InteractionsViewController: UIViewControllerPreviewingDelegate {
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {}
+}
+
+
+// MARK: - Scroll view delegate
+// MARK: - 
+
+extension InteractionsViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x < -80 {
+            if gearState == .active { return }
+            gearState = .active
+            if isDragging {
+                SoundLibrary.shared.play(.popIn)
+            }
+        } else {
+            if gearState == .inactive { return }
+            gearState = .inactive
+            if isDragging {
+                SoundLibrary.shared.play(.popOut)
+            }
+        }
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isDragging = true
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        isDragging = false
+        
+        guard scrollView.contentOffset.x < -80 else { return }
+        
+        let viewController = SettingsViewController()
+        let navigationController = BaseNavigationController(rootViewController: viewController)
+        navigationController.transitioningDelegate = FadeTransitioningDelegate.shared
+        navigationController.modalPresentationStyle = .custom
+        present(navigationController, animated: true) {
+            self.collectionView.contentInset = .zero
+        }
+    }
 }

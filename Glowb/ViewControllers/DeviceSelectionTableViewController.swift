@@ -84,7 +84,7 @@ class DeviceSelectionTableViewController: BaseTableViewController {
         
         self.tableView.reloadData()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             self.delegate?.selectableTableViewController(viewController: self, didSelectSelection: SelectableViewModel(model: device, selectedState: .selected))
         }
     }

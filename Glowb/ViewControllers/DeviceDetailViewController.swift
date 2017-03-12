@@ -14,7 +14,7 @@ class DeviceDetailViewController: BaseTableViewController {
 
     
     // MARK: - Life cycle
-    // MARK: - 
+    // MARK: -
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,6 +128,7 @@ class DeviceDetailViewController: BaseTableViewController {
 
 
 // MARK: - Text file delegate
+// MARK: - 
 
 extension DeviceDetailViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

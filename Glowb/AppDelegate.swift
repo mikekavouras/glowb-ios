@@ -65,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setup(_ application: UIApplication) {
         setupStyles(application)
+        SoundLibrary.initialize()
     }
     
     private func setupStyles(_ application: UIApplication) {
