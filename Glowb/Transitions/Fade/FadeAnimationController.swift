@@ -44,10 +44,17 @@ class FadeAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
         containerView.insertSubview(blurView, at: 0)
         blurView.snp.makeConstraints { $0.edges.equalToSuperview() }
         
+        let overlayView = UIView()
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        containerView.insertSubview(overlayView, aboveSubview: blurView)
+        overlayView.alpha = 0.0
+        overlayView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        
         let duration = transitionDuration(using: transitionContext)
         
         UIView.animate(withDuration: duration, animations: {
             blurView.effect = UIBlurEffect(style: .dark)
+            overlayView.alpha = 0.0
             toViewController.view.alpha = 1.0
         }) { _ in
             transitionContext.completeTransition(true)
@@ -60,11 +67,15 @@ class FadeAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
         { return }
         
         let blurView = transitionContext.containerView.subviews.filter { $0 is UIVisualEffectView }.first
+        let overlayView = transitionContext.containerView.subviews.filter { !($0 is UIVisualEffectView) && $0 != fromViewController.view }.first
         let duration = transitionDuration(using: transitionContext)
+        
+        toViewController.beginAppearanceTransition(true, animated: true)
         
         UIView.animate(withDuration: duration, animations: {
             fromViewController.view.alpha = 0.0
             (blurView as? UIVisualEffectView)?.effect = nil
+            overlayView?.alpha = 0.0
         }) { _ in
             toViewController.endAppearanceTransition()
             transitionContext.completeTransition(true)

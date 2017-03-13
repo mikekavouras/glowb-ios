@@ -8,9 +8,10 @@
 
 import UIKit
 
-class DeviceDetailViewController: BaseTableViewController {
+class DeviceDetailViewController: BaseViewController {
     
     var device: Device!
+    fileprivate let tableView = UITableView(frame: .zero, style: .grouped)
 
     
     // MARK: - Life cycle
@@ -27,24 +28,36 @@ class DeviceDetailViewController: BaseTableViewController {
     // MARK: -
     
     private func setup() {
+        view.backgroundColor = UIColor.clear
+        
         setupNavigationItem()
         setupTableView()
     }
     
     private func setupNavigationItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveDeviceTapped))
+        title = device.name
     }
     
     private func setupTableView() {
-        tableView.register(cellType: TextFieldTableViewCell.self)
-        tableView.register(cellType: SingleActionTableViewCell.self)
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
     
     // MARK: - Actions
     // MARK: - 
     
-    private func displayShare(for invite: Invite) {
+    fileprivate func displayShare(for invite: Invite) {
         let text = "You're invited!"
         let activityItems = [text as AnyObject, invite.token as AnyObject]
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
@@ -60,62 +73,80 @@ class DeviceDetailViewController: BaseTableViewController {
             print(error)
         }
     }
+}
+
     
+// MARK: - Table view data source
+// MARK: -
+
+extension DeviceDetailViewController: UITableViewDataSource {
     
-    // MARK: - Table view data source
-    // MARK: -
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusable(cellType: TextFieldTableViewCell.self, forIndexPath: indexPath)
-            cell.label.text = "Name:"
-            cell.textField.text = device.name
-            cell.textField.textAlignment = .left
-            cell.textField.delegate = self
-            cell.textField.clearButtonMode = .whileEditing
-            cell.textField.autocapitalizationType = .sentences
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.backgroundColor = .clear
+            cell.textLabel?.text = "Create an invite"
+            cell.textLabel?.textColor = .white
             return cell
-        case 1:
-            let cell = tableView.dequeueReusable(cellType: SingleActionTableViewCell.self, forIndexPath: indexPath)
-            cell.label.text = "Create an invite"
-            return cell
-        case 2: 
-            let cell = tableView.dequeueReusable(cellType: SingleActionTableViewCell.self, forIndexPath: indexPath)
-            cell.label.text = "Delete"
-            cell.actionType = .destructive
+        case 1: 
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            cell.backgroundColor = .clear
+            cell.textLabel?.text = "Delete"
+            cell.textLabel?.textColor = .white
             return cell
         default: return UITableViewCell()
         }
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 { return "Create an invite? 👋" }
+        return "Delete this device?"
+    }
     
-    // MARK: - Table view delegate
-    // MARK: - 
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 22, weight: UIFontWeightBold)
+        label.frame.origin.x = 15.0
+        label.textColor = .white
+        label.text = self.tableView(tableView, titleForHeaderInSection: section)
+        
+        let view = UIView()
+        view.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.equalToSuperview().offset(15.0)
+            make.trailing.equalToSuperview().offset(-15.0)
+        }
+        return view
+    }
+}
+
+
+// MARK: - Table view delegate
+// MARK: -
+
+extension DeviceDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch indexPath.section {
+        switch indexPath.row {
         case 0:
-            let cell = tableView.cellForRow(at: indexPath) as! TextFieldTableViewCell
-            cell.textField.becomeFirstResponder()
-        case 1:
             Invite.create(deviceId: device.id).then { invite in
                 self.displayShare(for: invite)
             }.catch { error in
                 print(error)
             }
-        case 2:
+        case 1:
             User.current.deleteDevice(device).then { _ in
                 _ = self.navigationController?.popViewController(animated: true)
             }.catch { error in

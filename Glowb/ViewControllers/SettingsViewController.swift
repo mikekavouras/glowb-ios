@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class SettingsViewController: UIViewController { // BaseTableViewController {
+class SettingsViewController: UIViewController {
     
     // MARK: - Properties
     // MARK: -
@@ -41,7 +41,8 @@ class SettingsViewController: UIViewController { // BaseTableViewController {
     // MARK: -
     
     private func setup() {
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        view.backgroundColor = UIColor.clear
+        navigationController?.delegate = self
         
         setupTableView()
         setupNavigationItem()
@@ -90,6 +91,10 @@ extension SettingsViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let device = User.current.devices[indexPath.row]
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        cell.selectedBackgroundView = backgroundView
         
         // explicit themeing = not hot
         cell.backgroundColor = .clear
@@ -152,5 +157,19 @@ extension SettingsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0
+    }
+}
+
+
+// MARK: - Navigation controller delegate
+// MARK: -
+
+extension SettingsViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .push {
+            return PushPopAnimationController()
+        } else {
+            return PushPopAnimationController(state: .pop)
+        }
     }
 }

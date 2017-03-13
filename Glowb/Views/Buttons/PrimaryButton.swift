@@ -26,9 +26,7 @@ class PrimaryButton: Button, Themeable {
     override func style() {
         super.style()
         
-        layer.borderColor = theme.primaryTextColor.cgColor
-        layer.borderWidth = 1.0
-        
         setTitleColor(theme.primaryTextColor, for: .normal)
+        backgroundColor = theme.tintColor.withAlphaComponent(0.05)
     }
 }

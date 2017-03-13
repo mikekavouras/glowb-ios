@@ -99,6 +99,8 @@
 		8D7291ED1DF4B086003F165F /* SecondaryTextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291EC1DF4B086003F165F /* SecondaryTextLabel.swift */; };
 		8D7291F31DF4B383003F165F /* ColorPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7291F21DF4B383003F165F /* ColorPreviewView.swift */; };
 		8D81296F1DF881FE00C50DEB /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D81296E1DF881FE00C50DEB /* Invite.swift */; };
+		8D88CA1E1E762A45004E9656 /* PushPopAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D88CA1D1E762A45004E9656 /* PushPopAnimationController.swift */; };
+		8D88CA201E762A50004E9656 /* PushPopTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D88CA1F1E762A50004E9656 /* PushPopTransitioningDelegate.swift */; };
 		8D915BB01DFF79CB0080D7BB /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D915BAF1DFF79CB0080D7BB /* Photo.swift */; };
 		8D915BB21DFF7C550080D7BB /* S3ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D915BB11DFF7C550080D7BB /* S3ImageUploader.swift */; };
 		8D921DEB1DF48B600056FAAC /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D921DEA1DF48B600056FAAC /* Styleable.swift */; };
@@ -119,11 +121,6 @@
 		8DD0DA571DFB5C72000CB745 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD0DA561DFB5C72000CB745 /* AccessToken.swift */; };
 		8DE354AC1E74B6D1009B5186 /* pop_in.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8DE354AA1E74B6D1009B5186 /* pop_in.wav */; };
 		8DE354AD1E74B6D1009B5186 /* pop_out.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8DE354AB1E74B6D1009B5186 /* pop_out.wav */; };
-		8DF27C8B1E16FD1700C266AA /* Distribution.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C8A1E16FD1700C266AA /* Distribution.xcconfig */; };
-		8DF27C8D1E16FD1B00C266AA /* Beta.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C8C1E16FD1B00C266AA /* Beta.xcconfig */; };
-		8DF27C911E1704B100C266AA /* Info.Development.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C8E1E1704B100C266AA /* Info.Development.plist */; };
-		8DF27C921E1704B100C266AA /* Info.Distribution.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C8F1E1704B100C266AA /* Info.Distribution.plist */; };
-		8DF27C951E17144500C266AA /* Info.Beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DF27C941E17144500C266AA /* Info.Beta.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -225,6 +222,8 @@
 		8D7291EC1DF4B086003F165F /* SecondaryTextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryTextLabel.swift; sourceTree = "<group>"; };
 		8D7291F21DF4B383003F165F /* ColorPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPreviewView.swift; sourceTree = "<group>"; };
 		8D81296E1DF881FE00C50DEB /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Invite.swift; sourceTree = "<group>"; };
+		8D88CA1D1E762A45004E9656 /* PushPopAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPopAnimationController.swift; sourceTree = "<group>"; };
+		8D88CA1F1E762A50004E9656 /* PushPopTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPopTransitioningDelegate.swift; sourceTree = "<group>"; };
 		8D915BAF1DFF79CB0080D7BB /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		8D915BB11DFF7C550080D7BB /* S3ImageUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3ImageUploader.swift; sourceTree = "<group>"; };
 		8D921DEA1DF48B600056FAAC /* Styleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
@@ -419,6 +418,7 @@
 			children = (
 				8D7232A81E75A635006E24F2 /* Fade */,
 				8D7232A11E75A61E006E24F2 /* Card */,
+				8D88CA1C1E762A30004E9656 /* PushPop */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -660,6 +660,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		8D88CA1C1E762A30004E9656 /* PushPop */ = {
+			isa = PBXGroup;
+			children = (
+				8D88CA1D1E762A45004E9656 /* PushPopAnimationController.swift */,
+				8D88CA1F1E762A50004E9656 /* PushPopTransitioningDelegate.swift */,
+			);
+			path = PushPop;
+			sourceTree = "<group>";
+		};
 		8DAC60B51DF3D53200C408D4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -796,21 +805,16 @@
 				8D38C7171DF64F3E0011AF52 /* WizardIntro.storyboard in Resources */,
 				8D4D79F71DF9E809002C09D2 /* Glow.sks in Resources */,
 				8D669EF41DF358370029FDB0 /* Interaction.storyboard in Resources */,
-				8DF27C8D1E16FD1B00C266AA /* Beta.xcconfig in Resources */,
 				8D1538021DFA6479008E199F /* DeviceSelectionTableViewCell.xib in Resources */,
 				8D4D79F61DF9E809002C09D2 /* Assets.xcassets in Resources */,
-				8DF27C951E17144500C266AA /* Info.Beta.plist in Resources */,
 				8DC057491DFB328800B26BB4 /* Configuration.plist in Resources */,
 				8D1538001DFA6479008E199F /* ColorSelectionTableViewCell.xib in Resources */,
-				8DF27C8B1E16FD1700C266AA /* Distribution.xcconfig in Resources */,
 				8D1538061DFA6479008E199F /* TextSelectionRepresentableTableViewCell.xib in Resources */,
 				8D1538081DFA6479008E199F /* WiFiTableViewCell.xib in Resources */,
 				8DC174BB1DF66D8100FB7A13 /* Connect.storyboard in Resources */,
 				8D1537F81DFA6479008E199F /* AddInteractionCollectionViewCell.xib in Resources */,
-				8DF27C921E1704B100C266AA /* Info.Distribution.plist in Resources */,
 				8D1285081E09ED9400E01348 /* SingleActionTableViewCell.xib in Resources */,
 				8DE354AD1E74B6D1009B5186 /* pop_out.wav in Resources */,
-				8DF27C911E1704B100C266AA /* Info.Development.plist in Resources */,
 				8DC174C11DF68A4400FB7A13 /* NetworkCredentials.storyboard in Resources */,
 				8D669EF11DF358000029FDB0 /* LaunchScreen.storyboard in Resources */,
 				8D1538041DFA6479008E199F /* TextFieldTableViewCell.xib in Resources */,
@@ -910,6 +914,7 @@
 				8DD0DA571DFB5C72000CB745 /* AccessToken.swift in Sources */,
 				8D1537FC1DFA6479008E199F /* TableViewCell.swift in Sources */,
 				8D38C71F1DF652600011AF52 /* PrimaryButton.swift in Sources */,
+				8D88CA201E762A50004E9656 /* PushPopTransitioningDelegate.swift in Sources */,
 				8D12850D1E0A06D200E01348 /* RubyDateTransform.swift in Sources */,
 				8D38C70B1DF64C840011AF52 /* Reachability.m in Sources */,
 				8D5AE8371DF499E600A520D4 /* TextField.swift in Sources */,
@@ -940,6 +945,7 @@
 				8D38C6DA1DF625310011AF52 /* Device.swift in Sources */,
 				8D1538071DFA6479008E199F /* WiFiTableViewCell.swift in Sources */,
 				8D915BB21DFF7C550080D7BB /* S3ImageUploader.swift in Sources */,
+				8D88CA1E1E762A45004E9656 /* PushPopAnimationController.swift in Sources */,
 				8D7291E91DF4B04A003F165F /* Label.swift in Sources */,
 				8D38C7011DF64C840011AF52 /* Command+PublicKey.swift in Sources */,
 				8DD0DA4B1DFB3B25000CB745 /* PlistReadable.swift in Sources */,
@@ -1043,7 +1049,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A10438662ADFB9A7338445F0 /* Pods-Glowb.development.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Glowb/SupportingFiles/Glowb.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Kavouras (A4Y7UW5AJH)";
@@ -1113,7 +1119,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 35C3DF68DDB96707364A4512 /* Pods-Glowb.distribution.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Glowb/SupportingFiles/Glowb.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Kavouras (A56D86G827)";
@@ -1189,7 +1195,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FF8363CB06CE3216576FA70D /* Pods-Glowb.beta.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Glowb/SupportingFiles/Glowb.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Kavouras (A4Y7UW5AJH)";

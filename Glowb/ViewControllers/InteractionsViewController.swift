@@ -270,8 +270,6 @@ extension InteractionsViewController: UIScrollViewDelegate {
         let navigationController = BaseNavigationController(rootViewController: viewController)
         navigationController.transitioningDelegate = FadeTransitioningDelegate.shared
         navigationController.modalPresentationStyle = .custom
-        present(navigationController, animated: true) {
-            self.collectionView.contentInset = .zero
-        }
+        present(navigationController, animated: true, completion: nil)
     }
 }
