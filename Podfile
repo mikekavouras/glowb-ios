@@ -17,7 +17,7 @@ target 'Glowb' do
   pod 'Locksmith'
 
   # https://github.com/Hearst-DD/ObjectMapper
-  pod 'ObjectMapper', '~> 2.2'
+  pod 'ObjectMapper', '~> 3.1'
 
   # https://github.com/drmohundro/SWXMLHash
   pod 'SWXMLHash', '~> 3.0.0'
