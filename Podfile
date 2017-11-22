@@ -5,10 +5,10 @@ use_frameworks!
 
 target 'Glowb' do
   # https://github.com/Alamofire/Alamofire
-  pod 'Alamofire', '~> 4.0'
+  pod 'Alamofire', '~> 4.5.1'
 
   # https://github.com/SnapKit/SnapKit
-  pod 'SnapKit', '~> 3.0.2'
+  pod 'SnapKit', '~> 4.0.0'
 
   # https://github.com/mxcl/PromiseKit
   pod "PromiseKit", "~> 4.0"

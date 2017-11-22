@@ -15,16 +15,16 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (4.5.0):
     - PromiseKit/CorePromise
-  - SnapKit (3.0.2)
+  - SnapKit (4.0.0)
   - SWXMLHash (3.0.5)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.0)
+  - Alamofire (~> 4.5.1)
   - AlamofireImage (~> 3.1)
   - Locksmith
   - ObjectMapper (~> 3.1)
   - PromiseKit (~> 4.0)
-  - SnapKit (~> 3.0.2)
+  - SnapKit (~> 4.0.0)
   - SWXMLHash (~> 3.0.0)
 
 SPEC CHECKSUMS:
@@ -33,9 +33,9 @@ SPEC CHECKSUMS:
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   PromiseKit: 9c1d9f6d7b65e3951a90bea7f407c56972be5d8e
-  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SWXMLHash: 701f7d07c032089b9ff34e0352bd4fed1a24652a
 
-PODFILE CHECKSUM: 3325e343e66877d287bb218fec4fb1e84c880276
+PODFILE CHECKSUM: f7c61ea455522c19ad11a8dad852ed414c293612
 
 COCOAPODS: 1.3.1
