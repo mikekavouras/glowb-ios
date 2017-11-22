@@ -88,7 +88,7 @@ class DeviceConnection: NSObject {
         outputStream.open()
     }
     
-    func socketOpenTimeoutHandler(timer: Timer) {
+    @objc func socketOpenTimeoutHandler(timer: Timer) {
         timer.invalidate()
         delegate?.deviceConnection(connection: self, didUpdateState: .openTimeout)
     }

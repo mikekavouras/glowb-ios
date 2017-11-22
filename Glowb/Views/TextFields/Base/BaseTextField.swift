@@ -32,7 +32,7 @@ class BaseTextField: TextField, Themeable {
         
         // style placeholder text color
         let str = NSAttributedString(string: placeholder ?? "", attributes: [
-            NSForegroundColorAttributeName: theme.secondaryTextColor
+            NSAttributedStringKey.foregroundColor: theme.secondaryTextColor
         ])
         attributedPlaceholder = str
         

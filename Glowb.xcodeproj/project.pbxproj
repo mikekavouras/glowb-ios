@@ -769,6 +769,7 @@
 					8D22209F1DEF3BB80082E315 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = A56D86G827;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -1087,7 +1088,8 @@
 				PROVISIONING_PROFILE = "e821907f-3ead-49fd-bcad-733501d3420c";
 				PROVISIONING_PROFILE_SPECIFIER = "com.mikekavouras.Glowb.development Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1162,7 +1164,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.mikekavouras.Glowb";
 				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1244,7 +1247,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "com.mikekavouras.Glowb.beta Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
