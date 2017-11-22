@@ -45,12 +45,12 @@ struct S3ImageUploader {
                     request.uploadProgress(closure: progressHandler!).response { response in
                         let xml = SWXMLHash.parse(response.data!)
                         let eTag = xml["PostResponse"]["ETag"]
-                        guard let eTagElement = eTag.element,
-                            let eTagText = eTagElement.text else
+                        guard let eTagElement = eTag.element else
                         {
                             reject(S3ImageUploadError.failedToParseXMLResponse)
                             return
                         }
+                        let eTagText = eTagElement.text
                         
                         fulfill(eTagText)
                     }
