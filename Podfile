@@ -11,10 +11,10 @@ target 'Glowb' do
   pod 'SnapKit', '~> 4.0.0'
 
   # https://github.com/mxcl/PromiseKit
-  pod "PromiseKit", "~> 4.0"
+  pod 'PromiseKit', '~> 4.0'
 
   # https://github.com/matthewpalmer/Locksmith
-  pod 'Locksmith'
+  pod 'Locksmith', '~> 4.0.0'
 
   # https://github.com/Hearst-DD/ObjectMapper
   pod 'ObjectMapper', '~> 3.1'
@@ -23,5 +23,5 @@ target 'Glowb' do
   pod 'SWXMLHash', '~> 4.2.5'
 
   # https://github.com/Alamofire/AlamofireImage
-  pod 'AlamofireImage', '~> 3.1'
+  pod 'AlamofireImage', '~> 3.3.0'
 end
