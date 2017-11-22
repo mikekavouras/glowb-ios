@@ -20,7 +20,7 @@ target 'Glowb' do
   pod 'ObjectMapper', '~> 3.1'
 
   # https://github.com/drmohundro/SWXMLHash
-  pod 'SWXMLHash', '~> 3.0.0'
+  pod 'SWXMLHash', '~> 4.2.5'
 
   # https://github.com/Alamofire/AlamofireImage
   pod 'AlamofireImage', '~> 3.1'
