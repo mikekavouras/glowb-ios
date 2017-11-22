@@ -1,27 +1,27 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '9.0'
-swift_version = "3.0"
+platform :ios, '11.0'
+swift_version = "4.0"
 use_frameworks!
 
 target 'Glowb' do
   # https://github.com/Alamofire/Alamofire
-  pod 'Alamofire', '~> 4.0'
+  pod 'Alamofire', '~> 4.5.1'
 
   # https://github.com/SnapKit/SnapKit
-  pod 'SnapKit', '~> 3.0.2'
+  pod 'SnapKit', '~> 3.2.0'
 
   # https://github.com/mxcl/PromiseKit
-  pod "PromiseKit", "~> 4.0"
+  pod 'PromiseKit', '~> 4.0'
 
   # https://github.com/matthewpalmer/Locksmith
-  pod 'Locksmith'
+  pod 'Locksmith', '~> 4.0.0'
 
   # https://github.com/Hearst-DD/ObjectMapper
-  pod 'ObjectMapper', '~> 2.2'
+  pod 'ObjectMapper', '~> 3.1'
 
   # https://github.com/drmohundro/SWXMLHash
-  pod 'SWXMLHash', '~> 3.0.0'
+  pod 'SWXMLHash', '~> 4.2.5'
 
   # https://github.com/Alamofire/AlamofireImage
-  pod 'AlamofireImage', '~> 3.1'
+  pod 'AlamofireImage', '~> 3.3.0'
 end

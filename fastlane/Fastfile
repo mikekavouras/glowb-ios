@@ -14,8 +14,8 @@ lane :app_store do |options|
 end
 
 lane :configure do |options|
-    load_configuration(namespace: 'configuration')
-    load_configuration(namespace: 'info')
+  load_configuration(namespace: 'configuration')
+  load_configuration(namespace: 'info')
 end
 
 private_lane :load_configuration do |options|

@@ -29,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var backgroundTask: UIBackgroundTaskIdentifier? = nil
     
     func createBackgroundTask(withExpirationHandler handler: () -> Void) {
-        backgroundTask = UIApplication.shared.beginBackgroundTask { [unowned self] handler in
-            handler
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [unowned self] in
             UIApplication.shared.endBackgroundTask(self.backgroundTask!)
             self.backgroundTask = UIBackgroundTaskInvalid
         }
@@ -78,16 +77,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).shadowImage = UIImage()
         UINavigationBar.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).titleTextAttributes = [
-            NSForegroundColorAttributeName: UIColor.white
+            NSAttributedStringKey.foregroundColor: UIColor.white
         ]
         
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).tintColor = .white
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).setTitleTextAttributes([
-            NSForegroundColorAttributeName: UIColor.white
+            NSAttributedStringKey.foregroundColor: UIColor.white
         ], for: .normal)
         
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [BaseNavigationController.self]).setTitleTextAttributes([
-            NSForegroundColorAttributeName: UIColor.white.withAlphaComponent(0.5)
+            NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)
         ], for: .disabled)
     }
 }

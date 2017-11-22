@@ -107,7 +107,7 @@ struct Device: Mappable, Equatable {
                     return
                 }
                 
-                fulfill()
+                fulfill(())
             }
         }
     }

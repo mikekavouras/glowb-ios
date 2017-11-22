@@ -67,7 +67,7 @@ struct AccessToken {
         return Promise { fulfill, reject in
             Alamofire.request(Router.revokeOAuthToken).validate().responseJSON { response in
                 if response.result.isSuccess {
-                    fulfill()
+                    fulfill(())
                 } else {
                     reject(ServerError.invalidStatus)
                 }

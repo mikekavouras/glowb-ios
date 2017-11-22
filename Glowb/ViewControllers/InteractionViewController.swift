@@ -36,7 +36,7 @@ class InteractionViewController: BaseTableViewController, StoryboardInitializabl
         picker.view.backgroundColor = UIColor.white
         picker.navigationBar.isTranslucent = false
         picker.navigationBar.tintColor = UIColor.black
-        picker.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+        picker.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         
         return picker
     }()

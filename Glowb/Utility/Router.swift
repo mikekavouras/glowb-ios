@@ -23,7 +23,7 @@ enum Router: URLRequestConvertible {
     
     // devices
     case getDevices
-    case getDevice
+    case getDevice(Int)
     case updateDevice(Int, String)
     case createDevice(String, String)
     case deleteDevice(Int)

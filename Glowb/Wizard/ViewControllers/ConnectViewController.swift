@@ -66,7 +66,7 @@ class ConnectViewController: BaseViewController, StoryboardInitializable {
         if state == .active {
             wifi.stopMonitoringConnection()
             getDeviceId { [weak self] id in
-                self?.getPublicKey { [weak self] _ in
+                self?.getPublicKey { [weak self] in
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         let networkViewController = SelectNetworkViewController()
                         networkViewController.deviceId = id

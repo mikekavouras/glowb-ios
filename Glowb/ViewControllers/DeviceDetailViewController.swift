@@ -114,7 +114,7 @@ extension DeviceDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 22, weight: UIFontWeightBold)
+        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold)
         label.frame.origin.x = 15.0
         label.textColor = .white
         label.text = self.tableView(tableView, titleForHeaderInSection: section)
