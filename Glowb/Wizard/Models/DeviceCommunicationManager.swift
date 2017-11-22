@@ -55,7 +55,7 @@ class DeviceCommunicationManager {
                 return
             }
             
-            let command = String(format: "configure-ap\n%ld\n\n%@", jsonString.characters.count, jsonString)
+            let command = String(format: "configure-ap\n%ld\n\n%@", jsonString.count, jsonString)
             connection.writeString(command)
         }, onCompletion: completion)
     }
@@ -70,7 +70,7 @@ class DeviceCommunicationManager {
                 return
             }
           
-            let command = String(format: "connect-ap\n%ld\n\n%@", jsonString.characters.count, jsonString)
+            let command = String(format: "connect-ap\n%ld\n\n%@", jsonString.count, jsonString)
             connection.writeString(command)
         }, onCompletion: completion)
     }

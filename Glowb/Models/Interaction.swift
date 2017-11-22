@@ -154,7 +154,7 @@ struct Interaction: Mappable {
             }
             Alamofire.request(Router.deleteInteraction(id)).validate().response { response in
                 if response.error == nil {
-                    fulfill()
+                    fulfill(())
                 } else {
                     reject(ServerError.invalidStatus)
                 }

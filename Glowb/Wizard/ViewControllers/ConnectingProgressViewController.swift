@@ -122,7 +122,7 @@ class ConnectingProgressViewController: BaseViewController {
             } else {
                 if isHostReachable {
                     displayNameInputUI() { name in
-                        let userInfo = [ "device_id" : self.deviceId, "device_name" : name ]
+                        let userInfo: [AnyHashable: Any] = [ "device_id" : self.deviceId, "device_name" : name ]
                         NotificationCenter.default.post(name: .particleDeviceConnected, object: nil, userInfo: userInfo)
                     }
                 } else {

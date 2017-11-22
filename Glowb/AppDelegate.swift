@@ -29,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var backgroundTask: UIBackgroundTaskIdentifier? = nil
     
     func createBackgroundTask(withExpirationHandler handler: () -> Void) {
-        backgroundTask = UIApplication.shared.beginBackgroundTask { [unowned self] handler in
-            handler
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [unowned self] in
             UIApplication.shared.endBackgroundTask(self.backgroundTask!)
             self.backgroundTask = UIBackgroundTaskInvalid
         }

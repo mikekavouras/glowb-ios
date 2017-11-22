@@ -64,7 +64,7 @@ struct User {
             device.delete().then { _ -> Void in
                 let newDevices = self.devices.filter { $0 != device }
                 User.current.devices = newDevices
-                fulfill()
+                fulfill(())
             }.catch { error in 
                 reject(error)
             }

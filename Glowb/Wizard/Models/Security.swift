@@ -29,7 +29,7 @@ struct Security {
     static func getPublicKey() throws -> SecKey? {
         var keyAttr = [String: Any]()
         
-        let refTag = Data(bytes: kSparkSetupSecurityPublicKeystore, count: kSparkSetupSecurityPublicKeystore.characters.count)
+        let refTag = Data(bytes: kSparkSetupSecurityPublicKeystore, count: kSparkSetupSecurityPublicKeystore.count)
         
         keyAttr[String(kSecClass)] = kSecClassKey
         keyAttr[String(kSecAttrKeyType)] = kSecAttrKeyTypeRSA
@@ -54,7 +54,7 @@ struct Security {
             
             var status: OSStatus = noErr
 
-            let refTag = Data(bytes: kSparkSetupSecurityPublicKeystore, count: kSparkSetupSecurityPublicKeystore.characters.count)
+            let refTag = Data(bytes: kSparkSetupSecurityPublicKeystore, count: kSparkSetupSecurityPublicKeystore.count)
             var keyAttr = [String: AnyObject]()
             
             keyAttr[String(kSecClass)] = kSecClassKey
@@ -125,10 +125,10 @@ struct Security {
 
 extension String {
     static func decode(fromHexString string: String) -> Data? {
-        var data = Data(capacity: string.characters.count / 2)
+        var data = Data(capacity: string.count / 2)
         
         let regex = try! NSRegularExpression(pattern: "[0-9a-f]{1,2}", options: .caseInsensitive)
-        regex.enumerateMatches(in: string, options: [], range: NSMakeRange(0, string.characters.count)) { match, flags, stop in
+        regex.enumerateMatches(in: string, options: [], range: NSMakeRange(0, string.count)) { match, flags, stop in
             let byteString = (string as NSString).substring(with: match!.range)
             var num = UInt8(byteString, radix: 16)
             data.append(&num!, count: 1)
