@@ -8,7 +8,7 @@ target 'Glowb' do
   pod 'Alamofire', '~> 4.5.1'
 
   # https://github.com/SnapKit/SnapKit
-  pod 'SnapKit', '~> 3.2.0'
+  pod 'SnapKit', '~> 4.0.0'
 
   # https://github.com/mxcl/PromiseKit
   pod 'PromiseKit', '~> 4.0'

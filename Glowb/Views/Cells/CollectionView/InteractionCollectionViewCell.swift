@@ -26,6 +26,8 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
             
             deviceLabel.text = device.name
             deviceColorView.color = color.color
+            
+            presenceLabel.text = device.presence ? "👂" : ""
         }
     }
     
@@ -52,6 +54,8 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
     @IBOutlet private weak var scrollContentView: UIView!
     @IBOutlet private weak var scrollContentViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var scrollContentViewWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var presenceLabel: UILabel!
     
     private var isSkrilt: Bool {
         return scrollView.contentOffset.y == 0

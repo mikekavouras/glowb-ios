@@ -1015,7 +1015,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DF27C891E16FCC800C266AA /* Development.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$inherited";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1080,10 +1080,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Kavouras (A4Y7UW5AJH)";
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = A56D86G827;
-				INFOPLIST_FILE = $inherited;
+				INFOPLIST_FILE = "$inherited";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = $inherited;
+				PRODUCT_BUNDLE_IDENTIFIER = "$inherited";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e821907f-3ead-49fd-bcad-733501d3420c";
 				PROVISIONING_PROFILE_SPECIFIER = "com.mikekavouras.Glowb.development Development";
@@ -1099,7 +1099,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DF27C8A1E16FD1700C266AA /* Distribution.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$inherited";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1157,10 +1157,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Michael Kavouras (A56D86G827)";
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = A56D86G827;
-				INFOPLIST_FILE = $inherited;
+				INFOPLIST_FILE = "$inherited";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = $inherited;
+				PRODUCT_BUNDLE_IDENTIFIER = "$inherited";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.mikekavouras.Glowb";
 				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";
@@ -1175,7 +1175,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8DF27C8C1E16FD1B00C266AA /* Beta.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = $inherited;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$inherited";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -1240,10 +1240,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Kavouras (A4Y7UW5AJH)";
 				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = A56D86G827;
-				INFOPLIST_FILE = $inherited;
+				INFOPLIST_FILE = "$inherited";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = $inherited;
+				PRODUCT_BUNDLE_IDENTIFIER = "$inherited";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "com.mikekavouras.Glowb.beta Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Glowb/SupportingFiles/Glowb-Bridging-Header.h";

@@ -95,6 +95,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yV-2I-hmR">
+                                <rect key="frame" x="114" y="302" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7J-rO-aOR" customClass="Button" customModule="Glowb" customModuleProvider="target">
                                 <rect key="frame" x="110.5" y="476" width="50" height="50"/>
                                 <constraints>
@@ -111,14 +117,17 @@
                             <constraint firstItem="7QM-vY-ZvZ" firstAttribute="top" secondItem="bnF-fq-lpm" secondAttribute="bottom" constant="36" id="7xV-rG-6i9"/>
                             <constraint firstItem="9gw-mW-AOn" firstAttribute="centerY" secondItem="FUT-B9-lwB" secondAttribute="centerY" multiplier="0.5" id="Eht-qs-kCY"/>
                             <constraint firstItem="OhO-ar-x2h" firstAttribute="leading" secondItem="FUT-B9-lwB" secondAttribute="leading" id="EpL-68-tCE"/>
+                            <constraint firstAttribute="trailing" secondItem="5yV-2I-hmR" secondAttribute="trailing" id="Ert-h9-EQh"/>
                             <constraint firstItem="9z2-5Q-NTd" firstAttribute="leading" secondItem="FUT-B9-lwB" secondAttribute="leading" id="Jxw-sp-zD5"/>
                             <constraint firstItem="o7J-rO-aOR" firstAttribute="centerX" secondItem="FUT-B9-lwB" secondAttribute="centerX" id="NSJ-vy-isF"/>
                             <constraint firstAttribute="bottom" secondItem="o7J-rO-aOR" secondAttribute="bottom" constant="100" id="QYj-jo-QFR"/>
                             <constraint firstAttribute="trailing" secondItem="OhO-ar-x2h" secondAttribute="trailing" id="QcJ-M8-cQh"/>
                             <constraint firstAttribute="trailing" secondItem="9z2-5Q-NTd" secondAttribute="trailing" id="URy-CL-L06"/>
                             <constraint firstAttribute="bottom" secondItem="OhO-ar-x2h" secondAttribute="bottom" id="WfF-lE-M4d"/>
+                            <constraint firstItem="5yV-2I-hmR" firstAttribute="leading" secondItem="FUT-B9-lwB" secondAttribute="leading" id="bpH-t1-9MM"/>
                             <constraint firstItem="bnF-fq-lpm" firstAttribute="centerX" secondItem="FUT-B9-lwB" secondAttribute="centerX" id="cvn-Od-xWe"/>
                             <constraint firstItem="7QM-vY-ZvZ" firstAttribute="centerX" secondItem="FUT-B9-lwB" secondAttribute="centerX" id="dJR-ck-2m7"/>
+                            <constraint firstItem="5yV-2I-hmR" firstAttribute="top" secondItem="7QM-vY-ZvZ" secondAttribute="bottom" constant="40" id="dPS-RD-kZZ"/>
                             <constraint firstItem="9gw-mW-AOn" firstAttribute="centerX" secondItem="FUT-B9-lwB" secondAttribute="centerX" id="fJZ-rE-HiY"/>
                             <constraint firstItem="9z2-5Q-NTd" firstAttribute="top" secondItem="FUT-B9-lwB" secondAttribute="top" id="hws-Ps-leh"/>
                             <constraint firstItem="bnF-fq-lpm" firstAttribute="top" secondItem="9gw-mW-AOn" secondAttribute="bottom" constant="8" id="jQf-a1-ORd"/>
@@ -176,6 +185,7 @@
                 <outlet property="deviceLabel" destination="6xf-bz-fon" id="s0A-9b-zIt"/>
                 <outlet property="editButton" destination="7QM-vY-ZvZ" id="ezg-f5-OSR"/>
                 <outlet property="nameLabel" destination="9gw-mW-AOn" id="pNy-nK-uM6"/>
+                <outlet property="presenceLabel" destination="5yV-2I-hmR" id="srW-sp-F4B"/>
                 <outlet property="scrollContentView" destination="D4f-LH-RYD" id="Sxl-7E-3f9"/>
                 <outlet property="scrollContentViewHeightConstraint" destination="F9N-bY-hS6" id="ePu-o2-RiT"/>
                 <outlet property="scrollContentViewWidthConstraint" destination="cKY-iV-ipS" id="slB-hd-eUQ"/>
