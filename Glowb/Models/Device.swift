@@ -21,9 +21,9 @@ enum DeviceError: Error {
 } 
 struct Device: Mappable, Equatable {
     var name: String
-    var particleId: String = ""
+    var particleId: String
     var id: Int = 0
-    var presence: Bool = false
+    var lastHeardAt: Date?
     let connectionStatus: DeviceConnectionStatus = .disconnected
     
     init(name: String, id: Int, particleId: String) {
@@ -37,18 +37,24 @@ struct Device: Mappable, Equatable {
             let name = map.JSON["name"] as? String,
             let device = map.JSON["device"] as? JSON else
         { return nil }
-        
+
         self.name = name
         self.id = userDeviceId
-        self.presence = (device["presence"] as? Bool) ?? false
         self.particleId = (device["particle_id"] as? String) ?? ""
+        
+        if let lastHeard = device["last_heard_at"] as? String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            formatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+            self.lastHeardAt = formatter.date(from: lastHeard)
+        }
     }
     
     mutating func mapping(map: Map) {
         name       <- map["name"]
         id         <- map["id"]
-        particleId <- map["particle_id"]
-        presence   <- map["presence"]
+        particleId <- map["device.particle_id"]
+        lastHeardAt  <- (map["last_heard_at"], RubyDateTransform())
     }
     
     

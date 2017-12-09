@@ -27,7 +27,7 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
             deviceLabel.text = device.name
             deviceColorView.color = color.color
             
-            presenceLabel.text = device.presence ? "👂" : ""
+//            presenceLabel.text = device.presence ? "👂" : ""
         }
     }
     
