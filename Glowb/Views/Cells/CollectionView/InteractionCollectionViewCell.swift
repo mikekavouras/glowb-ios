@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import DateToolsSwift
+
 
 class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
     
@@ -27,7 +29,9 @@ class InteractionCollectionViewCell: BaseCollectionViewCell, ReusableView {
             deviceLabel.text = device.name
             deviceColorView.color = color.color
             
-//            presenceLabel.text = device.presence ? "👂" : ""
+            if let lastHeard = device.lastHeardAt {
+                presenceLabel.text = "Last heard from \(lastHeard.timeAgoSinceNow.lowercased())"
+            }
         }
     }
     
@@ -172,5 +176,14 @@ extension InteractionCollectionViewCell: UIScrollViewDelegate {
         
         foregroundOverlayView.alpha = (1 - alpha) * 0.8
         backgroundContainerView.alpha = min(0.99, 1 - alpha)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if isSkrilt {
+            guard let interactionId = interaction?.id else { return }
+            Interaction.fetch(id: interactionId).then { [unowned self] newInteraction in
+                self.interaction = newInteraction
+            }
+        }
     }
 }

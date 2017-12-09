@@ -116,6 +116,22 @@ struct Interaction: Mappable {
         }
     }
     
+    static func fetch(id: Int) -> Promise<Interaction> {
+        return Promise { fulfill, reject in
+            return Alamofire.request(Router.getInteraction(id)).validate().responseJSON { response in
+                let result = InteractionParser.parseResponse(response)
+                
+                switch result {
+                case .success(let interaction):
+                    fulfill(interaction)
+                case .failure(let error):
+                    reject(error)
+                }
+            }
+        }
+
+    }
+    
     static func create(_ interaction: Interaction) -> Promise<Interaction> {
         return Promise { fulfill, reject in
             return Alamofire.request(Router.createInteraction(interaction)).validate().responseJSON { response in
