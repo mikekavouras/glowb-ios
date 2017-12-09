@@ -5,8 +5,6 @@
 //  Created by Mike Kavouras on 8/29/16.
 //  Copyright © 2016 Mike Kavouras. All rights reserved.
 //
-
-import Foundation
  
 enum ResultType<Value, Err: Error> {
     case success(Value)

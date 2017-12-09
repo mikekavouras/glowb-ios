@@ -23,6 +23,7 @@ struct Device: Mappable, Equatable {
     var name: String
     var particleId: String = ""
     var id: Int = 0
+    var presence: Bool = false
     let connectionStatus: DeviceConnectionStatus = .disconnected
     
     init(name: String, id: Int, particleId: String) {
@@ -30,19 +31,24 @@ struct Device: Mappable, Equatable {
         self.id = id
         self.particleId = particleId
     }
+    
     init?(map: Map) {
         guard let userDeviceId = map.JSON["id"] as? Int,
-            let name = map.JSON["name"] as? String else
+            let name = map.JSON["name"] as? String,
+            let device = map.JSON["device"] as? JSON else
         { return nil }
         
         self.name = name
         self.id = userDeviceId
+        self.presence = (device["presence"] as? Bool) ?? false
+        self.particleId = (device["particle_id"] as? String) ?? ""
     }
     
     mutating func mapping(map: Map) {
         name       <- map["name"]
         id         <- map["id"]
         particleId <- map["particle_id"]
+        presence   <- map["presence"]
     }
     
     

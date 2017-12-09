@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,28 +13,28 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InteractionCellIdentifier" id="hG2-YP-fuv" customClass="InteractionCollectionViewCell" customModule="Glowb" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="270" height="344"/>
+            <rect key="frame" x="0.0" y="0.0" width="270" height="626"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="270" height="344"/>
+                <rect key="frame" x="0.0" y="0.0" width="270" height="626"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FUT-B9-lwB" customClass="BaseView" customModule="Glowb" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="270" height="344"/>
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="626"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9z2-5Q-NTd">
-                                <rect key="frame" x="0.0" y="0.0" width="270" height="344"/>
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="626"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OhO-ar-x2h">
-                                <rect key="frame" x="0.0" y="0.0" width="270" height="344"/>
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="626"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="p5m-Eh-c0p">
-                                    <rect key="frame" x="0.0" y="0.0" width="270" height="344"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="270" height="626"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gw-mW-AOn" customClass="PrimaryTextLabel" customModule="Glowb" customModuleProvider="target">
-                                <rect key="frame" x="99" y="69.5" width="73" height="33.5"/>
+                                <rect key="frame" x="100" y="140" width="71.5" height="33.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnF-fq-lpm">
-                                <rect key="frame" x="109" y="111" width="52.5" height="17"/>
+                                <rect key="frame" x="109" y="181.5" width="52.5" height="17"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xf-bz-fon" customClass="PrimaryTextLabel" customModule="Glowb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="35.5" height="17"/>
@@ -78,7 +78,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7QM-vY-ZvZ" customClass="PrimaryButton" customModule="Glowb" customModuleProvider="target">
-                                <rect key="frame" x="75" y="164" width="120" height="44"/>
+                                <rect key="frame" x="75" y="234.5" width="120" height="44"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.029999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="39M-5F-eeC"/>
@@ -96,7 +96,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7J-rO-aOR" customClass="Button" customModule="Glowb" customModuleProvider="target">
-                                <rect key="frame" x="110.5" y="194" width="50" height="50"/>
+                                <rect key="frame" x="110.5" y="476" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="aTy-6E-b4v"/>
                                     <constraint firstAttribute="height" constant="50" id="dkV-dX-TL9"/>
@@ -132,7 +132,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qr-zW-OpF">
-                        <rect key="frame" x="0.0" y="0.0" width="270" height="344"/>
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="626"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D4f-LH-RYD">
                                 <rect key="frame" x="0.0" y="0.0" width="270" height="344"/>
@@ -162,7 +162,7 @@
                 <constraint firstAttribute="trailing" secondItem="FUT-B9-lwB" secondAttribute="trailing" id="xRz-wK-LWs"/>
                 <constraint firstItem="FUT-B9-lwB" firstAttribute="top" secondItem="hG2-YP-fuv" secondAttribute="top" id="xwo-PO-Jpu"/>
             </constraints>
-            <size key="customSize" width="270" height="344"/>
+            <size key="customSize" width="270" height="626"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="themeAdapter">
                     <integer key="value" value="1"/>
@@ -182,7 +182,7 @@
                 <outlet property="scrollView" destination="1qr-zW-OpF" id="rfZ-65-jBu"/>
                 <outlet property="shareButton" destination="o7J-rO-aOR" id="MT7-ao-a7L"/>
             </connections>
-            <point key="canvasLocation" x="-104" y="80"/>
+            <point key="canvasLocation" x="-104" y="221"/>
         </collectionViewCell>
     </objects>
     <resources>

@@ -139,7 +139,7 @@ extension DeviceDetailViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch indexPath.row {
+        switch indexPath.section {
         case 0:
             Invite.create(deviceId: device.id).then { invite in
                 self.displayShare(for: invite)

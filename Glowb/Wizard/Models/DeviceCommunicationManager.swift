@@ -43,7 +43,6 @@ class DeviceCommunicationManager {
             }
         })
     }
-
     
     func configureAP(network: Network, completion: @escaping (ResultType<JSON, ConnectionError>) -> Void) {
         runCommand(onConnection: { connection in
@@ -54,7 +53,6 @@ class DeviceCommunicationManager {
                 completion(.failure(ConnectionError.couldNotConnect))
                 return
             }
-            
             let command = String(format: "configure-ap\n%ld\n\n%@", jsonString.count, jsonString)
             connection.writeString(command)
         }, onCompletion: completion)
@@ -99,7 +97,6 @@ class DeviceCommunicationManager {
         connectionCommand = { [unowned self] in
             command(self.connection!)
         }
-    
     }
     
     
@@ -118,7 +115,7 @@ class DeviceCommunicationManager {
 }
 
 
-// MARK: - Setup connection delegate
+// MARK: - Connection delegate
 
 extension DeviceCommunicationManager: DeviceConnectionDelegate {
     func deviceConnection(connection: DeviceConnection, didReceiveData data: String) {

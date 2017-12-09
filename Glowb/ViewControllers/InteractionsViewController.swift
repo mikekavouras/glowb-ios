@@ -95,8 +95,7 @@ class InteractionsViewController: BaseViewController {
         collectionView.register(cellType: InteractionCollectionViewCell.self)
         
         collectionView.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalToSuperview()
-            make.leading.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     

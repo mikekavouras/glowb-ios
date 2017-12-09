@@ -22,8 +22,9 @@ puts "Decrypting repo 🌬"
 puts "Downloading profile 🌬"
 system("sigh --force --development -u #{ENV['APPLE_USERNAME']} -a #{app_identifier}", out: $stdout, err: :out)
 
+puts "Moving file"
 file = Dir[File.join(".", "*.mobileprovision")].first
-`mv #{file} profiles/development/`
+system("mv #{file} profiles/development/", out: $stdout, err: :out)
 
 puts "Encrypting repo 🌬"
 `./encrypt.rb "#{ENV['MATCH_PASSWORD']}"`
