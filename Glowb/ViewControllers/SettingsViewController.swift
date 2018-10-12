@@ -9,21 +9,7 @@
 import UIKit
 import SnapKit
 
-class SettingsViewController: UIViewController {
-    
-    // MARK: - Properties
-    // MARK: -
-    
-    fileprivate let tableView = UITableView(frame: .zero, style: .grouped)
-    
-    // MARK: - Life cycle
-    // MARK: -
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setup()
-        
+cla
         User.current.fetchDevices().then { devices -> Void in
             self.tableView.reloadData()
         }.catch { error in
@@ -38,15 +24,18 @@ class SettingsViewController: UIViewController {
     
     
     // MARK: - Setup
-    // MARK: -
+    // MARK: -adsf
     
     private func setup() {
         view.backgroundColor = UIColor.clear
         navigationController?.delegate = self
-        
+        sdfsdf
         setupTableView()
         setupNavigationItem()
-    }
+    
+        
+        
+        
     
     private func setupTableView() {
         view.addSubview(tableView)
@@ -61,7 +50,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func setupNavigationItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        navigationItem.rsdfightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
         title = "Settings"
     }
     
